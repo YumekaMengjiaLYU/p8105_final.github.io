@@ -3,13 +3,21 @@ Proposal
 Duzhi Zhao
 11/1/2019
 
-First, you will define your teams and propose a project. This proposal
-should be a half-page to a page in length and include:
+**Group members:**  
+Duzhi Zhao (dz2426)  
+Alicia Dagle (abd2150)  
+Mengjia Lyu (ml4420)  
+Michael Yan (qy2234)  
+Clement Mugenzi (cm3928)
 
-    The group members (names and UNIs)
-    The tentative project title
-    The motivation for this project
-    The intended final products
-    The anticipated data sources
-    The planned analyses / visualizations / coding challenges
-    The planned timeline
+**Tentative project title:**
+
+**Motivation:**
+
+**Intended final products:**
+
+**Anticipated data sources:**
+
+**Planned analyses/Visualizations/Coding challenges:**
+
+**Planned timeline:**
