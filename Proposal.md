@@ -28,13 +28,14 @@ proposes to better understand how factors such as access to skilled
 health staff, socioeconomic status, and prenatal care influence maternal
 health birth outcomes.
 
-**Anticipated data sources:** [World Health
-Organization](http://apps.who.int/gho/data/node.main.530?lang=en) [Our
-World in Data](https://ourworldindata.org/maternal-mortality) [Center
-for Disease Control
-(CDC)](https://www.cdc.gov/nchs/products/databriefs/db328.htm) [National
-Center for Health
-Statistics](https://www.cdc.gov/nchs/data/nvsr/nvsr67/nvsr67_05.pdf)
+**Anticipated data sources:**  
+[World Health
+Organization](http://apps.who.int/gho/data/node.main.530?lang=en)  
+[Our World in Data](https://ourworldindata.org/maternal-mortality)  
+[Center for Disease Control
+(CDC)](https://www.cdc.gov/nchs/products/databriefs/db328.htm)  
+[National Center for Health
+Statistics](https://www.cdc.gov/nchs/data/nvsr/nvsr67/nvsr67_05.pdf)  
 [UNICEF](https://data.unicef.org/resources/dataset/maternal-health-data/)
 
 **Planned analyses/Visualizations/Coding challenges:**  
