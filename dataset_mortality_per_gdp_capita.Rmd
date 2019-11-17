@@ -66,13 +66,57 @@ mmr_gdp_capita_log =
   )
 ```
 
-## Plotly plot (year = 2015)
+## Plotly (year = 2015): linear + log
 ```{r}
+x1_template = list(
+  title = "GDP per capita ($)"
+)
+
+x2_template = list(
+  title = "ln(GDP per capita)"
+)
+
+y_template = list(
+  title = "Maternal Mortality Ratio per 100,000 live births"
+)
+
+mmr_gdp_capita_log %>% 
+  filter(year == 2015) %>% 
+  plot_ly(
+    x = ~gdp_per_capita, y = ~mmr, type = "scatter", mode = "markers",
+    color = ~country) %>%  
+  layout(
+    xaxis = x1_template,
+    yaxis = y_template)
+
 mmr_gdp_capita_log %>% 
   filter(year == 2015) %>% 
   mutate(text_label = str_c("gdp per capita: ", gdp_per_capita)) %>% 
   plot_ly(
     x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", mode = "markers",
-    color = ~country, text = ~text_label)
+    color = ~country, text = ~text_label) %>%  
+  layout(
+    xaxis = x2_template,
+    yaxis = y_template)
+```
+
+## ggplot (year = 2015): linear + log
+```{r}
+mmr_gdp_capita_log %>% 
+  filter(year == 2015) %>% 
+  ggplot(aes(x = gdp_per_capita, y = mmr)) + 
+  geom_point() +
+  labs(x = "GDP per capita ($)",
+       y = "Maternal Mortality Ratio per 100,000 live births",
+       title = "Maternal Mortality Ratio vs. GDP per capita, 2015")
+
+mmr_gdp_capita_log %>% 
+  filter(year == 2015) %>% 
+  ggplot(aes(x = ln_gdp_per_capita, y = mmr)) + 
+  geom_point() +
+  labs(x = "ln(GDP per capita)",
+       y = "Maternal Mortality Ratio per 100,000 live births",
+       title = "Maternal Mortality Ratio vs. ln(GDP per capita), 2015")
+
 ```
 
