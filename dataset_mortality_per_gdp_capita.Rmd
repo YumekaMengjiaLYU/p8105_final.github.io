@@ -1,0 +1,44 @@
+---
+title: "Dataset_Mortality per GDP capita"
+author: "Duzhi Zhao"
+date: "11/17/2019"
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+library(readxl)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 8, 
+  fig.height = 6,
+  out.width = "100%"
+)
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+```
+
+# Import dataset
+```{r}
+# Maternal Mortality Ratio: number of maternal deaths during a given time period per 100,000 live births during the same time period.
+# MMR measures the obsteric risk a women is facing when she is pregnant. 
+# E.g. 1575 per 100,000 live births (Afghanistan) vs. 5 per 100,000 live births (Sweden) means a women in Afghanistan is facing a 315 times higher risk of maternal death when she is pregnant than a woman in Swedan. 
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+         gdp_per_capita = gdp_per_capita_international,
+         gdp = x6) %>% 
+  
+```
+
