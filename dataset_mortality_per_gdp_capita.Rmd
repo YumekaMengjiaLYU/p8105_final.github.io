@@ -11,6 +11,7 @@ editor_options:
 library(tidyverse)
 library(viridis)
 library(readxl)
+library(plotly)
 
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -29,16 +30,49 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-# Import dataset
+## Import dataset
 ```{r}
 # Maternal Mortality Ratio: number of maternal deaths during a given time period per 100,000 live births during the same time period.
 # MMR measures the obsteric risk a women is facing when she is pregnant. 
 # E.g. 1575 per 100,000 live births (Afghanistan) vs. 5 per 100,000 live births (Sweden) means a women in Afghanistan is facing a 315 times higher risk of maternal death when she is pregnant than a woman in Swedan. 
 mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
   janitor::clean_names() %>% 
-  rename(mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
-         gdp_per_capita = gdp_per_capita_international,
-         gdp = x6) %>% 
-  
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code)
+  ) %>% 
+  mutate(
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 2000, year < 2016)
+
+summary(is.na(mmr_gdp_capita$mmr)) # 945 NA, 3435 non-NA
+summary(is.na(mmr_gdp_capita$gdp_per_capita)) # 845 NA, 3535 non-NA
+summary(is.na(mmr_gdp_capita$gdp)) # 750 NA, 3630 non-NA
+```
+
+## log-transformed 'gdp_per_capita'
+```{r}
+# log-transformed
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+```
+
+## Plotly plot (year = 2015)
+```{r}
+mmr_gdp_capita_log %>% 
+  filter(year == 2015) %>% 
+  mutate(text_label = str_c("gdp per capita: ", gdp_per_capita)) %>% 
+  plot_ly(
+    x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", mode = "markers",
+    color = ~country, text = ~text_label)
 ```
 
