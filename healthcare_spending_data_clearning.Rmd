@@ -3,6 +3,8 @@ title: "healthcare_spending_data_cleaning"
 author: "Michael Yan"
 date: "11/16/2019"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 # general setup
 ```{r setup, include = FALSE}
