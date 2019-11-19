@@ -87,7 +87,7 @@ mmr_gdp_capita_log %>%
 
 # Healthcare spending (%GDP) vs. Country
 
-# import and clean data
+## import and clean data
 ```{r}
 # Percent GDP that comes from health spending
 health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
@@ -106,42 +106,30 @@ health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent
          code = country_code)
 ```
 
-# plot a scatter plot, country on the x axis, percent GDP spend on healthcare on the y axis
+## Filtered dataset
 ```{r}
-latest_health_spending_scatter = 
+healthcare_spending_2015_developed = 
   health_spending_percent_gdp %>% 
-  ggplot(aes(x = country, y = health_spending_percent_GDP)) + 
-  geom_point()
-```
-
-# log-transformed 'health_spending_percent_GDP'
-```{r}
-# log-transformed
-health_spending_percent_GDP_log = 
-  health_spending_percent_gdp %>% 
-  mutate(
-    ln_health_spending = round(log(health_spending_percent_GDP), digits = 2)
-  )
-```
-
-```{r}
-## ggplot (year = 2015): linear + log
-health_spending_percent_GDP_log %>% 
   filter(year == 2015) %>% 
-  ggplot(aes(x = country, y = health_spending_percent_GDP)) + 
-  geom_point() +
-  labs(x = "Country",
-       y = "Percent GDP That Comes From Healthcare Spending(%)",
-       title = "Different Amount of Healthcare Spending Across Countries")
-
-health_spending_percent_GDP_log %>% 
-  filter(year == 2015) %>% 
-  ggplot(aes(x = country, y = ln_health_spending)) + 
-  geom_point() +
-  labs(x = "Country",
-       y = "Natural Log Transformed Percent GDP That Comes From Healthcare Spending(%)",
-       title = "Different Amount of Healthcare Spending Across Countries")
+  filter(country %in% c("United States", "United Kingdom", "Finland", 
+                           "Canada","Germany", "New Zealand", "Norway", "Netherlands",
+                           "Switzerland", "Japan"))
 ```
+
+## Bar chart
+```{r}
+healthcare_spending_2015_developed %>% 
+  mutate(country = as.factor(country),
+    country = fct_reorder(country, health_spending_percent_GDP)) %>% 
+  ggplot(aes(x = country, y = health_spending_percent_GDP, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(x = "Developed country",
+       y = "% GDP that comes from healthcare spending",
+       title = "Different amount of healthcare spending across 10 developed countries")
+```
+
+
 
 # Health staff
 ```{r}
@@ -168,33 +156,3 @@ mmr_combined =
 
 summary(is.na(mmr_combined))
 ```
-
-
-
-
-
-```{r explore_matmort_birthsattended}
-#This code is incomplete, I was just exploring a bit:
-  
-mortality_births_attend = inner_join(maternal_mort, staff, by = c("country","year")) 
-
-  
- view(mortality_births_attend) 
-  
-
-  
-#This is the process I would follow for merging the datasets for gdp sepnding, healthcare spending, and individual cost  (except this is done for the births attended here)
-  
-  maternal_mort_leading = maternal_mort %>%
-  filter(year=='2013') %>% 
-  filter(country %in% c("United States", "United Kingdom", "Finland", "Canada","Germany", "New Zealand", "Norway", "China", "Netherlands", "Switzerland", "Singapore", "Japan", "Luxembourg", "Hong Kong", "Qatar"))
-  
-view(maternal_mort_leading)
-
-
-leading_2013 = left_join(maternal_mort_leading,staff, by = c("country","year"))
-
-view(leading_2013)
-
-```
-
