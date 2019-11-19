@@ -1,0 +1,23 @@
+---
+title: "Factors Influencing Maternal Mortality Globally"
+
+output: 
+ html_document:
+   theme: lumen
+---
+
+
+
+
+## Introduction
+
+
+
+## Data
+
+
+## Methods
+
+## Results
+
+## Discussion
