@@ -25,6 +25,8 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
+<<<<<<< HEAD
+=======
 
 ```{r}
 #Maternal Mortality ratio from gapminder dataset
@@ -89,3 +91,4 @@ view(leading_2013)
 ```
 
 
+>>>>>>> 6c7379a38ae6121321548d882d52ac194f9c1eac
