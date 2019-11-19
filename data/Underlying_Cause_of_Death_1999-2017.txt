@@ -1,0 +1,365 @@
+"Notes"	"State"	"State Code"	"Ten-Year Age Groups"	"Ten-Year Age Groups Code"	"Gender"	"Gender Code"	"Hispanic Origin"	"Hispanic Origin Code"	"Race"	"Race Code"	Deaths	Population	Crude Rate	% of Total Deaths
+	"Alabama"	"01"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	30	2045032	1.5	0.2%
+	"Alabama"	"01"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	17	3833855	Unreliable	0.1%
+	"Alabama"	"01"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	49	1755644	2.8	0.3%
+	"Alabama"	"01"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	31	3718939	0.8	0.2%
+	"Alabama"	"01"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	26	1719227	1.5	0.2%
+	"Alabama"	"01"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	16	4133753	Unreliable	0.1%
+	"Alabama"	"01"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	10	1688411	Unreliable	0.1%
+	"Arizona"	"04"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	20	2707019	0.7	0.1%
+	"Arizona"	"04"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	32	2399166	1.3	0.2%
+	"Arizona"	"04"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"American Indian or Alaska Native"	"1002-5"	16	372021	Unreliable	0.1%
+	"Arizona"	"04"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	10	331640	Unreliable	0.1%
+	"Arizona"	"04"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	37	4095608	0.9	0.2%
+	"Arizona"	"04"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	27	2092091	1.3	0.2%
+	"Arizona"	"04"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"American Indian or Alaska Native"	"1002-5"	14	339239	Unreliable	0.1%
+	"Arizona"	"04"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	40	4443100	0.9	0.3%
+	"Arizona"	"04"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	15	5020951	Unreliable	0.1%
+	"Arkansas"	"05"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	26	742118	3.5	0.2%
+	"Arkansas"	"05"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	27	2607921	1.0	0.2%
+	"Arkansas"	"05"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	26	629604	4.1	0.2%
+	"Arkansas"	"05"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	64	2526992	2.5	0.4%
+	"Arkansas"	"05"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	18	594016	Unreliable	0.1%
+	"Arkansas"	"05"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	26	2715312	1.0	0.2%
+	"Arkansas"	"05"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	14	2926500	Unreliable	0.1%
+	"California"	"06"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	148	19991038	0.7	1.0%
+	"California"	"06"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	13	6373025	Unreliable	0.1%
+	"California"	"06"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	64	3475572	1.8	0.4%
+	"California"	"06"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	74	16912512	0.4	0.5%
+	"California"	"06"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	307	18667787	1.6	2.0%
+	"California"	"06"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	74	8001509	0.9	0.5%
+	"California"	"06"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	115	3172501	3.6	0.7%
+	"California"	"06"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	188	18309731	1.0	1.2%
+	"California"	"06"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	198	16660627	1.2	1.3%
+	"California"	"06"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	68	8049603	0.8	0.4%
+	"California"	"06"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	90	3269135	2.8	0.6%
+	"California"	"06"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	130	20516613	0.6	0.8%
+	"California"	"06"	"45-54 years"	"45-54"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	39	12443449	0.3	0.3%
+	"California"	"06"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	15	7323170	Unreliable	0.1%
+	"California"	"06"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	32	3179002	1.0	0.2%
+	"California"	"06"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	74	23376980	0.3	0.5%
+	"Colorado"	"08"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	11	4100812	Unreliable	0.1%
+	"Colorado"	"08"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	21	1334274	1.6	0.1%
+	"Colorado"	"08"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	45	4564215	1.0	0.3%
+	"Colorado"	"08"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	25	4870922	0.5	0.2%
+	"Connecticut"	"09"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	17	2608876	Unreliable	0.1%
+	"Connecticut"	"09"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	14	523824	Unreliable	0.1%
+	"Connecticut"	"09"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	18	3513003	Unreliable	0.1%
+	"Connecticut"	"09"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	12	4084761	Unreliable	0.1%
+	"District of Columbia"	"11"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	18	476005	Unreliable	0.1%
+	"District of Columbia"	"11"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	20	460617	4.3	0.1%
+	"District of Columbia"	"11"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	22	435481	5.1	0.1%
+	"Florida"	"12"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	36	4879513	0.7	0.2%
+	"Florida"	"12"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	86	4631452	1.9	0.6%
+	"Florida"	"12"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	73	10953368	0.7	0.5%
+	"Florida"	"12"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	56	5201603	1.1	0.4%
+	"Florida"	"12"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	13	809165	Unreliable	0.1%
+	"Florida"	"12"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	184	4093843	4.5	1.2%
+	"Florida"	"12"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	146	11142881	1.3	0.9%
+	"Florida"	"12"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	45	5511123	0.8	0.3%
+	"Florida"	"12"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	98	3937307	2.5	0.6%
+	"Florida"	"12"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	110	13061309	0.8	0.7%
+	"Florida"	"12"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	13	3618360	Unreliable	0.1%
+	"Florida"	"12"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	14	15308424	Unreliable	0.1%
+	"Georgia"	"13"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	11	912726	Unreliable	0.1%
+	"Georgia"	"13"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	93	4508294	2.1	0.6%
+	"Georgia"	"13"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	45	6412782	0.7	0.3%
+	"Georgia"	"13"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	32	1044545	3.1	0.2%
+	"Georgia"	"13"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	11	573668	Unreliable	0.1%
+	"Georgia"	"13"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	192	4302731	4.5	1.2%
+	"Georgia"	"13"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	95	6672351	1.4	0.6%
+	"Georgia"	"13"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	11	822605	Unreliable	0.1%
+	"Georgia"	"13"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	135	4368525	3.1	0.9%
+	"Georgia"	"13"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	81	7453732	1.1	0.5%
+	"Georgia"	"13"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	69	3866222	1.8	0.4%
+	"Georgia"	"13"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	63	7763036	0.8	0.4%
+	"Hawaii"	"15"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	17	1008197	Unreliable	0.1%
+	"Hawaii"	"15"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	17	1108375	Unreliable	0.1%
+	"Idaho"	"16"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	18	1694275	Unreliable	0.1%
+	"Idaho"	"16"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	33	1526607	2.2	0.2%
+	"Idaho"	"16"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	18	1577428	Unreliable	0.1%
+	"Idaho"	"16"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	20	1676762	1.2	0.1%
+	"Illinois"	"17"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	13	2804273	Unreliable	0.1%
+	"Illinois"	"17"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	53	2958111	1.8	0.3%
+	"Illinois"	"17"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	46	9663190	0.5	0.3%
+	"Illinois"	"17"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	36	2806839	1.3	0.2%
+	"Illinois"	"17"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	10	1101584	Unreliable	0.1%
+	"Illinois"	"17"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	86	2602645	3.3	0.6%
+	"Illinois"	"17"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	70	9984984	0.7	0.5%
+	"Illinois"	"17"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	20	2362889	0.8	0.1%
+	"Illinois"	"17"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	56	2639753	2.1	0.4%
+	"Illinois"	"17"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	63	10985801	0.6	0.4%
+	"Illinois"	"17"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	22	2536745	0.9	0.1%
+	"Illinois"	"17"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	29	12022534	0.2	0.2%
+	"Indiana"	"18"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	14	947646	Unreliable	0.1%
+	"Indiana"	"18"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	34	6846230	0.5	0.2%
+	"Indiana"	"18"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	22	833518	2.6	0.1%
+	"Indiana"	"18"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	98	6258850	1.6	0.6%
+	"Indiana"	"18"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	16	788326	Unreliable	0.1%
+	"Indiana"	"18"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	61	6922713	0.9	0.4%
+	"Indiana"	"18"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	83	7399222	1.1	0.5%
+	"Iowa"	"19"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	10	3532906	Unreliable	0.1%
+	"Iowa"	"19"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	39	3024866	1.3	0.3%
+	"Iowa"	"19"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	19	3335749	Unreliable	0.1%
+	"Iowa"	"19"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	16	3707577	Unreliable	0.1%
+	"Kansas"	"20"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	24	2893773	0.8	0.2%
+	"Kansas"	"20"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	11	364662	Unreliable	0.1%
+	"Kansas"	"20"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	37	2590119	1.4	0.2%
+	"Kansas"	"20"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	27	2810030	1.0	0.2%
+	"Kentucky"	"21"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	33	4650107	0.7	0.2%
+	"Kentucky"	"21"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	23	451007	5.1	0.1%
+	"Kentucky"	"21"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	69	4585244	1.5	0.4%
+	"Kentucky"	"21"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	33	4985577	0.7	0.2%
+	"Kentucky"	"21"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	22	5273888	0.4	0.1%
+	"Louisiana"	"22"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	40	2462467	1.6	0.3%
+	"Louisiana"	"22"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	15	3470275	Unreliable	0.1%
+	"Louisiana"	"22"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	95	2055478	4.6	0.6%
+	"Louisiana"	"22"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	47	3451623	1.4	0.3%
+	"Louisiana"	"22"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	51	1922193	2.7	0.3%
+	"Louisiana"	"22"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	40	3584470	1.1	0.3%
+	"Louisiana"	"22"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	42	1903157	2.2	0.3%
+	"Louisiana"	"22"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	31	3865734	0.8	0.2%
+	"Maine"	"23"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	10	1363304	Unreliable	0.1%
+	"Maryland"	"24"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	33	2418566	1.4	0.2%
+	"Maryland"	"24"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	21	3668220	0.6	0.1%
+	"Maryland"	"24"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	16	582185	Unreliable	0.1%
+	"Maryland"	"24"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	89	2429451	3.7	0.6%
+	"Maryland"	"24"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	43	3733491	1.2	0.3%
+	"Maryland"	"24"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	56	2635276	2.1	0.4%
+	"Maryland"	"24"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	43	4398264	1.0	0.3%
+	"Massachusetts"	"25"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	24	6129405	0.4	0.2%
+	"Massachusetts"	"25"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	18	7031628	Unreliable	0.1%
+	"Michigan"	"26"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	51	2269676	2.2	0.3%
+	"Michigan"	"26"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	52	9618907	0.5	0.3%
+	"Michigan"	"26"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	87	1971588	4.4	0.6%
+	"Michigan"	"26"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	134	8636780	1.6	0.9%
+	"Michigan"	"26"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	51	1985659	2.6	0.3%
+	"Michigan"	"26"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	69	10059124	0.7	0.4%
+	"Michigan"	"26"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	26	1902419	1.4	0.2%
+	"Michigan"	"26"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	47	11251189	0.4	0.3%
+	"Minnesota"	"27"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	15	434426	Unreliable	0.1%
+	"Minnesota"	"27"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	45	5257588	0.9	0.3%
+	"Minnesota"	"27"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	30	5884880	0.5	0.2%
+	"Mississippi"	"28"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	52	1835214	2.8	0.3%
+	"Mississippi"	"28"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	25	2118971	1.2	0.2%
+	"Mississippi"	"28"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	59	1536392	3.8	0.4%
+	"Mississippi"	"28"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	25	2001171	1.2	0.2%
+	"Mississippi"	"28"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	23	1478810	1.6	0.1%
+	"Mississippi"	"28"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	14	2176782	Unreliable	0.1%
+	"Missouri"	"29"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	34	1124501	3.0	0.2%
+	"Missouri"	"29"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	50	6055528	0.8	0.3%
+	"Missouri"	"29"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	47	984673	4.8	0.3%
+	"Missouri"	"29"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	72	5756737	1.3	0.5%
+	"Missouri"	"29"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	22	950415	2.3	0.1%
+	"Missouri"	"29"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	47	6179722	0.8	0.3%
+	"Missouri"	"29"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	12	897487	Unreliable	0.1%
+	"Missouri"	"29"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	39	6725765	0.6	0.3%
+	"Montana"	"30"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	16	936400	Unreliable	0.1%
+	"Montana"	"30"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	16	1038446	Unreliable	0.1%
+	"Montana"	"30"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	17	1235684	Unreliable	0.1%
+	"Nebraska"	"31"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	27	1761836	1.5	0.2%
+	"Nebraska"	"31"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	19	1867890	Unreliable	0.1%
+	"Nevada"	"32"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	11	1752397	Unreliable	0.1%
+	"Nevada"	"32"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	11	1874009	Unreliable	0.1%
+	"New Hampshire"	"33"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	23	1305543	1.8	0.1%
+	"New Hampshire"	"33"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	14	1695956	Unreliable	0.1%
+	"New Jersey"	"34"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	16	1809962	Unreliable	0.1%
+	"New Jersey"	"34"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	37	1702292	2.2	0.2%
+	"New Jersey"	"34"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	17	5517313	Unreliable	0.1%
+	"New Jersey"	"34"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	38	1971764	1.9	0.2%
+	"New Jersey"	"34"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	11	1250568	Unreliable	0.1%
+	"New Jersey"	"34"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	95	1634433	5.8	0.6%
+	"New Jersey"	"34"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	68	5572339	1.2	0.4%
+	"New Jersey"	"34"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	32	1903501	1.7	0.2%
+	"New Jersey"	"34"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	11	1244956	Unreliable	0.1%
+	"New Jersey"	"34"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	64	1786924	3.6	0.4%
+	"New Jersey"	"34"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	60	7259807	0.8	0.4%
+	"New Jersey"	"34"	"45-54 years"	"45-54"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	17	1494117	Unreliable	0.1%
+	"New Jersey"	"34"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	45	1671483	2.7	0.3%
+	"New Jersey"	"34"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	62	8232233	0.8	0.4%
+	"New Mexico"	"35"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	16	1316988	Unreliable	0.1%
+	"New Mexico"	"35"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	28	1123540	2.5	0.2%
+	"New Mexico"	"35"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	13	854608	Unreliable	0.1%
+	"New Mexico"	"35"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	23	1081477	2.1	0.1%
+	"New York"	"36"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	40	3821298	1.0	0.3%
+	"New York"	"36"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	73	4409237	1.7	0.5%
+	"New York"	"36"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	47	13427110	0.4	0.3%
+	"New York"	"36"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	84	4013526	2.1	0.5%
+	"New York"	"36"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	36	2686544	1.3	0.2%
+	"New York"	"36"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	223	4244759	5.3	1.4%
+	"New York"	"36"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	139	13871396	1.0	0.9%
+	"New York"	"36"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	56	3696943	1.5	0.4%
+	"New York"	"36"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	27	2334446	1.2	0.2%
+	"New York"	"36"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	142	4396263	3.2	0.9%
+	"New York"	"36"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	95	15059766	0.6	0.6%
+	"New York"	"36"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	19	4212921	Unreliable	0.1%
+	"New York"	"36"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	37	16650276	0.2	0.2%
+	"North Carolina"	"37"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	51	3094486	1.6	0.3%
+	"North Carolina"	"37"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	30	7089792	0.4	0.2%
+	"North Carolina"	"37"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	10	964075	Unreliable	0.1%
+	"North Carolina"	"37"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	66	2790848	2.4	0.4%
+	"North Carolina"	"37"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	49	7396941	0.7	0.3%
+	"North Carolina"	"37"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	52	2918749	1.8	0.3%
+	"North Carolina"	"37"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	38	8299188	0.5	0.2%
+	"North Carolina"	"37"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	20	2799040	0.7	0.1%
+	"North Carolina"	"37"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	14	8809888	Unreliable	0.1%
+	"North Dakota"	"38"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	11	687067	Unreliable	0.1%
+	"Ohio"	"39"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	48	2229278	2.2	0.3%
+	"Ohio"	"39"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	67	11637756	0.6	0.4%
+	"Ohio"	"39"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	68	1933963	3.5	0.4%
+	"Ohio"	"39"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	138	11029590	1.3	0.9%
+	"Ohio"	"39"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	34	1891775	1.8	0.2%
+	"Ohio"	"39"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	65	12360637	0.5	0.4%
+	"Ohio"	"39"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	10	1848098	Unreliable	0.1%
+	"Ohio"	"39"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	43	13576479	0.3	0.3%
+	"Oklahoma"	"40"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	11	498398	Unreliable	0.1%
+	"Oklahoma"	"40"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	45	3260069	1.4	0.3%
+	"Oklahoma"	"40"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"American Indian or Alaska Native"	"1002-5"	12	441050	Unreliable	0.1%
+	"Oklahoma"	"40"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	22	400550	5.5	0.1%
+	"Oklahoma"	"40"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	58	3159638	1.8	0.4%
+	"Oklahoma"	"40"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	36	3331580	1.1	0.2%
+	"Oklahoma"	"40"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	38	3683493	1.0	0.2%
+	"Oregon"	"41"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	14	3543930	Unreliable	0.1%
+	"Oregon"	"41"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	10	568806	Unreliable	0.1%
+	"Oregon"	"41"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	37	3683053	1.0	0.2%
+	"Oregon"	"41"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	23	3892905	0.6	0.1%
+	"Pennsylvania"	"42"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	32	2136407	1.5	0.2%
+	"Pennsylvania"	"42"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	43	12102914	0.4	0.3%
+	"Pennsylvania"	"42"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	12	774912	Unreliable	0.1%
+	"Pennsylvania"	"42"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	11	646369	Unreliable	0.1%
+	"Pennsylvania"	"42"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	70	1814902	3.9	0.5%
+	"Pennsylvania"	"42"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	143	11184743	1.3	0.9%
+	"Pennsylvania"	"42"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	43	1814667	2.4	0.3%
+	"Pennsylvania"	"42"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	84	13046863	0.6	0.5%
+	"Pennsylvania"	"42"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	11	1770953	Unreliable	0.1%
+	"Pennsylvania"	"42"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	20	14836626	0.1	0.1%
+	"South Carolina"	"45"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	45	2040162	2.2	0.3%
+	"South Carolina"	"45"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	23	3459778	0.7	0.1%
+	"South Carolina"	"45"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	73	1734483	4.2	0.5%
+	"South Carolina"	"45"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	50	3473667	1.4	0.3%
+	"South Carolina"	"45"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	46	1755664	2.6	0.3%
+	"South Carolina"	"45"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	32	3772585	0.8	0.2%
+	"South Dakota"	"46"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	13	771730	Unreliable	0.1%
+	"Tennessee"	"47"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	33	1703672	1.9	0.2%
+	"Tennessee"	"47"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	32	5672694	0.6	0.2%
+	"Tennessee"	"47"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	53	1521643	3.5	0.3%
+	"Tennessee"	"47"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	55	5819203	0.9	0.4%
+	"Tennessee"	"47"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	33	1482625	2.2	0.2%
+	"Tennessee"	"47"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	39	6371073	0.6	0.3%
+	"Tennessee"	"47"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	23	6793028	0.3	0.1%
+	"Texas"	"48"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	125	13445659	0.9	0.8%
+	"Texas"	"48"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	98	4411476	2.2	0.6%
+	"Texas"	"48"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	103	13409480	0.8	0.7%
+	"Texas"	"48"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	231	12588191	1.8	1.5%
+	"Texas"	"48"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	21	1746452	1.2	0.1%
+	"Texas"	"48"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	190	4263682	4.5	1.2%
+	"Texas"	"48"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	225	14008291	1.6	1.5%
+	"Texas"	"48"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	152	11243686	1.4	1.0%
+	"Texas"	"48"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	21	1655932	1.3	0.1%
+	"Texas"	"48"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	139	4209347	3.3	0.9%
+	"Texas"	"48"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	177	15246801	1.2	1.1%
+	"Texas"	"48"	"45-54 years"	"45-54"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	93	8552273	1.1	0.6%
+	"Texas"	"48"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	97	3790833	2.6	0.6%
+	"Texas"	"48"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	164	16561134	1.0	1.1%
+	"Utah"	"49"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	16	3506991	Unreliable	0.1%
+	"Utah"	"49"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	11	450024	Unreliable	0.1%
+	"Utah"	"49"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	58	3033874	1.9	0.4%
+	"Utah"	"49"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	25	2560559	1.0	0.2%
+	"Utah"	"49"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	10	2341508	Unreliable	0.1%
+	"Virginia"	"51"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	17	2360420	Unreliable	0.1%
+	"Virginia"	"51"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	22	6211075	0.4	0.1%
+	"Virginia"	"51"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	61	2114607	2.9	0.4%
+	"Virginia"	"51"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	51	6330411	0.8	0.3%
+	"Virginia"	"51"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	32	2224655	1.4	0.2%
+	"Virginia"	"51"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	41	7079359	0.6	0.3%
+	"Virginia"	"51"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	14	2176767	Unreliable	0.1%
+	"Virginia"	"51"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	29	7647067	0.4	0.2%
+	"Washington"	"53"	"15-24 years"	"15-24"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	12	1004881	Unreliable	0.1%
+	"Washington"	"53"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	20	5794989	0.3	0.1%
+	"Washington"	"53"	"25-34 years"	"25-34"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	16	945690	Unreliable	0.1%
+	"Washington"	"53"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Asian or Pacific Islander"	"A-PI"	15	950488	Unreliable	0.1%
+	"Washington"	"53"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	55	6060750	0.9	0.4%
+	"Washington"	"53"	"35-44 years"	"35-44"	"Female"	"F"	"Hispanic or Latino"	"2135-2"	"White"	"2106-3"	10	748346	Unreliable	0.1%
+	"Washington"	"53"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	42	6598933	0.6	0.3%
+	"Washington"	"53"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	15	7253675	Unreliable	0.1%
+	"West Virginia"	"54"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	12	2057038	Unreliable	0.1%
+	"West Virginia"	"54"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	19	1953586	Unreliable	0.1%
+	"West Virginia"	"54"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	12	2198369	Unreliable	0.1%
+	"Wisconsin"	"55"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	15	609509	Unreliable	0.1%
+	"Wisconsin"	"55"	"15-24 years"	"15-24"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	32	5909518	0.5	0.2%
+	"Wisconsin"	"55"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"Black or African American"	"2054-5"	15	515139	Unreliable	0.1%
+	"Wisconsin"	"55"	"25-34 years"	"25-34"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	61	5316916	1.1	0.4%
+	"Wisconsin"	"55"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	41	6203347	0.7	0.3%
+	"Wisconsin"	"55"	"45-54 years"	"45-54"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	16	6913595	Unreliable	0.1%
+	"Wyoming"	"56"	"35-44 years"	"35-44"	"Female"	"F"	"Not Hispanic or Latino"	"2186-2"	"White"	"2106-3"	10	572664	Unreliable	0.1%
+"---"
+"Dataset: Underlying Cause of Death, 1999-2017"
+"Query Parameters:"
+"ICD-10 Codes: O00-O99 (Pregnancy, childbirth and the puerperium)"
+"Group By: State; Ten-Year Age Groups; Gender; Hispanic Origin; Race"
+"Show Totals: Disabled"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/ucd.html for more information."
+"---"
+"Query Date: Nov 19, 2019 5:25:24 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Underlying Cause of Death"
+"1999-2017 on CDC WONDER Online Database, released December, 2018. Data are from the Multiple Cause of Death Files, 1999-2017, as"
+"compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
+"at http://wonder.cdc.gov/ucd-icd10.html on Nov 19, 2019 5:25:24 PM"
+"---"
+Messages:
+"1. Totals are not available for these results due to suppression constraints. More Information:"
+"http://wonder.cdc.gov/wonder/help/faq.html#Privacy."
+"2. Rows with suppressed Deaths are hidden. Use Quick Options above to show suppressed rows."
+"---"
+Caveats:
+"1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#2014-Revision."
+"2. Circumstances in Georgia for the years 2008 and 2009 have resulted in unusually high death counts for the ICD-10 cause of"
+"death code R99, ""Other ill-defined and unspecified causes of mortality."" Caution should be used in interpreting these data."
+"More information: http://wonder.cdc.gov/wonder/help/ucd.html#Georgia-Reporting-Anomalies."
+"3. Circumstances in New Jersey for the year 2009 have resulted in unusually high death counts for the ICD-10 cause of death code"
+"R99, ""Other ill-defined and unspecified causes of mortality"" and therefore unusually low death counts in other ICD-10 codes,"
+"most notably R95, ""Sudden Infant Death Syndrome"" and X40-X49, ""Unintentional poisoning."" Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/ucd.html#New-Jersey-Reporting-Anomalies."
+"4. Circumstances in California resulted in unusually high death counts for the ICD-10 cause of death code R99, ""Other"
+"ill-defined and unspecified causes of mortality"" for deaths occurring in years 2000 and 2001. Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/ucd.html#California-Reporting-Anomalies."
+"5. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Assurance of Confidentiality."
+"6. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Unreliable."
+"7. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Not Stated."
+"8. Deaths of persons with Hispanic origin ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among"
+"Hispanic Origin groups, so are not included in the Hispanic Origin specific counts and rates. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Not Stated."
+"9. Information included on the death certificate about the race and Hispanic ethnicity of the decedent is reported by the"
+"funeral director as provided by an informant, often the surviving next of kin, or, in the absence of an informant, on the basis"
+"of observation. Race and ethnicity information from the census is by self-report. To the extent that race and Hispanic origin"
+"are inconsistent between these two data sources, death rates will be biased. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Racial Differences."
+"10. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the Vintage 2017"
+"postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The population figures for"
+"year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal series released by NCHS"
+"on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26, 2014. The"
+"population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012 postcensal"
+"series released by NCHS on June 13, 2013. The population figures for year 2011 are bridged-race estimates of the July 1 resident"
+"population, from the Vintage 2011 postcensal series released by NCHS on July 18, 2012. Population figures for 2010 are April 1"
+"Census counts. The population figures for years 2001 - 2009 are bridged-race estimates of the July 1 resident population, from"
+"the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population figures for 2000 are"
+"April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of July 1 estimates. Population"
+"figures for the infant age groups are the number of live births. <br/><b>Note:</b> Rates and population figures for years 2001 -"
+"2009 differ slightly from previously published reports, due to use of the population estimates which were available at the time"
+"of release."
+"11. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/ucd.html#Age Group."
