@@ -65,7 +65,7 @@ ten_developed_countries_health_spending =
   healthcare_spending_2013_developed %>% 
   mutate(country = as.factor(country),
     country = fct_reorder(country, health_spending_percent_gdp)) %>% 
-  plotly(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
+  ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
   labs(x = "Developed countries",
