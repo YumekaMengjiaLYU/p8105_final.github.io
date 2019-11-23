@@ -3,6 +3,8 @@ Cleaning\_Data
 Alicia Dagle
 November 7, 2019
 
+# \<\<\<\<\<\<\< HEAD
+
 ``` r
 #Maternal Mortality ratio from gapminder dataset
 maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
@@ -90,3 +92,5 @@ leading_2013 = left_join(maternal_mort_leading,staff, by = c("country","year"))
 
 view(leading_2013)
 ```
+
+> > > > > > > 6c7379a38ae6121321548d882d52ac194f9c1eac
