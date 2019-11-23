@@ -1,0 +1,100 @@
+---
+title: "Shiny Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(highcharter)
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(p8105.datasets)
+library(plotly)
+
+thm <- 
+  hc_theme(
+    colors = c("#1a6ecc", "#434348", "#90ed7d"),
+    chart = list(
+      backgroundColor = "transparent",
+      style = list(fontFamily = "Source Sans Pro")
+    ),
+    xAxis = list(
+      gridLineWidth = 1
+    )
+  )
+cdc_data = read.delim("~/Documents/MS_Biostatistics/P8105/Final_Project/p8105_final.github.io/us_shiny/data/Underlying_Cause_of_Death_1999-2017.txt") %>%
+  janitor::clean_names() %>%
+  select(-notes, -gender_code, -hispanic_origin_code,-race_code,-state_code, -gender, -ten_year_age_groups_code)
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+### Sales by State
+
+```{r}
+data("usgeojson")
+
+cdc_data = cdc_data %>%
+  group_by(state) %>%
+  summarise(total_death = sum(deaths), total_pop = sum(population)) %>%
+  mutate(total_percent = total_death/total_pop)
+
+n <- 4
+colstops <- data.frame(
+  q = 0:n/n,
+  c = substring(viridis(n + 1), 0, 7)) %>%
+  list_parse2()
+
+highchart() %>%
+  hc_add_series_map(usgeojson, cdc_data, name = "Percent of Deaths",
+                    value = "total_percent", joinBy =  c("woename", "state"),
+                    dataLabels = list(enabled = TRUE,
+                                      format = '{point.properties.postalcode}')) %>%
+  hc_colorAxis(stops = colstops) %>%
+  hc_legend(valueDecimals = 0, valueSuffix = "%") %>%
+  hc_mapNavigation(enabled = TRUE) %>%
+  hc_add_theme(thm)
+```
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+
+renderPlotly({ 
+  nyc_airbnb %>%
+  filter(boro == input[["boro_choice"]]) %>% 
+  mutate(text_label = str_c("Price: $", price, '\nRating: ', rating)) %>% 
+  plot_ly(
+    x = ~longitude, y = ~latitude, type = "scatter", mode = "markers",
+    alpha = 0.5, color = ~price, text = ~text_label)
+})
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+renderPrint({ 
+  input[["boro_choice"]]
+})
+
+```
+
+### Chart C
+
+```{r}
+
+```
+

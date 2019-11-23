@@ -36,6 +36,15 @@ all_costs =
 
 
 ```{r}
+#clean state names
+state_vec %>% 
+  str_replace(".\\. ","") %>%
+  str_replace("[1-9]","")
+  
+```
+
+
+```{r}
 #don't worry about this...it isn't working:
 
 
