@@ -1,10 +1,9 @@
 ---
-title: "healthcare_spending_data_cleaning"
-author: "Michael Yan"
-date: "11/16/2019"
-output: github_document
-editor_options: 
-  chunk_output_type: console
+title: "comare_healthcare_spending_with_maternal_mortality"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 # Healthcare spending (%GDP) vs. Country
 
@@ -28,6 +27,11 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
 
 ## Import and clean data
 ```{r}
@@ -65,7 +69,7 @@ ten_developed_countries_health_spending =
   healthcare_spending_2013_developed %>% 
   mutate(country = as.factor(country),
     country = fct_reorder(country, health_spending_percent_gdp)) %>% 
-  plotly(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
+  ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
   labs(x = "Developed countries",
@@ -74,6 +78,11 @@ ten_developed_countries_health_spending =
 
 ggplotly(ten_developed_countries_health_spending)
 ```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart B
 
 #### trying to relate the different amount of healthcare spending across 10 developed countries graph to a manternal mortality graph for the same countries
 ```{r}
@@ -113,6 +122,3 @@ ten_developed_countries_maternal_mort =
 
 ggplotly(ten_developed_countries_maternal_mort)
 ```
-
-
-
