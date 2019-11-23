@@ -6,10 +6,12 @@ output: github_document
 editor_options: 
   chunk_output_type: console
 ---
-# general setup
+# Healthcare spending (%GDP) vs. Country
+
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(rvest)
+library(plotly)
 knitr::opts_chunk$set(
 	echo = TRUE,
 	warning = FALSE,
@@ -26,55 +28,48 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-# import and clean data
+## Import and clean data
 ```{r}
 # Percent GDP that comes from health spending
 health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
   janitor::clean_names() %>% 
-  select(country_name, country_code, x2000:x2016) %>% 
+  select(country_name, country_code, x2000:x2015) %>% 
   pivot_longer(
-  x2000:x2016,
+  x2000:x2015,
   names_to = "year",
   values_to = "health_spending_percent_GDP") %>% 
+  rename("health_spending_percent_gdp" = "health_spending_percent_GDP") %>% 
   mutate(year = str_remove(year,"x")) %>% 
-  mutate(health_spending_percent_GDP = round(health_spending_percent_GDP, digits = 2)) %>% 
+  mutate(health_spending_percent_gdp = round(health_spending_percent_gdp, digits = 2)) %>% 
   mutate(country_name = as.factor(country_name),
-         country_code = as.factor(country_code))
+         country_code = as.factor(country_code),
+         year = as.numeric(year)) %>% 
+  rename(country = country_name,
+         code = country_code)
 ```
 
-# plot a scatter plot, country on the x axis, percent GDP spend on healthcare on the y axis
+## Filtered dataset to only include 10 countries in 2015
 ```{r}
-latest_health_spending_scatter = 
+healthcare_spending_2015_developed = 
   health_spending_percent_gdp %>% 
-  ggplot(aes(x = country_name, y = health_spending_percent_GDP)) + 
-  geom_point()
+  filter(year == 2015) %>% 
+  filter(country %in% c("United States", "United Kingdom", "Finland", 
+                           "Canada","Germany", "New Zealand", "Norway", "Netherlands",
+                           "Switzerland", "Japan"))
 ```
 
-# log-transformed 'health_spending_percent_GDP'
+## Bar chart (% GDP that comes from healthcare spending in 10 developed countries)
 ```{r}
-# log-transformed
-health_spending_percent_GDP_log = 
-  health_spending_percent_gdp %>% 
-  mutate(
-    ln_health_spending = round(log(health_spending_percent_GDP), digits = 2)
-  )
-```
+ten_developed_countries_health_spending = 
+  healthcare_spending_2015_developed %>% 
+  mutate(country = as.factor(country),
+    country = fct_reorder(country, health_spending_percent_gdp)) %>% 
+  ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(x = "Developed countries",
+       y = "% GDP that comes from healthcare spending",
+       title = "Different amount of healthcare spending across 10 developed countries")
 
-```{r}
-## ggplot (year = 2015): linear + log
-health_spending_percent_GDP_log %>% 
-  filter(year == 2015) %>% 
-  ggplot(aes(x = country_name, y = health_spending_percent_GDP)) + 
-  geom_point() +
-  labs(x = "Country",
-       y = "Percent GDP That Comes From Healthcare Spending(%)",
-       title = "Different Amount of Healthcare Spending Across Countries")
-
-health_spending_percent_GDP_log %>% 
-  filter(year == 2015) %>% 
-  ggplot(aes(x = country_name, y = ln_health_spending)) + 
-  geom_point() +
-  labs(x = "Country",
-       y = "Natural Log Transformed Percent GDP That Comes From Healthcare Spending(%)",
-       title = "Different Amount of Healthcare Spending Across Countries")
+ggplotly(ten_developed_countries_health_spending)
 ```

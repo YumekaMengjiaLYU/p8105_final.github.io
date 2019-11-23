@@ -370,23 +370,26 @@ div.tocify {
 </div>
 
 
-<div id="general-setup" class="section level1">
-<h1>general setup</h1>
-</div>
-<div id="import-and-clean-data" class="section level1">
-<h1>import and clean data</h1>
+<div id="healthcare-spending-gdp-vs.country" class="section level1">
+<h1>Healthcare spending (%GDP) vs. Country</h1>
+<div id="import-and-clean-data" class="section level2">
+<h2>Import and clean data</h2>
 <pre class="r"><code># Percent GDP that comes from health spending
 health_spending_percent_gdp = read_csv(&quot;./data/WorldBank/health_spending_percent_GDP.csv&quot;) %&gt;%
   janitor::clean_names() %&gt;% 
-  select(country_name, country_code, x2000:x2016) %&gt;% 
+  select(country_name, country_code, x2000:x2015) %&gt;% 
   pivot_longer(
-  x2000:x2016,
+  x2000:x2015,
   names_to = &quot;year&quot;,
   values_to = &quot;health_spending_percent_GDP&quot;) %&gt;% 
+  rename(&quot;health_spending_percent_gdp&quot; = &quot;health_spending_percent_GDP&quot;) %&gt;% 
   mutate(year = str_remove(year,&quot;x&quot;)) %&gt;% 
-  mutate(health_spending_percent_GDP = round(health_spending_percent_GDP, digits = 2)) %&gt;% 
+  mutate(health_spending_percent_gdp = round(health_spending_percent_gdp, digits = 2)) %&gt;% 
   mutate(country_name = as.factor(country_name),
-         country_code = as.factor(country_code))</code></pre>
+         country_code = as.factor(country_code),
+         year = as.numeric(year)) %&gt;% 
+  rename(country = country_name,
+         code = country_code)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_logical(),
@@ -414,38 +417,28 @@ health_spending_percent_gdp = read_csv(&quot;./data/WorldBank/health_spending_pe
 ## )</code></pre>
 <pre><code>## See spec(...) for full column specifications.</code></pre>
 </div>
-<div id="plot-a-scatter-plot-country-on-the-x-axis-percent-gdp-spend-on-healthcare-on-the-y-axis" class="section level1">
-<h1>plot a scatter plot, country on the x axis, percent GDP spend on healthcare on the y axis</h1>
-<pre class="r"><code>latest_health_spending_scatter = 
+<div id="filtered-dataset-to-only-include-10-countries-in-2015" class="section level2">
+<h2>Filtered dataset to only include 10 countries in 2015</h2>
+<pre class="r"><code>healthcare_spending_2015_developed = 
   health_spending_percent_gdp %&gt;% 
-  ggplot(aes(x = country_name, y = health_spending_percent_GDP)) + 
-  geom_point()</code></pre>
+  filter(year == 2015) %&gt;% 
+  filter(country %in% c(&quot;United States&quot;, &quot;United Kingdom&quot;, &quot;Finland&quot;, 
+                           &quot;Canada&quot;,&quot;Germany&quot;, &quot;New Zealand&quot;, &quot;Norway&quot;, &quot;Netherlands&quot;,
+                           &quot;Switzerland&quot;, &quot;Japan&quot;))</code></pre>
 </div>
-<div id="log-transformed-health_spending_percent_gdp" class="section level1">
-<h1>log-transformed ‘health_spending_percent_GDP’</h1>
-<pre class="r"><code># log-transformed
-health_spending_percent_GDP_log = 
-  health_spending_percent_gdp %&gt;% 
-  mutate(
-    ln_health_spending = round(log(health_spending_percent_GDP), digits = 2)
-  )</code></pre>
-<pre class="r"><code>## ggplot (year = 2015): linear + log
-health_spending_percent_GDP_log %&gt;% 
-  filter(year == 2015) %&gt;% 
-  ggplot(aes(x = country_name, y = health_spending_percent_GDP)) + 
-  geom_point() +
-  labs(x = &quot;Country&quot;,
-       y = &quot;Percent GDP That Comes From Healthcare Spending(%)&quot;,
-       title = &quot;Different Amount of Healthcare Spending Across Countries&quot;)</code></pre>
-<p><img src="healthcare_spending_data_clearning_files/figure-html/unnamed-chunk-4-1.png" width="90%" /></p>
-<pre class="r"><code>health_spending_percent_GDP_log %&gt;% 
-  filter(year == 2015) %&gt;% 
-  ggplot(aes(x = country_name, y = ln_health_spending)) + 
-  geom_point() +
-  labs(x = &quot;Country&quot;,
-       y = &quot;Natural Log Transformed Percent GDP That Comes From Healthcare Spending(%)&quot;,
-       title = &quot;Different Amount of Healthcare Spending Across Countries&quot;)</code></pre>
-<p><img src="healthcare_spending_data_clearning_files/figure-html/unnamed-chunk-4-2.png" width="90%" /></p>
+<div id="bar-chart-gdp-that-comes-from-healthcare-spending-in-10-developed-countries" class="section level2">
+<h2>Bar chart (% GDP that comes from healthcare spending in 10 developed countries)</h2>
+<pre class="r"><code>healthcare_spending_2015_developed %&gt;% 
+  mutate(country = as.factor(country),
+    country = fct_reorder(country, health_spending_percent_gdp)) %&gt;% 
+  ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
+  geom_col(position = &quot;dodge&quot;) +
+  coord_flip() +
+  labs(x = &quot;Developed countries&quot;,
+       y = &quot;% GDP that comes from healthcare spending&quot;,
+       title = &quot;Different amount of healthcare spending across 10 developed countries&quot;)</code></pre>
+<p><img src="healthcare_spending_data_clearning_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+</div>
 </div>
 
 
