@@ -1,0 +1,65 @@
+---
+title: "cost_to_mother_data"
+author: "Alicia Dagle"
+date: "November 23, 2019"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(httr)
+```
+
+```{r}
+url = "https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018-4#35-maine-16"
+
+birth_cost_us = read_html(url)
+
+state_vec =
+  birth_cost_us %>% 
+  html_nodes(".slide-title-text") %>% 
+  html_text()
+
+state_vec #THIS NEEDS TO BE CLEANED(GET RID OF NUMBERS)
+
+
+#this need to be cleaned a lot
+all_costs = 
+  birth_cost_us %>% 
+  html_nodes(".clearfix p+ p") %>% 
+  html_text()
+
+
+
+```
+
+
+```{r}
+#don't worry about this...it isn't working:
+
+
+
+vag_birth_w_ins =
+  birth_cost_us %>% 
+  html_nodes() %>% 
+  html_text()
+
+vag_birth_wo_ins = 
+  birth_cost_us %>% 
+  html_nodes() %>% 
+  html_text()
+
+csec_w_ins = 
+  birth_cost_us %>% 
+  html_nodes() %>% 
+  html_text()
+
+csec_wo_ins =
+  birth_cost_us %>% 
+  html_nodes() %>% 
+  html_text()
+
+
+```
+
