@@ -1,0 +1,106 @@
+---
+title: "data_cleaning_cdc"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+```
+Predictors that we're interested in:
+
+* state
+* age group
+* race
+* hispanic_origin
+
+Outcomes that we're interested in:
+
+* deaths
+* x_of_total_deaths
+* crude_rate
+
+```{r}
+cdc_data = read.delim("data/Underlying_Cause_of_Death_1999-2017.txt") %>%
+  janitor::clean_names() %>%
+  select(-notes, -gender_code, -hispanic_origin_code,-race_code,-state_code, -gender, -ten_year_age_groups_code)
+```
+
+### Total number of death by state
+
+```{r}
+library(plotly)
+cdc_data %>%
+  group_by(state) %>%
+  summarise(total_death= sum(deaths)) %>%
+  mutate(state = fct_reorder(state, total_death)) %>% 
+  plot_ly(x = ~state, y = ~total_death, color = ~state, type = "bar")
+
+
+```
+
+
+### Total number of death by state
+```{r}
+cdc_data %>%
+  group_by(state) %>%
+  summarise(total_death = sum(deaths), total_pop = sum(population)) %>%
+  mutate(total_percent = total_death/total_pop) %>%
+  mutate(state = fct_reorder(state, total_percent)) %>% 
+  plot_ly(x = ~state, y = ~total_percent, color = ~state, type = "bar")
+```
+
+```{r}
+locateCity <- function(state) {
+  url = paste('http://nominatim.openstreetmap.org/search?',
+             
+              'state=', gsub(' ', '%20', state),
+              '&country=USA',
+              '&limit=1&format=json',
+              sep="")
+  resOSM = RJSONIO::fromJSON(url)
+  if(length(resOSM) > 0) {
+    return(c(resOSM[[1]]$lon, resOSM[[1]]$lat))
+  } else return(rep(NA,2)) 
+}
+
+```
+
+
+```{r}
+library(leaflet)
+library(maps)
+mapStates = map("state", fill = TRUE, plot = FALSE)
+leaflet(data = mapStates) %>% addTiles() %>%
+  addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE)
+
+```
+
+```{r}
+
+library(shinydashboard)
+library(leaflet)
+library(DT)
+
+header = dashboardHeader(title = "US")
+sidebar = dashboardSidebar()
+
+body = dashboardBody(
+  fluidRow(
+    column(width = 9,
+           box(width = NULL, solidHeader = TRUE,
+               leafletOutput("USMAP", height = 300)
+               ),
+           box(width = NULL,
+               dataTableOutput("boro")
+               )
+           ),
+    column(width = 3,
+           box(width = NULL,
+               uiOutput("yearSel"),
+               radioButtons("meas", "Measure", c("Mean" = "Mean", "Median" = "Median")),
+               checkboxInput("city", "Include City of ", TRUE)
+               )))
+  )
+
+```
