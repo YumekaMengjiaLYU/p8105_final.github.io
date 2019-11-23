@@ -1,0 +1,158 @@
+---
+title: "gdp_hspend"
+author: "Duzhi Zhao"
+date: "11/19/2019"
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+# Dataset: MMR vs GDP PER CAPITA
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+library(readxl)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 8, 
+  fig.height = 6,
+  out.width = "100%"
+)
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+```
+
+## Import dataset
+```{r}
+# Maternal Mortality Ratio: number of maternal deaths during a given time period per 100,000 live births during the same time period.
+# MMR measures the obsteric risk a women is facing when she is pregnant. 
+# E.g. 1575 per 100,000 live births (Afghanistan) vs. 5 per 100,000 live births (Sweden) means a women in Afghanistan is facing a 315 times higher risk of maternal death when she is pregnant than a woman in Swedan. 
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code)
+  ) %>% 
+  mutate(
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 1999, year < 2016)
+
+summary(is.na(mmr_gdp_capita$mmr)) # 945 NA, 3435 non-NA
+summary(is.na(mmr_gdp_capita$gdp_per_capita)) # 845 NA, 3535 non-NA
+summary(is.na(mmr_gdp_capita$gdp)) # 750 NA, 3630 non-NA
+```
+
+## log-transformed 'gdp_per_capita'
+```{r}
+# log-transformed
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+```
+
+## ggplot (year = 2015): linear + log
+```{r}
+mmr_gdp_capita_log %>% 
+  filter(year == 2015) %>% 
+  ggplot(aes(x = gdp_per_capita, y = mmr)) + 
+  geom_point() +
+  labs(x = "GDP per capita ($)",
+       y = "Maternal Mortality Ratio per 100,000 live births",
+       title = "Maternal Mortality Ratio vs. GDP per capita, 2015")
+
+mmr_gdp_capita_log %>% 
+  filter(year == 2015) %>% 
+  ggplot(aes(x = ln_gdp_per_capita, y = mmr)) + 
+  geom_point() +
+  labs(x = "ln(GDP per capita)",
+       y = "Maternal Mortality Ratio per 100,000 live births",
+       title = "Maternal Mortality Ratio vs. ln(GDP per capita), 2015")
+
+```
+
+# Healthcare spending (%GDP) vs. Country
+
+## import and clean data
+```{r}
+# Percent GDP that comes from health spending
+health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
+  janitor::clean_names() %>% 
+  select(country_name, country_code, x2000:x2015) %>% 
+  pivot_longer(
+  x2000:x2015,
+  names_to = "year",
+  values_to = "health_spending_percent_GDP") %>% 
+  mutate(year = str_remove(year,"x")) %>% 
+  mutate(health_spending_percent_GDP = round(health_spending_percent_GDP, digits = 2)) %>% 
+  mutate(country_name = as.factor(country_name),
+         country_code = as.factor(country_code),
+         year = as.numeric(year)) %>% 
+  rename(country = country_name,
+         code = country_code)
+```
+
+## Filtered dataset
+```{r}
+healthcare_spending_2015_developed = 
+  health_spending_percent_gdp %>% 
+  filter(year == 2015) %>% 
+  filter(country %in% c("United States", "United Kingdom", "Finland", 
+                           "Canada","Germany", "New Zealand", "Norway", "Netherlands",
+                           "Switzerland", "Japan"))
+```
+
+## Bar chart
+```{r}
+healthcare_spending_2015_developed %>% 
+  mutate(country = as.factor(country),
+    country = fct_reorder(country, health_spending_percent_GDP)) %>% 
+  ggplot(aes(x = country, y = health_spending_percent_GDP, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(x = "Developed country",
+       y = "% GDP that comes from healthcare spending",
+       title = "Different amount of healthcare spending across 10 developed countries")
+```
+
+
+
+# Health staff
+```{r}
+#births attended by skilled health staff (percent of total)
+staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_percent_of_total.csv")  %>% 
+  janitor::clean_names() %>% 
+  select(country, x2000:x2017) %>% 
+  pivot_longer(
+    x2000:x2017,
+    names_to = "year",
+    values_to = "perc_births_attended"
+  ) %>% 
+  mutate(year = str_remove(year,"x")) %>% 
+  mutate(year = as.numeric(year))
+```
+
+# Combined dataset (MMR, GDP per capita, %Healthcare spending, %birth attended by staffs)
+```{r}
+mmr_gdp_hspend = 
+  full_join(mmr_gdp_capita_log, health_spending_percent_gdp, by = c("year", "country", "code"))
+
+mmr_combined = 
+  full_join(mmr_gdp_hspend, staff, by = c("year", "country"))
+
+summary(is.na(mmr_combined))
+```
