@@ -30,8 +30,6 @@ all_costs =
   html_nodes(".clearfix p+ p") %>% 
   html_text()
 
-
-
 ```
 
 
@@ -44,30 +42,40 @@ state_vec %>%
 ```
 
 
+Time to clean the cost dataset...this is gonna be fun...
+
+```{r}
+cost_df = tibble(
+  all_costs
+) %>% 
+  janitor::clean_names()
+
+cost_df_v1 = cost_df %>% 
+    separate(all_costs, into = c("with_ins", "other", "cost_w"), sep = "\\:") %>% 
+    separate(other, into = c("without_ins", "cost_wo"), sep = "C-section without insurance" ) %>% 
+    separate(without_ins, into = c("without_ins", "cost_wo"), sep = "Vaginal birth without insurance")%>%
+mutate(
+  type = factor(with_ins), 
+  type = recode(type,
+    "Vaginal birth with insurance" = "Vaginal_birth",
+    "C-section with insurance" = "C-section")
+) %>% 
+  select(-with_ins, -cost_wo) %>% 
+  rename("with_ins" = "cost_w") %>% 
+  select(type,with_ins,without_ins)
+
+  
+
+view(cost_df_v1)
+
+
+  
+```
+
+
+
 ```{r}
 #don't worry about this...it isn't working:
-
-
-
-vag_birth_w_ins =
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
-
-vag_birth_wo_ins = 
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
-
-csec_w_ins = 
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
-
-csec_wo_ins =
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
 
 
 ```
