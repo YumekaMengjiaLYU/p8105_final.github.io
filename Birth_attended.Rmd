@@ -25,8 +25,7 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-<<<<<<< HEAD
-=======
+# Loading and Tidying Dataset
 
 ```{r}
 #Maternal Mortality ratio from gapminder dataset
@@ -55,11 +54,9 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
   mutate(year = str_remove(year,"x")) %>% view()
 ```
 
-
+# Boxplot of Birth attended by skilled staff (A Broader Scale)
 
 ```{r explore_matmort_birthsattended}
-#This code is incomplete, I was just exploring a bit:
-  
 mortality_births_attend = inner_join(maternal_mort, staff, 
                                      by = c("country","year")) %>% 
   drop_na() %>%
