@@ -2,7 +2,9 @@
 title: "Birth_attended"
 author: "Clement Mugenzi"
 date: "12/1/2019"
-output: html_document
+output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -27,7 +29,7 @@ theme_set(theme_minimal() + theme(legend.position = "bottom"))
 
 # Loading and Tidying Dataset
 
-```{r}
+```{r, message=FALSE}
 #Maternal Mortality ratio from gapminder dataset
 maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
   janitor::clean_names() %>% 
@@ -79,7 +81,7 @@ mortality_births_attend %>%
 
 As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
 
-# Countries with High Attendance (A close up look)
+# Countries with High Attendance (A closer look)
 
 ```{r}
 Top_count =
