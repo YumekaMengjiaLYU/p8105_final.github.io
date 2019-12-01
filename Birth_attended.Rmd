@@ -1,10 +1,9 @@
 ---
-title: "Birth_Attended"
+title: "Birth_attended"
 author: "Clement Mugenzi"
-date: "November 7, 2019"
-output: github_document
+date: "12/1/2019"
+output: html_document
 ---
-
 
 ```{r setup, include = FALSE}
 library(tidyverse)
