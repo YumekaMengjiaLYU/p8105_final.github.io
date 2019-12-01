@@ -408,12 +408,12 @@ view(birth_df)</code></pre>
 <div id="birth-rates-by-state" class="section level2">
 <h2>Birth rates by state</h2>
 <p>Please note that this shows the dataset when I only pulled the birth numbers per state.</p>
-<pre class="r"><code>birth_rates =
+<pre class="r"><code>births_by_state =
   read.delim(&quot;./dataset_births_us/Natality_2016-2018_expanded.txt&quot;) %&gt;% 
   janitor::clean_names() %&gt;% 
   select(state_of_residence,births,total_population)
 
-view(birth_rates)</code></pre>
+view(births_by_state)</code></pre>
 <p>These numbers are off ever so slightly from the data used to calculate cesarean rates. For example the births in alabama differ by 3 people. This difference may be attributed to the data which was supressed because the delivery method of the birth was not known.</p>
 <p>A decision must be made for which total to use for the mapping of our project.</p>
 </div>
@@ -421,6 +421,13 @@ view(birth_rates)</code></pre>
 <h2>Data Cleaning Summary</h2>
 <p>Here we have 3 cleaned variables: <code>state_of_residence</code>, <code>total_births</code> and <code>c_rate</code> (cesarean rate defined by the percent of births used a cesarean delivery method.)</p>
 </div>
+</div>
+<div id="write-data-to-csv" class="section level1">
+<h1>Write data to csv</h1>
+<pre class="r"><code>write.csv(birth_df, &quot;./dataset_births_us/US_cesarean_rates.csv&quot;, row.names = FALSE)
+
+
+write.csv(births_by_state, &quot;./dataset_births_us/US_number_births_per_state.csv&quot;, row.names = FALSE)</code></pre>
 </div>
 
 
