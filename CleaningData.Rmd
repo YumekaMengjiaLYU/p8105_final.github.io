@@ -1,6 +1,6 @@
 ---
 title: "Cleaning_Data"
-author: "Alicia Dagle"
+author: "Alicia + Clement"
 date: "November 7, 2019"
 output: github_document
 ---
@@ -9,6 +9,7 @@ output: github_document
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(rvest)
+library(plotly)
 knitr::opts_chunk$set(
 	echo = TRUE,
 	warning = FALSE,
@@ -38,10 +39,7 @@ maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_l
     values_to = "maternal_mortality"
   ) %>% 
   mutate(year = str_remove(year,"x"))
-
 view(maternal_mort)
-
-
 ```
 
 
@@ -55,40 +53,72 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
     names_to = "year",
     values_to = "perc_births_attended"
   ) %>% 
-  mutate(year = str_remove(year,"x"))
-  
-
-
-
-
-
-
+  mutate(year = str_remove(year,"x")) %>% view()
 ```
+
+
 
 ```{r explore_matmort_birthsattended}
 #This code is incomplete, I was just exploring a bit:
   
-mortality_births_attend = inner_join(maternal_mort, staff, by = c("country","year")) 
-
-  
- view(mortality_births_attend) 
-  
-
-  
-#This is the process I would follow for merging the datasets for gdp sepnding, healthcare spending, and individual cost  (except this is done for the births attended here)
-  
-  maternal_mort_leading = maternal_mort %>%
-  filter(year=='2013') %>% 
-  filter(country %in% c("United States", "United Kingdom", "Finland", "Canada","Germany", "New Zealand", "Norway", "China", "Netherlands", "Switzerland", "Singapore", "Japan", "Luxembourg", "Hong Kong", "Qatar"))
-  
-view(maternal_mort_leading)
-
-
-leading_2013 = left_join(maternal_mort_leading,staff, by = c("country","year"))
-
-view(leading_2013)
-
+mortality_births_attend = inner_join(maternal_mort, staff, 
+                                     by = c("country","year")) %>% 
+  drop_na() %>%
+  mutate(
+    per_range = case_when(
+      perc_births_attended <= 25 ~ "0-25",
+      perc_births_attended <= 50 ~ "26-50",
+      perc_births_attended <= 75 ~ "51-75",
+      perc_births_attended <= 100 ~ "76-100",
+      TRUE                        ~ ""),
+    per_range = factor(per_range, levels = c("0-25", "26-50", 
+                                             "51-75", "76-100")))
+mortality_births_attend %>% 
+  plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
+          colors = "Set2") %>% 
+  layout(
+    xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
+    yaxis = list(title = "Maternal Mortality per 100k Live Births"))
 ```
+
+As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
+
+# Countries with High Attendance (A close up look)
+
+```{r}
+Top_count =
+  mortality_births_attend %>% 
+  filter(per_range == "76-100") %>%
+  mutate(
+    top_range = case_when(
+      perc_births_attended <= 81 ~ "76-81",
+      perc_births_attended <= 85 ~ "82-85",
+      perc_births_attended <= 90 ~ "86-90",
+      perc_births_attended <= 95 ~ "91-95",
+      perc_births_attended <= 100 ~ "96-100",
+      TRUE                        ~ ""),
+    per_range = factor(per_range, levels = c("76-81", "82-85", 
+                                             "86-90", "91-95", "96-100"))) %>% 
+  select(-per_range)
+
+Top_count %>%
+  plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
+          colors = "Set2") %>% 
+  layout(
+    xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
+    yaxis = list(title = "Maternal Mortality per 100k Live Births"))
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 >>>>>>> 6c7379a38ae6121321548d882d52ac194f9c1eac
