@@ -5,6 +5,8 @@ date: "12/1/2019"
 output: github_document
 ---
 
+# Maternal Mortality against Birth Attended by skilled Staff
+
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(rvest)
@@ -25,7 +27,7 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-# Loading and Tidying Dataset
+## Loading and Tidying Dataset
 
 ```{r, message=FALSE}
 #Maternal Mortality ratio from gapminder dataset
@@ -54,7 +56,7 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
   mutate(year = str_remove(year,"x")) %>% view()
 ```
 
-# Boxplot of Birth attended by skilled staff (A Broader Scale)
+## Boxplot of Birth attended by skilled staff (A Broader Scale)
 
 ```{r explore_matmort_birthsattended}
 mortality_births_attend = inner_join(maternal_mort, staff, 
@@ -79,7 +81,7 @@ mortality_births_attend %>%
 
 As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
 
-# Countries with High Attendance (A closer look)
+## Countries with High Attendance (A closer look)
 
 ```{r}
 Top_count =
