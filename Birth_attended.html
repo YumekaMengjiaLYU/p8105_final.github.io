@@ -25,6 +25,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
@@ -258,6 +259,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -367,6 +371,14 @@ div.tocify {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Birth_attended</h1>
@@ -376,10 +388,11 @@ div.tocify {
 </div>
 
 
-<div id="maternal-mortality-against-birth-attended-by-skilled-staff" class="section level1">
-<h1>Maternal Mortality against Birth Attended by skilled Staff</h1>
+<div id="birth-attended-by-skilled-staff" class="section level1">
+<h1>Birth Attended by skilled Staff</h1>
 <div id="loading-and-tidying-dataset" class="section level2">
 <h2>Loading and Tidying Dataset</h2>
+<p>The Maternal Mortality ratio, which is the number of pregnancy-related deaths per 100,000 live births in a certain period of time, was downloaded from <a href="https://www.gapminder.org/data/">Gap Minder</a>. It was originally in a wider form, so we changed in a more readable longer form. This dataset goes back in the 1800s, therefore we had a lot of missing values but this will not be a problem since we are not using this data for model building, so we just got rid of those missing values.</p>
 <pre class="r"><code>#Maternal Mortality ratio from gapminder dataset
 maternal_mort = read_csv(&quot;./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv&quot;) %&gt;% 
   janitor::clean_names() %&gt;% 
@@ -388,8 +401,8 @@ maternal_mort = read_csv(&quot;./data/Gapminder/maternal_mortality_ratio_per_100
     names_to = &quot;year&quot;,
     values_to = &quot;maternal_mortality&quot;
   ) %&gt;% 
-  mutate(year = str_remove(year,&quot;x&quot;))
-view(maternal_mort)</code></pre>
+  mutate(year = str_remove(year,&quot;x&quot;)) %&gt;% view()</code></pre>
+<p>The Births attended by skilled health staff are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The same applied for this dataset. Even though it did not have as many missing values, we still dropped all the missing values.</p>
 <pre class="r"><code>#births attended by skilled health staff (percent of total)
 staff = read_csv(&quot;./data/Gapminder/births_attended_by_skilled_health_staff_percent_of_total.csv&quot;)  %&gt;% 
   janitor::clean_names() %&gt;% 
@@ -399,18 +412,15 @@ staff = read_csv(&quot;./data/Gapminder/births_attended_by_skilled_health_staff_
     values_to = &quot;perc_births_attended&quot;
   ) %&gt;% 
   mutate(year = str_remove(year,&quot;x&quot;)) %&gt;% view()</code></pre>
-<pre><code>## Parsed with column specification:
-## cols(
-##   .default = col_double(),
-##   country = col_character()
-## )</code></pre>
-<pre><code>## See spec(...) for full column specifications.</code></pre>
-</div>
-<div id="boxplot-of-birth-attended-by-skilled-staff-a-broader-scale" class="section level2">
-<h2>Boxplot of Birth attended by skilled staff (A Broader Scale)</h2>
+<p>At this stage, both the maternal mortality ratio and births attended by skilled personnel datasets are combined using inner_join.</p>
 <pre class="r"><code>mortality_births_attend = inner_join(maternal_mort, staff, 
-                                     by = c(&quot;country&quot;,&quot;year&quot;)) %&gt;% 
-  drop_na() %&gt;%
+                                     by = c(&quot;country&quot;,&quot;year&quot;))</code></pre>
+</div>
+<div id="birth-attended-by-skilled-staff---a-broader-look" class="section level2">
+<h2>Birth attended by skilled staff - A Broader Look</h2>
+<pre class="r"><code>mortality_births_attend = 
+mortality_births_attend %&gt;% 
+  drop_na() %&gt;% 
   mutate(
     per_range = case_when(
       perc_births_attended &lt;= 25 ~ &quot;0-25&quot;,
@@ -426,12 +436,12 @@ mortality_births_attend %&gt;%
   layout(
     xaxis = list(title = &quot;Birth Attended by Skilled Staff (% Range)&quot;),
     yaxis = list(title = &quot;Maternal Mortality per 100k Live Births&quot;))</code></pre>
-<div id="htmlwidget-d6f2bdb1f3e93d4d1395" style="width:90%;height:576px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d6f2bdb1f3e93d4d1395">{"x":{"visdat":{"c4e42e063abf":["function () ","plotlyVisDat"]},"cur_data":"c4e42e063abf","attrs":{"c4e42e063abf":{"y":{},"color":{},"colors":"Set2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Birth Attended by Skilled Staff (% Range)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Maternal Mortality per 100k Live Births"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[1100,340,390,1500,1100,1000,990,740,420,790,580,510,600,410,430,850,830],"type":"box","name":"0-25","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(175,154,200,0.5)","y":[500,200,170,1000,910,860,540,320,1200,1200,960,96,450,710,220,800,840,600,380,370,430,360,570,270,680,550,440,240,1200,560,230,370,340,1000,610,2200,1600,610,460,330,580,480,740,650,270],"type":"box","name":"26-50","marker":{"color":"rgba(175,154,200,1)","line":{"color":"rgba(175,154,200,1)"}},"line":{"color":"rgba(175,154,200,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(227,217,62,0.5)","y":[420,240,140,330,440,820,200,740,140,480,810,670,750,75,62,790,580,460,430,140,140,310,71,250,170,1100,640,750,540,600,550,130,220,110,170,130,160,120,120,390,480,420,320,1200,1100,720,390,120,520,89,82],"type":"box","name":"51-75","marker":{"color":"rgba(227,217,62,1)","line":{"color":"rgba(227,217,62,1)"}},"line":{"color":"rgba(227,217,62,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(179,179,179,0.5)","y":[31,29,28,24,120,89,25.2,71,60,63,70,76,69,47,51,43,37,31,29,8,9,6,5,6,5,5,3,4,60,83,57,36,27,26,43,44,44,38,37,22,27,16,24,22,38,42,33,52,37,29,32,21,2,1,35,110,79,60,45,120,19,11,10,9,390,340,210,170,85,73,68,69,25,24,25,27,27,24,22,29,14,8,5,7,7,11,13,11,63,58,53,40,29,26,24,22,97,76,63,50,36,32,100,81,130,97,85,83,530,44,46,33,38,8,13,11,14,15,13,63,60,63,67,80,80,18,18,16,13,10,10,15,9,7,7,5,5,9,8,9,5,49.2,120,130,100,98,90,87,72,71,69,46,26,24,6,11,89,79,72,69,62,59,6,5,7,9,6,9,12,12,330,50,60,48,42,41,7,7,7,7,33,29,25,23,230,240,240,23,23,10,13,21,14,7,7,6,6,5,4,210,190,44,31,25,23,6,2,10,9,4,5,4,4,88,85,14,10,10,7,6,86,91,91,71,50,40,26,200,140,6,13,14,85,120,100,92,79,75,57,58,42,21,29,13,37,25,15,15,34,21,20,11,9,11,15,13,15,14,7,7,56,45,40,36,31,29,57,38,31,9,8,9,70,68,28,35,72,88,67,47,130,120,61,59,39,25,41,21,120,89,74,68,10,8,7,270,130,13,12,12,12,120,9,4,8,9,5,4,32,22,16,12,11,59,59,53,91,79,83,82,85,130,110,100,89,17,14,8,5,4,3,11,8,11,11,9,8,7,170,72,53,30,30,33,74,72,57,37,31,24,150,89,300,41,31,24,19,16,16,20,7,8,14,16,50,114,19,10,4,6,15,10,12,6,7,7,11,11,12,15,8,320,140,18,19,55,52,44,39,35,72,75,55,47,45,39,150,350,120,59,48,44,40,71,91,100,120,91,59,84,81,65,20,81,76,49,45,35,25,29,23,16,13,8,12,11,13,17,27,28,42,34,35,32,23,14,48,44,40,36,170,140,120,100,86,91],"type":"box","name":"76-100","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cb9dd9971515f2d4a142" style="width:90%;height:576px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb9dd9971515f2d4a142">{"x":{"visdat":{"d3637c5dd01c":["function () ","plotlyVisDat"]},"cur_data":"d3637c5dd01c","attrs":{"d3637c5dd01c":{"y":{},"color":{},"colors":"Set2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Birth Attended by Skilled Staff (% Range)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Maternal Mortality per 100k Live Births"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[1100,340,390,1500,1100,1000,990,740,420,790,580,510,600,410,430,850,830],"type":"box","name":"0-25","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(175,154,200,0.5)","y":[500,200,170,1000,910,860,540,320,1200,1200,960,96,450,710,220,800,840,600,380,370,430,360,570,270,680,550,440,240,1200,560,230,370,340,1000,610,2200,1600,610,460,330,580,480,740,650,270],"type":"box","name":"26-50","marker":{"color":"rgba(175,154,200,1)","line":{"color":"rgba(175,154,200,1)"}},"line":{"color":"rgba(175,154,200,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(227,217,62,0.5)","y":[420,240,140,330,440,820,200,740,140,480,810,670,750,75,62,790,580,460,430,140,140,310,71,250,170,1100,640,750,540,600,550,130,220,110,170,130,160,120,120,390,480,420,320,1200,1100,720,390,120,520,89,82],"type":"box","name":"51-75","marker":{"color":"rgba(227,217,62,1)","line":{"color":"rgba(227,217,62,1)"}},"line":{"color":"rgba(227,217,62,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(179,179,179,0.5)","y":[31,29,28,24,120,89,25.2,71,60,63,70,76,69,47,51,43,37,31,29,8,9,6,5,6,5,5,3,4,60,83,57,36,27,26,43,44,44,38,37,22,27,16,24,22,38,42,33,52,37,29,32,21,2,1,35,110,79,60,45,120,19,11,10,9,390,340,210,170,85,73,68,69,25,24,25,27,27,24,22,29,14,8,5,7,7,11,13,11,63,58,53,40,29,26,24,22,97,76,63,50,36,32,100,81,130,97,85,83,530,44,46,33,38,8,13,11,14,15,13,63,60,63,67,80,80,18,18,16,13,10,10,15,9,7,7,5,5,9,8,9,5,49.2,120,130,100,98,90,87,72,71,69,46,26,24,6,11,89,79,72,69,62,59,6,5,7,9,6,9,12,12,330,50,60,48,42,41,7,7,7,7,33,29,25,23,230,240,240,23,23,10,13,21,14,7,7,6,6,5,4,210,190,44,31,25,23,6,2,10,9,4,5,4,4,88,85,14,10,10,7,6,86,91,91,71,50,40,26,200,140,6,13,14,85,120,100,92,79,75,57,58,42,21,29,13,37,25,15,15,34,21,20,11,9,11,15,13,15,14,7,7,56,45,40,36,31,29,57,38,31,9,8,9,70,68,28,35,72,88,67,47,130,120,61,59,39,25,41,21,120,89,74,68,10,8,7,270,130,13,12,12,12,120,9,4,8,9,5,4,32,22,16,12,11,59,59,53,91,79,83,82,85,130,110,100,89,17,14,8,5,4,3,11,8,11,11,9,8,7,170,72,53,30,30,33,74,72,57,37,31,24,150,89,300,41,31,24,19,16,16,20,7,8,14,16,50,114,19,10,4,6,15,10,12,6,7,7,11,11,12,15,8,320,140,18,19,55,52,44,39,35,72,75,55,47,45,39,150,350,120,59,48,44,40,71,91,100,120,91,59,84,81,65,20,81,76,49,45,35,25,29,23,16,13,8,12,11,13,17,27,28,42,34,35,32,23,14,48,44,40,36,170,140,120,100,86,91],"type":"box","name":"76-100","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births.</p>
 </div>
-<div id="countries-with-high-attendance-a-closer-look" class="section level2">
-<h2>Countries with High Attendance (A closer look)</h2>
+<div id="countries-with-high-attendance---a-closer-look" class="section level2">
+<h2>Countries with High Attendance - A closer look</h2>
 <pre class="r"><code>Top_count =
   mortality_births_attend %&gt;% 
   filter(per_range == &quot;76-100&quot;) %&gt;%
@@ -453,8 +463,8 @@ Top_count %&gt;%
   layout(
     xaxis = list(title = &quot;Birth Attended by Skilled Staff (%)&quot;),
     yaxis = list(title = &quot;Maternal Mortality per 100k Live Births&quot;))</code></pre>
-<div id="htmlwidget-05e606f9220f578d6d30" style="width:90%;height:576px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-05e606f9220f578d6d30">{"x":{"visdat":{"c4e4663c8d91":["function () ","plotlyVisDat"]},"cur_data":"c4e4663c8d91","attrs":{"c4e4663c8d91":{"y":{},"color":{},"colors":"Set2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Birth Attended by Skilled Staff (%)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Maternal Mortality per 100k Live Births"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[57,35,63,100,98,270,150,89,300,39,120,81,170],"type":"box","name":"76-81","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(178,156,177,0.5)","y":[81,530,240,210,200,88,120,100,320,140,350,59],"type":"box","name":"82-85","marker":{"color":"rgba(178,156,177,1)","line":{"color":"rgba(178,156,177,1)"}},"line":{"color":"rgba(178,156,177,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(205,181,144,0.5)","y":[29,79,120,76,130,90,72,330,190,44,86,15,67,130,130,91,130,89,41,150,48,65,140,120,86],"type":"box","name":"86-90","marker":{"color":"rgba(205,181,144,1)","line":{"color":"rgba(205,181,144,1)"}},"line":{"color":"rgba(205,181,144,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(250,212,80,0.5)","y":[31,120,76,51,83,36,60,45,340,53,97,97,85,87,230,25,13,56,57,70,47,12,32,22,79,83,82,85,31,24,44,71,91,48,100,91],"type":"box","name":"91-95","marker":{"color":"rgba(250,212,80,1)","line":{"color":"rgba(250,212,80,1)"}},"line":{"color":"rgba(250,212,80,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(179,179,179,0.5)","y":[28,24,89,25.2,71,60,63,70,69,47,43,37,31,29,8,9,6,5,6,5,5,3,4,60,27,26,43,44,44,38,37,22,27,16,24,22,38,42,33,52,37,29,32,21,2,1,110,19,11,10,9,390,210,170,85,73,68,69,25,24,25,27,27,24,22,29,14,8,5,7,7,11,13,11,58,40,29,26,24,22,63,50,36,32,83,44,46,33,38,8,13,11,14,15,13,63,60,63,67,80,80,18,18,16,13,10,10,15,9,7,7,5,5,9,8,9,5,49.2,120,130,100,71,69,46,26,24,6,11,89,79,72,69,62,59,6,5,7,9,6,9,12,12,50,60,48,42,41,7,7,7,7,33,29,25,23,240,23,23,10,13,21,14,7,7,6,6,5,4,31,25,23,6,2,10,9,4,5,4,4,88,85,14,10,10,7,6,91,91,71,50,40,26,140,6,13,14,85,120,100,92,79,75,57,58,42,21,29,13,37,15,15,34,21,20,11,9,11,15,14,7,7,45,40,36,31,29,38,31,9,8,9,68,28,35,72,61,59,39,25,41,21,120,89,74,68,10,8,7,13,12,12,120,9,4,8,9,5,4,16,12,11,59,59,53,110,17,14,8,5,4,3,11,8,11,11,9,8,7,170,72,53,30,30,33,74,72,57,37,31,24,19,16,16,20,7,8,14,16,50,114,19,10,4,6,15,10,12,6,7,7,11,11,12,15,8,18,19,55,52,44,39,35,72,75,55,47,45,40,100,120,91,59,84,20,81,76,49,45,35,25,29,23,16,13,8,12,11,13,17,27,28,42,34,35,32,23,14,44,40,36],"type":"box","name":"96-100","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1607ec425013e2f9897b" style="width:90%;height:576px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1607ec425013e2f9897b">{"x":{"visdat":{"d3633f05d6fd":["function () ","plotlyVisDat"]},"cur_data":"d3633f05d6fd","attrs":{"d3633f05d6fd":{"y":{},"color":{},"colors":"Set2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Birth Attended by Skilled Staff (%)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Maternal Mortality per 100k Live Births"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[57,35,63,100,98,270,150,89,300,39,120,81,170],"type":"box","name":"76-81","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(178,156,177,0.5)","y":[81,530,240,210,200,88,120,100,320,140,350,59],"type":"box","name":"82-85","marker":{"color":"rgba(178,156,177,1)","line":{"color":"rgba(178,156,177,1)"}},"line":{"color":"rgba(178,156,177,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(205,181,144,0.5)","y":[29,79,120,76,130,90,72,330,190,44,86,15,67,130,130,91,130,89,41,150,48,65,140,120,86],"type":"box","name":"86-90","marker":{"color":"rgba(205,181,144,1)","line":{"color":"rgba(205,181,144,1)"}},"line":{"color":"rgba(205,181,144,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(250,212,80,0.5)","y":[31,120,76,51,83,36,60,45,340,53,97,97,85,87,230,25,13,56,57,70,47,12,32,22,79,83,82,85,31,24,44,71,91,48,100,91],"type":"box","name":"91-95","marker":{"color":"rgba(250,212,80,1)","line":{"color":"rgba(250,212,80,1)"}},"line":{"color":"rgba(250,212,80,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(179,179,179,0.5)","y":[28,24,89,25.2,71,60,63,70,69,47,43,37,31,29,8,9,6,5,6,5,5,3,4,60,27,26,43,44,44,38,37,22,27,16,24,22,38,42,33,52,37,29,32,21,2,1,110,19,11,10,9,390,210,170,85,73,68,69,25,24,25,27,27,24,22,29,14,8,5,7,7,11,13,11,58,40,29,26,24,22,63,50,36,32,83,44,46,33,38,8,13,11,14,15,13,63,60,63,67,80,80,18,18,16,13,10,10,15,9,7,7,5,5,9,8,9,5,49.2,120,130,100,71,69,46,26,24,6,11,89,79,72,69,62,59,6,5,7,9,6,9,12,12,50,60,48,42,41,7,7,7,7,33,29,25,23,240,23,23,10,13,21,14,7,7,6,6,5,4,31,25,23,6,2,10,9,4,5,4,4,88,85,14,10,10,7,6,91,91,71,50,40,26,140,6,13,14,85,120,100,92,79,75,57,58,42,21,29,13,37,15,15,34,21,20,11,9,11,15,14,7,7,45,40,36,31,29,38,31,9,8,9,68,28,35,72,61,59,39,25,41,21,120,89,74,68,10,8,7,13,12,12,120,9,4,8,9,5,4,16,12,11,59,59,53,110,17,14,8,5,4,3,11,8,11,11,9,8,7,170,72,53,30,30,33,74,72,57,37,31,24,19,16,16,20,7,8,14,16,50,114,19,10,4,6,15,10,12,6,7,7,11,11,12,15,8,18,19,55,52,44,39,35,72,75,55,47,45,40,100,120,91,59,84,20,81,76,49,45,35,25,29,23,16,13,8,12,11,13,17,27,28,42,34,35,32,23,14,44,40,36],"type":"box","name":"96-100","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -493,6 +503,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {

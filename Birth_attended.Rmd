@@ -2,10 +2,14 @@
 title: "Birth_attended"
 author: "Clement Mugenzi"
 date: "12/1/2019"
-output: github_document
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    code_folding: hide
 ---
 
-# Maternal Mortality against Birth Attended by skilled Staff
+# Birth Attended by skilled Staff
 
 ```{r setup, include = FALSE}
 library(tidyverse)
@@ -29,6 +33,8 @@ theme_set(theme_minimal() + theme(legend.position = "bottom"))
 
 ## Loading and Tidying Dataset
 
+The Maternal Mortality ratio, which is the number of pregnancy-related deaths per 100,000 live births in a certain period of time, was downloaded from [Gap Minder](https://www.gapminder.org/data/). It was originally in a wider form, so we changed in a more readable longer form. This dataset goes back in the 1800s, therefore we had a lot of missing values but this will not be a problem since we are not using this data for model building, so we just got rid of those missing values.
+
 ```{r, message=FALSE}
 #Maternal Mortality ratio from gapminder dataset
 maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
@@ -38,13 +44,12 @@ maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_l
     names_to = "year",
     values_to = "maternal_mortality"
   ) %>% 
-  mutate(year = str_remove(year,"x"))
-view(maternal_mort)
+  mutate(year = str_remove(year,"x")) %>% view()
 ```
 
+The Births attended by skilled health staff are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The same applied for this dataset. Even though it did not have as many missing values, we still dropped all the missing values.
 
-
-```{r}
+```{r, message=FALSE}
 #births attended by skilled health staff (percent of total)
 staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_percent_of_total.csv")  %>% 
   janitor::clean_names() %>% 
@@ -56,12 +61,21 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
   mutate(year = str_remove(year,"x")) %>% view()
 ```
 
-## Boxplot of Birth attended by skilled staff (A Broader Scale)
+At this stage, both the maternal mortality ratio and births attended by skilled personnel datasets are combined using inner_join.
 
-```{r explore_matmort_birthsattended}
+```{r}
 mortality_births_attend = inner_join(maternal_mort, staff, 
-                                     by = c("country","year")) %>% 
-  drop_na() %>%
+                                     by = c("country","year"))
+```
+
+## Birth attended by skilled staff - A Broader Look
+
+
+
+```{r, message=FALSE}
+mortality_births_attend = 
+mortality_births_attend %>% 
+  drop_na() %>% 
   mutate(
     per_range = case_when(
       perc_births_attended <= 25 ~ "0-25",
@@ -81,9 +95,9 @@ mortality_births_attend %>%
 
 As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
 
-## Countries with High Attendance (A closer look)
+## Countries with High Attendance - A closer look
 
-```{r}
+```{r, message=FALSE}
 Top_count =
   mortality_births_attend %>% 
   filter(per_range == "76-100") %>%

@@ -12,6 +12,7 @@
 
 <meta name="author" content="Alicia Dagle" />
 
+<meta name="date" content="2019-12-01" />
 
 <title>us_birth_and_cesarean_rates_data</title>
 
@@ -372,9 +373,7 @@ div.tocify {
 <div id="data-source" class="section level2">
 <h2>Data Source:</h2>
 <p>All data for the birth rates and cesearan rates in the US was pulled from the CDC. By default, the data from 2018 is pulled but we can change this manually if we want to look at a different year or multiple years. This natality data was provided by the Center for Disease Control and Prevention and can be found at <a href="https://wonder.cdc.gov/natality.html">CDC WONDER</a>.</p>
-</div>
-<div id="delivery-method-per-state" class="section level1">
-<h1>Delivery method per state</h1>
+<p>#Delivery method per state</p>
 <p>The births were stored as factors for some reason so the numbering had many errors when they were converted directly to numeric. To solve this, I first had to convert the factors to characters and then to numeric variable types. Then, I calculated the total number of births per state by using group and summarize. Finally, I joined these two datasets using a left_join by state of residence. Then, I was used the number of cesarean births divided by the total number of births per state to produce a cesarean rate per state.</p>
 <pre class="r"><code>#load number of births per delivery method per state
 birth_type =
@@ -405,6 +404,7 @@ birth_df =
   
 
 view(birth_df)</code></pre>
+</div>
 <div id="birth-rates-by-state" class="section level2">
 <h2>Birth rates by state</h2>
 <p>Please note that this shows the dataset when I only pulled the birth numbers per state.</p>
@@ -420,10 +420,7 @@ view(births_by_state)</code></pre>
 <div id="data-cleaning-summary" class="section level2">
 <h2>Data Cleaning Summary</h2>
 <p>Here we have 3 cleaned variables: <code>state_of_residence</code>, <code>total_births</code> and <code>c_rate</code> (cesarean rate defined by the percent of births used a cesarean delivery method.)</p>
-</div>
-</div>
-<div id="write-data-to-csv" class="section level1">
-<h1>Write data to csv</h1>
+<p>#Write data to csv</p>
 <pre class="r"><code>write.csv(birth_df, &quot;./dataset_births_us/US_cesarean_rates.csv&quot;, row.names = FALSE)
 
 
