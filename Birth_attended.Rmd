@@ -1,5 +1,5 @@
 ---
-title: "Birth_attended"
+title: "Birth Attended"
 author: "Clement Mugenzi"
 date: "12/1/2019"
 output: 
@@ -70,7 +70,7 @@ mortality_births_attend = inner_join(maternal_mort, staff,
 
 ## Birth attended by skilled staff - A Broader Look
 
-
+Here, since percent births attended by a skilled personnel is a continuous variable, we built a factor `per_range` variable that takes values from 0-100 percent and divide them into four ranges. 0-25, 26-50, 51-75, and 76-100 respectively. And we use this newly built variable to plot an interactive boxplot of maternal mortality ratio Versus the ranges of births attended by skilled personnel.
 
 ```{r, message=FALSE}
 mortality_births_attend = 
@@ -97,6 +97,8 @@ As expected, the maternal mortality decreases as births attended by skilled staf
 
 ## Countries with High Attendance - A closer look
 
+Let's now zoom in and see if there might be any significant trend as we move toward those countries with seemingly higher percentage of births attended by skilled personnel. We took the `76-100` range and divided it into five separate ranges as seen in the code, and built the same interactive box plot.
+
 ```{r, message=FALSE}
 Top_count =
   mortality_births_attend %>% 
@@ -121,7 +123,7 @@ Top_count %>%
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))
 ```
 
-
+It seems there is not any significant trend being followed but there is an overall decrease in maternal mortality ratio as the births attendance increases.
 
 
 
