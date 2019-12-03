@@ -9,31 +9,8 @@ output:
 ![](Pictures/mothers.jpg)
 
 
-## Introduction
+## Overview - update Introduction
 
 The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. What are the underlying reasons for this? According to the CDC, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to understand why the US lags behind other developed nations on this front.
 
-
-## Data
-
-The data for this project was collected from several sources.
-
-### US Data
-
-The expected cost to the mother of giving birth was scrapped from the following [Business Insider Article](https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018-4#50-alabama-1). The ceserean rate per state was derived using data from the CDC calculated using The number of cesaraean deliveries per state
-
-All data for the birth rates and cesearan rates in the US was pulled from the Center for Disease Control and Prevention and can be found at [CDC WONDER](https://wonder.cdc.gov/natality.html).
-
-
-## Methods
-
-
-
-### Cesarean Rates
-Since the cesarean rates were not directly available from the CDC, we first downloaded the number of births and filtered vaginal and cesearean deliveries in each state. By taking the number of cesarean deliveries and dividing by the total number of births per state, we extrapolated the cesaraean rate for each state. 
-
-
-
-## Results
-
-## Discussion
+## Webcast

@@ -3,6 +3,7 @@ us\_birth\_and\_cesarean\_rates\_data
 Alicia Dagle
 December 1, 2019
 
+<<<<<<< HEAD
 ## Data Source:
 
 All data for the birth rates and cesearan rates in the US was pulled
@@ -22,6 +23,17 @@ by using group and summarize. Finally, I joined these two datasets using
 a left\_join by state of residence. Then, I was used the number of
 cesarean births divided by the total number of births per state to
 produce a cesarean rate per state.
+=======
+Data Source:
+------------
+
+All data for the birth rates and cesearan rates in the US was pulled from the CDC. By default, the data from 2018 is pulled but we can change this manually if we want to look at a different year or multiple years. This natality data was provided by the Center for Disease Control and Prevention and can be found at [CDC WONDER](https://wonder.cdc.gov/natality.html).
+
+Delivery method per state
+=========================
+
+The births were stored as factors for some reason so the numbering had many errors when they were converted directly to numeric. To solve this, I first had to convert the factors to characters and then to numeric variable types. Then, I calculated the total number of births per state by using group and summarize. Finally, I joined these two datasets using a left\_join by state of residence. Then, I was used the number of cesarean births divided by the total number of births per state to produce a cesarean rate per state.
+>>>>>>> ec1897e96e196e0305f2fbc2168653ebd43aa9b4
 
 ``` r
 #load number of births per delivery method per state
@@ -55,10 +67,17 @@ birth_df =
 view(birth_df)
 ```
 
+<<<<<<< HEAD
 ## Birth rates by state
 
 Please note that this shows the dataset when I only pulled the birth
 numbers per state.
+=======
+Birth rates by state
+--------------------
+
+Please note that this shows the dataset when I only pulled the birth numbers per state.
+>>>>>>> ec1897e96e196e0305f2fbc2168653ebd43aa9b4
 
 ``` r
 births_by_state =
@@ -69,6 +88,7 @@ births_by_state =
 view(births_by_state)
 ```
 
+<<<<<<< HEAD
 These numbers are off ever so slightly from the data used to calculate
 cesarean rates. For example the births in alabama differ by 3 people.
 This difference may be attributed to the data which was supressed
@@ -85,6 +105,19 @@ cesarean delivery method.)
 
 \#Write data to
 csv
+=======
+These numbers are off ever so slightly from the data used to calculate cesarean rates. For example the births in alabama differ by 3 people. This difference may be attributed to the data which was supressed because the delivery method of the birth was not known.
+
+A decision must be made for which total to use for the mapping of our project.
+
+Data Cleaning Summary
+---------------------
+
+Here we have 3 cleaned variables: `state_of_residence`, `total_births` and `c_rate` (cesarean rate defined by the percent of births used a cesarean delivery method.)
+
+Write data to csv
+=================
+>>>>>>> ec1897e96e196e0305f2fbc2168653ebd43aa9b4
 
 ``` r
 write.csv(birth_df, "./dataset_births_us/US_cesarean_rates.csv", row.names = FALSE)
