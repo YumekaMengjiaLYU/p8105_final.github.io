@@ -6,7 +6,7 @@ output: github_document
 editor_options: 
   chunk_output_type: console
 ---
-# Healthcare spending (%GDP) vs. Country
+# healthcare spending (%GDP) vs. country
 
 ```{r setup, include = FALSE}
 library(tidyverse)
@@ -57,13 +57,13 @@ healthcare_spending_2013_developed =
   filter(country %in% c("United States", 
                         "Switzerland", 
                         "Germany",
-                        "Netherlands",
+                        "Singapore",
                         "Japan",
                         "Canada",
                         "United Kingdom",
-                        "Finland",
-                        "New Zealand", 
-                        "Norway"
+                        "Spain",
+                        "France", 
+                        "Australia"
                         ))
 ```
 
@@ -77,14 +77,16 @@ ten_developed_countries_health_spending =
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "% GDP that comes from healthcare spending",
+       y = "Percent GDP that comes from healthcare spending(%)",
        title = "Different amount of healthcare spending across 10 developed countries")
 
 interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spending,
                                            tooltip = c("y", "x", "colour"))
 ```
 
-#### trying to relate the different amount of healthcare spending across 10 developed countries graph to a manternal mortality graph for the same countries
+# maternal mortality across 10 developed countries
+
+## Import and clean data
 ```{r}
 # Maternal Mortality ratio 
 maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
@@ -105,13 +107,13 @@ maternal_mort_2013_developed =
   filter(country %in% c("United States", 
                         "Switzerland", 
                         "Germany",
-                        "Netherlands",
+                        "Singapore",
                         "Japan",
                         "Canada",
                         "United Kingdom",
-                        "Finland",
-                        "New Zealand", 
-                        "Norway"
+                        "Spain",
+                        "France", 
+                        "Australia"
                         ))
 ```
 
@@ -132,9 +134,40 @@ interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort,
                                           tooltip = c("x", "y"))
 ```
 
-## Combine two interactive graphs
+
+# cost of giving birth in 10 developed countries
+
+## data import and clean data
 ```{r}
-subplot(interactive_healthcare_spending, interactive_maternal_mortality, 
+# cost of giving birth
+child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(average_cost = (child_birth_cost_normal + child_birth_cost_csec)/2)
+```
+
+## Bar chart (cost of childbirth in 10 developed countires)
+```{r}
+ten_developed_countries_childbirth_cost = 
+  child_birth_cost %>% 
+  mutate(country = as.factor(country)) %>% 
+  ggplot(aes(x = country, y = average_cost, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Average cost of giving birth(dollars)",
+       title = "cost of child birth in 10 developed countries")
+
+interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost, 
+                                          tooltip = c("x", "y"))
+```
+
+
+## Combine three interactive graphs
+```{r}
+subplot(interactive_healthcare_spending, 
+        ten_developed_countries_childbirth_cost,
+        interactive_maternal_mortality, 
         shareX = T, shareY = T)
 ```
 
