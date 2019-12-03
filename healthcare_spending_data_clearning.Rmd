@@ -156,7 +156,7 @@ ten_developed_countries_childbirth_cost =
   theme(legend.position = "none") +
   labs(x = "Developed countries",
        y = "Average cost of giving birth(dollars)",
-       title = "cost of child birth in 10 developed countries")
+       title = "Cost of child birth in 10 developed countries")
 
 interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost, 
                                           tooltip = c("x", "y"))
@@ -166,9 +166,11 @@ interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost,
 ## Combine three interactive graphs
 ```{r}
 subplot(interactive_healthcare_spending, 
-        ten_developed_countries_childbirth_cost,
         interactive_maternal_mortality, 
         shareX = T, shareY = T)
+
+
+interactive_child_birth_cost
 ```
 
 
