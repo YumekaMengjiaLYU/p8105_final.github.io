@@ -54,9 +54,17 @@ health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent
 healthcare_spending_2013_developed = 
   health_spending_percent_gdp %>% 
   filter(year == 2013) %>% 
-  filter(country %in% c("United States", "United Kingdom", "Finland", 
-                           "Canada","Germany", "New Zealand", "Norway", "Netherlands",
-                           "Switzerland", "Japan"))
+  filter(country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Netherlands",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Finland",
+                        "New Zealand", 
+                        "Norway"
+                        ))
 ```
 
 ## Bar chart (% GDP that comes from healthcare spending in 10 developed countries)
@@ -67,6 +75,7 @@ ten_developed_countries_health_spending =
   ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
+  theme(legend.position = "none") +
   labs(x = "Developed countries",
        y = "% GDP that comes from healthcare spending",
        title = "Different amount of healthcare spending across 10 developed countries")
@@ -92,9 +101,17 @@ maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_l
 maternal_mort_2013_developed = 
   maternal_mort %>% 
   filter(year == 2013) %>% 
-  filter(country %in% c("United States", "United Kingdom", "Finland", 
-                        "Canada","Germany", "New Zealand", "Norway",
-                        "Netherlands", "Switzerland", "Japan"))
+  filter(country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Netherlands",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Finland",
+                        "New Zealand", 
+                        "Norway"
+                        ))
 ```
 
 ## Bar chart (maternal mortality in 10 developed countries)
@@ -105,16 +122,18 @@ ten_developed_countries_maternal_mort =
   ggplot(aes(x = country, y = percent_maternal_mortality, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
+  theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "Maternal mortality",
-       title = "Inequality of US healthcare spending and maternal mortality")
+       y = "Maternal mortality(%)",
+       title = "Mismatching between US healthcare spending and maternal mortality")
 
 interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort)
 ```
 
 ## Combine two interactive graphs
 ```{r}
-subplot(interactive_healthcare_spending, interactive_maternal_mortality)
+subplot(interactive_healthcare_spending, interactive_maternal_mortality, 
+        shareX = T, shareY = T)
 ```
 
 
