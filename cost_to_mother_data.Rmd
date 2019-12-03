@@ -118,7 +118,7 @@ US_cost_to_mother_df =
 
 view(US_cost_to_mother_df)
 
-write.csv(US_cost_to_mother_df, "./dataset_births_us/US_cesarean_rate.csv", row.names = FALSE)
+write.csv(US_cost_to_mother_df, file = "US_cost_to_mother_df.csv")
 
 ```
 
