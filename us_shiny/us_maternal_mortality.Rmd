@@ -12,7 +12,7 @@ library(highcharter)
 library(flexdashboard)
 library(tidyverse)
 library(viridis)
-library(p8105.datasets)
+
 library(plotly)
 
 thm <- 
@@ -26,22 +26,33 @@ thm <-
       gridLineWidth = 1
     )
   )
-cdc_data = read.delim("~/Documents/MS_Biostatistics/P8105/Final_Project/p8105_final.github.io/us_shiny/data/Underlying_Cause_of_Death_1999-2017.txt") %>%
+cdc_maternal_death_data = read.delim("~/Documents/MS_Biostatistics/P8105/Final_Project/p8105_final.github.io/us_shiny/data/Underlying_Cause_of_Death_1999-2017.txt") %>%
   janitor::clean_names() %>%
-  select(-notes, -gender_code, -hispanic_origin_code,-race_code,-state_code, -gender, -ten_year_age_groups_code)
+  na.omit() %>%
+  select(-notes, -gender_code, -hispanic_origin_code,-race_code,-state_code, -gender, -ten_year_age_groups_code) %>%
+  group_by(state) %>%
+  summarise(total_death = sum(deaths))
+
+cdc_birth_data = read.csv("~/Documents/MS_Biostatistics/P8105/Final_Project/p8105_final.github.io/us_shiny/data/us_states_data.csv") %>%
+  janitor::clean_names() %>%
+  na.omit() %>%
+  select(-total_population) %>%
+  rename("state" = "state_of_residence")
 ```
 
-Column {.sidebar}
+Column {data-width=600}
 -----------------------------------------------------------------------
 
-### Sales by State
+### Mortality Rates by State
 
 ```{r}
 data("usgeojson")
 
-cdc_data = cdc_data %>%
+cdc_merged_data = cdc_maternal_death_data %>%
   group_by(state) %>%
-  summarise(total_death = sum(deaths), total_pop = sum(population)) %>%
+  summarise(total_death = sum(deaths)) %>%
+  na.omit() %>%
+  
   mutate(total_percent = total_death/total_pop)
 
 n <- 4
@@ -67,14 +78,7 @@ Column {data-width=650}
 
 ```{r}
 
-renderPlotly({ 
-  nyc_airbnb %>%
-  filter(boro == input[["boro_choice"]]) %>% 
-  mutate(text_label = str_c("Price: $", price, '\nRating: ', rating)) %>% 
-  plot_ly(
-    x = ~longitude, y = ~latitude, type = "scatter", mode = "markers",
-    alpha = 0.5, color = ~price, text = ~text_label)
-})
+
 
 
 ```

@@ -10,13 +10,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Alicia Dagle" />
 
+<meta name="date" content="2019-11-23" />
 
-<title>Factors Influencing Maternal Mortality Globally</title>
+<title>cost_to_mother_data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -108,33 +110,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 54px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h2 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .dropdown-submenu {
   position: relative;
@@ -361,28 +363,109 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Factors Influencing Maternal Mortality Globally</h1>
+<h1 class="title toc-ignore">cost_to_mother_data</h1>
+<h4 class="author">Alicia Dagle</h4>
+<h4 class="date">November 23, 2019</h4>
 
 </div>
 
 
-<p><img src="Pictures/mothers.jpg" /></p>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. What are the underlying reasons for this? According to the CDC, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to come up with a good reason the US keeps lagging behind other developed nations on this front.</p>
-</div>
-<div id="data" class="section level2">
-<h2>Data</h2>
-</div>
-<div id="methods" class="section level2">
-<h2>Methods</h2>
-</div>
-<div id="results" class="section level2">
-<h2>Results</h2>
-</div>
-<div id="discussion" class="section level2">
-<h2>Discussion</h2>
-</div>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ---------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts ------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(rvest)</code></pre>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     pluck</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<pre class="r"><code>library(httr)</code></pre>
+<pre class="r"><code>url = &quot;https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018-4#35-maine-16&quot;
+
+birth_cost_us = read_html(url)
+
+state_vec =
+  birth_cost_us %&gt;% 
+  html_nodes(&quot;.slide-title-text&quot;) %&gt;% 
+  html_text()
+
+state_vec #THIS NEEDS TO BE CLEANED(GET RID OF NUMBERS)</code></pre>
+<pre><code>##  [1] &quot;50. Alabama&quot;        &quot;49. Rhode Island&quot;   &quot;48. Nebraska&quot;      
+##  [4] &quot;47. Louisiana&quot;      &quot;46. Utah&quot;           &quot;45. Arkansas&quot;      
+##  [7] &quot;44. Kansas&quot;         &quot;43. Hawaii&quot;         &quot;42. Kentucky&quot;      
+## [10] &quot;41. Iowa&quot;           &quot;40. Mississippi&quot;    &quot;39. Ohio&quot;          
+## [13] &quot;38. West Virginia&quot;  &quot;37. Idaho&quot;          &quot;36. New Mexico&quot;    
+## [16] &quot;35. Maine&quot;          &quot;34. Missouri&quot;       &quot;33. Michigan&quot;      
+## [19] &quot;32. Delaware&quot;       &quot;31. Minnesota&quot;      &quot;30. Oklahoma&quot;      
+## [22] &quot;29. Montana&quot;        &quot;28. South Dakota&quot;   &quot;27. South Carolina&quot;
+## [25] &quot;26. New Hampshire&quot;  &quot;25. Indiana&quot;        &quot;24. North Carolina&quot;
+## [28] &quot;23. Washington&quot;     &quot;22. Virginia&quot;       &quot;21. Vermont&quot;       
+## [31] &quot;20. Maryland&quot;       &quot;19. Pennsylvania&quot;   &quot;18. Colorado&quot;      
+## [34] &quot;17. Georgia&quot;        &quot;16. Tennessee&quot;      &quot;15. Oregon&quot;        
+## [37] &quot;14. Arizona&quot;        &quot;13. Texas&quot;          &quot;12. Nevada&quot;        
+## [40] &quot;11. California&quot;     &quot;10. Wyoming&quot;        &quot;9. North Dakota&quot;   
+## [43] &quot;8. Florida&quot;         &quot;7. Illinois&quot;        &quot;6. Connecticut&quot;    
+## [46] &quot;5. Massachusetts&quot;   &quot;4. Wisconsin&quot;       &quot;3. New York&quot;       
+## [49] &quot;2. New Jersey&quot;      &quot;1. Alaska&quot;</code></pre>
+<pre class="r"><code>#this need to be cleaned a lot
+all_costs = 
+  birth_cost_us %&gt;% 
+  html_nodes(&quot;.clearfix p+ p&quot;) %&gt;% 
+  html_text()</code></pre>
+<pre class="r"><code>#clean state names
+state_vec %&gt;% 
+  str_replace(&quot;.\\. &quot;,&quot;&quot;) %&gt;%
+  str_replace(&quot;[1-9]&quot;,&quot;&quot;)</code></pre>
+<pre><code>##  [1] &quot;Alabama&quot;        &quot;Rhode Island&quot;   &quot;Nebraska&quot;       &quot;Louisiana&quot;     
+##  [5] &quot;Utah&quot;           &quot;Arkansas&quot;       &quot;Kansas&quot;         &quot;Hawaii&quot;        
+##  [9] &quot;Kentucky&quot;       &quot;Iowa&quot;           &quot;Mississippi&quot;    &quot;Ohio&quot;          
+## [13] &quot;West Virginia&quot;  &quot;Idaho&quot;          &quot;New Mexico&quot;     &quot;Maine&quot;         
+## [17] &quot;Missouri&quot;       &quot;Michigan&quot;       &quot;Delaware&quot;       &quot;Minnesota&quot;     
+## [21] &quot;Oklahoma&quot;       &quot;Montana&quot;        &quot;South Dakota&quot;   &quot;South Carolina&quot;
+## [25] &quot;New Hampshire&quot;  &quot;Indiana&quot;        &quot;North Carolina&quot; &quot;Washington&quot;    
+## [29] &quot;Virginia&quot;       &quot;Vermont&quot;        &quot;Maryland&quot;       &quot;Pennsylvania&quot;  
+## [33] &quot;Colorado&quot;       &quot;Georgia&quot;        &quot;Tennessee&quot;      &quot;Oregon&quot;        
+## [37] &quot;Arizona&quot;        &quot;Texas&quot;          &quot;Nevada&quot;         &quot;California&quot;    
+## [41] &quot;Wyoming&quot;        &quot;North Dakota&quot;   &quot;Florida&quot;        &quot;Illinois&quot;      
+## [45] &quot;Connecticut&quot;    &quot;Massachusetts&quot;  &quot;Wisconsin&quot;      &quot;New York&quot;      
+## [49] &quot;New Jersey&quot;     &quot;Alaska&quot;</code></pre>
+<p>Time to clean the cost dataset…this is gonna be fun…</p>
+<pre class="r"><code>cost_df = tibble(
+  all_costs
+) %&gt;% 
+  janitor::clean_names()
+
+cost_df_v1 = cost_df %&gt;% 
+    separate(all_costs, into = c(&quot;with_ins&quot;, &quot;other&quot;, &quot;cost_w&quot;), sep = &quot;\\:&quot;) %&gt;% 
+    separate(other, into = c(&quot;without_ins&quot;, &quot;cost_wo&quot;), sep = &quot;C-section without insurance&quot; ) %&gt;% 
+    separate(without_ins, into = c(&quot;without_ins&quot;, &quot;cost_wo&quot;), sep = &quot;Vaginal birth without insurance&quot;)%&gt;%
+mutate(
+  type = factor(with_ins), 
+  type = recode(type,
+    &quot;Vaginal birth with insurance&quot; = &quot;Vaginal_birth&quot;,
+    &quot;C-section with insurance&quot; = &quot;C-section&quot;)
+) %&gt;% 
+  select(-with_ins, -cost_wo) %&gt;% 
+  rename(&quot;with_ins&quot; = &quot;cost_w&quot;) %&gt;% 
+  select(type,with_ins,without_ins)</code></pre>
+<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
+## [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37,
+## 39, ...].</code></pre>
+<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
+## [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
+## 40, ...].</code></pre>
+<pre class="r"><code>view(cost_df_v1)</code></pre>
+<pre class="r"><code>#don&#39;t worry about this...it isn&#39;t working:</code></pre>
 
 
 

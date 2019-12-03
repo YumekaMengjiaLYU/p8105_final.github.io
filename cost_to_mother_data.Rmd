@@ -30,45 +30,95 @@ all_costs =
   html_nodes(".clearfix p+ p") %>% 
   html_text()
 
-
-
+view(state_vec)
+view(all_costs)
 ```
 
 
 ```{r}
 #clean state names
-state_vec %>% 
-  str_replace(".\\. ","") %>%
-  str_replace("[1-9]","")
+state_df = tibble(
+  state = state_vec %>% 
+    str_replace(".\\. ","") %>%
+    str_replace("[1-9]",""),
+  "Vaginal_birth" = 1,
+  "C-section" = 0,
+  "with_ins" = 2,
+  "without_ins" = 3
+) %>% 
+  pivot_longer(
+    "Vaginal_birth": "C-section",
+    names_to = "type",
+    values_to = "dummy"
+  ) %>% 
+  pivot_longer(
+    "with_ins": "without_ins",
+    names_to = "insurance",
+    values_to = "dummy2"
+  ) %>% 
+  select(state, type, insurance, -dummy, -dummy2)
+
+view(state_df)
+
+
   
 ```
 
 
+Time to clean the cost dataset...this is gonna be fun...
+
 ```{r}
-#don't worry about this...it isn't working:
+
+#pivot longer so all costs are in one column
 
 
+cost_df = tibble(
+  all_costs
+) %>% 
+  janitor::clean_names()
 
-vag_birth_w_ins =
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
+cost_df_clean = cost_df %>% 
+    separate(all_costs, into = c("with_ins", "other", "cost_w"), sep = "\\:") %>% 
+    separate(other, into = c("without_ins", "cost_wo"), sep = "C-section without insurance" ) %>% 
+    separate(without_ins, into = c("without_ins", "cost_wo"), sep = "Vaginal birth without insurance")%>%
+mutate(
+  type = factor(with_ins), 
+  type = recode(type,
+    "Vaginal birth with insurance" = "Vaginal_birth",
+    "C-section with insurance" = "C-section")
+) %>% 
+  select(-with_ins, -cost_wo) %>% 
+  rename("with_ins" = "cost_w") %>% 
+  select(type,with_ins,without_ins) %>% 
+  pivot_longer(
+    with_ins: without_ins,
+    names_to = "insurance",
+    values_to = "cost"
+  )
+  
 
-vag_birth_wo_ins = 
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
 
-csec_w_ins = 
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
+view(cost_df_clean)
 
-csec_wo_ins =
-  birth_cost_us %>% 
-  html_nodes() %>% 
-  html_text()
 
+  
+```
+
+
+Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.
+
+```{r}
+# merge the state information with the cost information
+# write to csv
+
+US_cost_to_mother_df = 
+  cost_df_clean %>% 
+  mutate(state = state_df$state) %>% 
+  select(state,type, insurance, cost)
+
+view(US_cost_to_mother_df)
+
+write.csv(US_cost_to_mother_df, "./dataset_cesarean_rates/US_cesarean_rate.csv", row.names = FALSE)
 
 ```
 

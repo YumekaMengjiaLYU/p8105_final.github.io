@@ -10,13 +10,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Alicia Dagle" />
 
+<meta name="date" content="2019-12-01" />
 
-<title>Factors Influencing Maternal Mortality Globally</title>
+<title>us_birth_and_cesarean_rates_data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -108,33 +110,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 54px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h2 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .dropdown-submenu {
   position: relative;
@@ -361,27 +363,68 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Factors Influencing Maternal Mortality Globally</h1>
+<h1 class="title toc-ignore">us_birth_and_cesarean_rates_data</h1>
+<h4 class="author">Alicia Dagle</h4>
+<h4 class="date">December 1, 2019</h4>
 
 </div>
 
 
-<p><img src="Pictures/mothers.jpg" /></p>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. What are the underlying reasons for this? According to the CDC, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to come up with a good reason the US keeps lagging behind other developed nations on this front.</p>
+<div id="data-source" class="section level2">
+<h2>Data Source:</h2>
+<p>All data for the birth rates and cesearan rates in the US was pulled from the CDC. By default, the data from 2018 is pulled but we can change this manually if we want to look at a different year or multiple years. This natality data was provided by the Center for Disease Control and Prevention and can be found at <a href="https://wonder.cdc.gov/natality.html">CDC WONDER</a>.</p>
+<p>#Delivery method per state</p>
+<p>The births were stored as factors for some reason so the numbering had many errors when they were converted directly to numeric. To solve this, I first had to convert the factors to characters and then to numeric variable types. Then, I calculated the total number of births per state by using group and summarize. Finally, I joined these two datasets using a left_join by state of residence. Then, I was used the number of cesarean births divided by the total number of births per state to produce a cesarean rate per state.</p>
+<pre class="r"><code>#load number of births per delivery method per state
+birth_type =
+  read.delim(&quot;./dataset_births_us/birth_delivery_by_state.txt&quot;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  filter(delivery_method != &quot;Unknown or Not Stated&quot;) %&gt;% 
+  na.omit() %&gt;% 
+  mutate(births = as.numeric(as.character(births))) %&gt;% 
+  select(state_of_residence, delivery_method, births) 
+
+
+#calculate total number births per state
+birth_sum_by_state =
+  birth_type %&gt;%
+  group_by(state_of_residence) %&gt;% 
+  summarize(
+    total_births = sum(births)
+    ) %&gt;% 
+  ungroup()
+
+#calculate percent of c-sections per state by 1st merging and then creating a new variable
+birth_df =
+  left_join(birth_type, birth_sum_by_state, by = &quot;state_of_residence&quot;) %&gt;% 
+  filter(delivery_method == &quot;Cesarean&quot;) %&gt;%
+  select(-delivery_method) %&gt;% 
+  mutate(c_rate  = births/total_births) %&gt;% 
+  select(state_of_residence, total_births, c_rate)
+  
+
+view(birth_df)</code></pre>
 </div>
-<div id="data" class="section level2">
-<h2>Data</h2>
+<div id="birth-rates-by-state" class="section level2">
+<h2>Birth rates by state</h2>
+<p>Please note that this shows the dataset when I only pulled the birth numbers per state.</p>
+<pre class="r"><code>births_by_state =
+  read.delim(&quot;./dataset_births_us/Natality_2016-2018_expanded.txt&quot;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  select(state_of_residence,births,total_population)
+
+view(births_by_state)</code></pre>
+<p>These numbers are off ever so slightly from the data used to calculate cesarean rates. For example the births in alabama differ by 3 people. This difference may be attributed to the data which was supressed because the delivery method of the birth was not known.</p>
+<p>A decision must be made for which total to use for the mapping of our project.</p>
 </div>
-<div id="methods" class="section level2">
-<h2>Methods</h2>
-</div>
-<div id="results" class="section level2">
-<h2>Results</h2>
-</div>
-<div id="discussion" class="section level2">
-<h2>Discussion</h2>
+<div id="data-cleaning-summary" class="section level2">
+<h2>Data Cleaning Summary</h2>
+<p>Here we have 3 cleaned variables: <code>state_of_residence</code>, <code>total_births</code> and <code>c_rate</code> (cesarean rate defined by the percent of births used a cesarean delivery method.)</p>
+<p>#Write data to csv</p>
+<pre class="r"><code>write.csv(birth_df, &quot;./dataset_births_us/US_cesarean_rates.csv&quot;, row.names = FALSE)
+
+
+write.csv(births_by_state, &quot;./dataset_births_us/US_number_births_per_state.csv&quot;, row.names = FALSE)</code></pre>
 </div>
 
 

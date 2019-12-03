@@ -1,0 +1,130 @@
+---
+title: "Birth Attended"
+author: "Clement Mugenzi"
+date: "12/1/2019"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    code_folding: hide
+---
+
+# Birth Attended by skilled Staff
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(rvest)
+library(plotly)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = FALSE,
+	fig.width = 8, 
+  fig.height = 6,
+  out.width = "90%"
+)
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+```
+
+## Loading and Tidying Dataset
+
+The Maternal Mortality ratio, which is the number of pregnancy-related deaths per 100,000 live births in a certain period of time, was downloaded from [Gap Minder](https://www.gapminder.org/data/). It was originally in a wider form, so we changed in a more readable longer form. This dataset goes back in the 1800s, therefore we had a lot of missing values but this will not be a problem since we are not using this data for model building, so we just got rid of those missing values.
+
+```{r, message=FALSE}
+#Maternal Mortality ratio from gapminder dataset
+maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x1800:x2013,
+    names_to = "year",
+    values_to = "maternal_mortality"
+  ) %>% 
+  mutate(year = str_remove(year,"x")) %>% view()
+```
+
+The Births attended by skilled health staff are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The same applied for this dataset. Even though it did not have as many missing values, we still dropped all the missing values.
+
+```{r, message=FALSE}
+#births attended by skilled health staff (percent of total)
+staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_percent_of_total.csv")  %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x1984:x2017,
+    names_to = "year",
+    values_to = "perc_births_attended"
+  ) %>% 
+  mutate(year = str_remove(year,"x")) %>% view()
+```
+
+At this stage, both the maternal mortality ratio and births attended by skilled personnel datasets are combined using inner_join.
+
+```{r}
+mortality_births_attend = inner_join(maternal_mort, staff, 
+                                     by = c("country","year"))
+```
+
+## Birth attended by skilled staff - A Broader Look
+
+Here, since percent births attended by a skilled personnel is a continuous variable, we built a factor `per_range` variable that takes values from 0-100 percent and divide them into four ranges. 0-25, 26-50, 51-75, and 76-100 respectively. And we use this newly built variable to plot an interactive boxplot of maternal mortality ratio Versus the ranges of births attended by skilled personnel.
+
+```{r, message=FALSE}
+mortality_births_attend = 
+mortality_births_attend %>% 
+  drop_na() %>% 
+  mutate(
+    per_range = case_when(
+      perc_births_attended <= 25 ~ "0-25",
+      perc_births_attended <= 50 ~ "26-50",
+      perc_births_attended <= 75 ~ "51-75",
+      perc_births_attended <= 100 ~ "76-100",
+      TRUE                        ~ ""),
+    per_range = factor(per_range, levels = c("0-25", "26-50", 
+                                             "51-75", "76-100")))
+mortality_births_attend %>% 
+  plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
+          colors = "Set2") %>% 
+  layout(
+    xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
+    yaxis = list(title = "Maternal Mortality per 100k Live Births"))
+```
+
+As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
+
+## Countries with High Attendance - A closer look
+
+Let's now zoom in and see if there might be any significant trend as we move toward those countries with seemingly higher percentage of births attended by skilled personnel. We took the `76-100` range and divided it into five separate ranges as seen in the code, and built the same interactive box plot.
+
+```{r, message=FALSE}
+Top_count =
+  mortality_births_attend %>% 
+  filter(per_range == "76-100") %>%
+  mutate(
+    top_range = case_when(
+      perc_births_attended <= 81 ~ "76-81",
+      perc_births_attended <= 85 ~ "82-85",
+      perc_births_attended <= 90 ~ "86-90",
+      perc_births_attended <= 95 ~ "91-95",
+      perc_births_attended <= 100 ~ "96-100",
+      TRUE                        ~ ""),
+    per_range = factor(per_range, levels = c("76-81", "82-85", 
+                                             "86-90", "91-95", "96-100"))) %>% 
+  select(-per_range)
+
+Top_count %>%
+  plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
+          colors = "Set2") %>% 
+  layout(
+    xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
+    yaxis = list(title = "Maternal Mortality per 100k Live Births"))
+```
+
+It seems there is not any significant trend being followed but there is an overall decrease in maternal mortality ratio as the births attendance increases.
+
+
+
+
