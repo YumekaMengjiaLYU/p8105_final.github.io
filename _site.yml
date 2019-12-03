@@ -5,6 +5,8 @@ navbar:
   right:
       - icon: fa-github fa-lg
         href: https://github.com/YumekaMengjiaLYU/p8105_final.github.io
+      - text: "US Interactive Map"
+        href: https://mengjia-lyu.shinyapps.io/us_shiny/
 output:
     html_document:
       toc: true

@@ -1,0 +1,10 @@
+name: us_shiny
+title:
+username:
+account: mengjia-lyu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1554901
+bundleId: 2636172
+url: https://mengjia-lyu.shinyapps.io/us_shiny/
+when: 1575384204.29589

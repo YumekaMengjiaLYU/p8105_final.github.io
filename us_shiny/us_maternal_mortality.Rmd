@@ -26,18 +26,20 @@ thm <-
       gridLineWidth = 1
     )
   )
-cdc_maternal_death_data = read.delim("~/Documents/MS_Biostatistics/P8105/Final_Project/p8105_final.github.io/us_shiny/data/Underlying_Cause_of_Death_1999-2017.txt") %>%
+cdc_maternal_death_data = read.delim("data/Underlying_Cause_of_Death_1999-2017.txt") %>%
   janitor::clean_names() %>%
   na.omit() %>%
   select(-notes, -gender_code, -hispanic_origin_code,-race_code,-state_code, -gender, -ten_year_age_groups_code) %>%
   group_by(state) %>%
   summarise(total_death = sum(deaths))
 
-cdc_birth_data = read.csv("~/Documents/MS_Biostatistics/P8105/Final_Project/p8105_final.github.io/us_shiny/data/us_states_data.csv") %>%
+cdc_birth_data = read.csv("data/us_states_data.csv") %>%
   janitor::clean_names() %>%
   na.omit() %>%
   select(-total_population) %>%
-  rename("state" = "state_of_residence")
+  rename("state" = "state_of_residence") 
+ 
+cdc_birth_data = cdc_birth_data[-52, ]
 ```
 
 Column {data-width=600}
@@ -48,12 +50,12 @@ Column {data-width=600}
 ```{r}
 data("usgeojson")
 
-cdc_merged_data = cdc_maternal_death_data %>%
-  group_by(state) %>%
-  summarise(total_death = sum(deaths)) %>%
-  na.omit() %>%
-  
-  mutate(total_percent = total_death/total_pop)
+cdc_merged_data = merge(x = cdc_maternal_death_data, 
+                        y = cdc_birth_data,
+                        by = "state",
+                        all = TRUE) %>%
+                  na.omit() %>%
+                  mutate(mortality_rate = total_death/births)
 
 n <- 4
 colstops <- data.frame(
@@ -62,8 +64,8 @@ colstops <- data.frame(
   list_parse2()
 
 highchart() %>%
-  hc_add_series_map(usgeojson, cdc_data, name = "Percent of Deaths",
-                    value = "total_percent", joinBy =  c("woename", "state"),
+  hc_add_series_map(usgeojson, cdc_merged_data, name = "Percent of Deaths",
+                    value = "mortality_rate", joinBy =  c("woename", "state"),
                     dataLabels = list(enabled = TRUE,
                                       format = '{point.properties.postalcode}')) %>%
   hc_colorAxis(stops = colstops) %>%
