@@ -1,5 +1,5 @@
 ---
-title: "global cost"
+title: "Global cost analysis for top 10 developed countries"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -142,8 +142,8 @@ ten_developed_countries_maternal_mort =
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "Maternal mortality(%)",
-       title = "Maternal mortality for 10 developed countries")
+       y = "Maternal mortality (%)"
+       )
 
 interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort, 
                                           tooltip = c("x", "y"))
@@ -184,8 +184,8 @@ mmr_gdp_capita_log %>%
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "GDP per capita (dollars)",
-       title = "GDP per capita in top 10 developed countries")
+       y = "GDP per capita ($)"
+       )
 
 interactive_gdp_per_capita = ggplotly(ten_developed_countries_gdp_per_capita, 
                                           tooltip = c("x", "y"))
@@ -217,15 +217,15 @@ ten_developed_countries_health_spending =
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "Percent GDP that comes from healthcare spending (%)",
-       title = "Different amount of healthcare spending across 10 developed countries")
+       y = "Percent GDP that comes from healthcare spending (%)"
+       )
 
 interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spending,
                                            tooltip = c("y", "x", "colour"))
 interactive_healthcare_spending
 ```
 
-### Figure 4. Cost to mother 
+### Figure 4. Average cost of giving birth
 ```{r}
 ten_developed_countries_childbirth_cost = 
   child_birth_cost %>% 
@@ -246,8 +246,8 @@ ten_developed_countries_childbirth_cost =
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "Average cost of giving birth ($)",
-       title = "Cost of child birth in 10 developed countries")
+       y = "Average cost of giving birth ($)"
+       )
 
 interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost, 
                                           tooltip = c("x", "y"))
