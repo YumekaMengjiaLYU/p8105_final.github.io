@@ -132,3 +132,33 @@ mmr_gdp_capita_log %>%
     title = "Maternal mortality ratio vs. ln(GDP per capita)"
   )
 ```
+
+# Maternal mortality ratio in top 10 developed countries
+```{r}
+ten_developed_countries_gdp_per_capita = 
+mmr_gdp_capita_log %>%  
+  filter(year == 2013,
+         country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        )) %>% 
+  mutate(country = as.factor(country)) %>% 
+  ggplot(aes(x = country, y = gdp_per_capita, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "GDP per capita (dollars)",
+       title = "Cost of child birth in 10 developed countries")
+
+interactive_gdp_per_capita = ggplotly(ten_developed_countries_gdp_per_capita, 
+                                          tooltip = c("x", "y"))
+```
+
