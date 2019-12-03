@@ -10,11 +10,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Alicia Dagle" />
 
-<meta name="date" content="2019-11-23" />
 
-<title>cost_to_mother_data</title>
+<title>other_global_factors.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -363,133 +361,11 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">cost_to_mother_data</h1>
-<h4 class="author">Alicia Dagle</h4>
-<h4 class="date">November 23, 2019</h4>
 
 </div>
 
 
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.2
-## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
-## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
-## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ───────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(rvest)</code></pre>
-<pre><code>## Loading required package: xml2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;rvest&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     pluck</code></pre>
-<pre><code>## The following object is masked from &#39;package:readr&#39;:
-## 
-##     guess_encoding</code></pre>
-<pre class="r"><code>library(httr)</code></pre>
-<pre class="r"><code>url = &quot;https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018-4#35-maine-16&quot;
 
-birth_cost_us = read_html(url)
-
-state_vec =
-  birth_cost_us %&gt;% 
-  html_nodes(&quot;.slide-title-text&quot;) %&gt;% 
-  html_text()
-
-state_vec #THIS NEEDS TO BE CLEANED(GET RID OF NUMBERS)</code></pre>
-<pre><code>##  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      
-##  [5] &quot;California&quot;     &quot;Colorado&quot;       &quot;Connecticut&quot;    &quot;Delaware&quot;      
-##  [9] &quot;Florida&quot;        &quot;Georgia&quot;        &quot;Hawaii&quot;         &quot;Idaho&quot;         
-## [13] &quot;Illinois&quot;       &quot;Indiana&quot;        &quot;Iowa&quot;           &quot;Kansas&quot;        
-## [17] &quot;Kentucky&quot;       &quot;Louisiana&quot;      &quot;Maine&quot;          &quot;Maryland&quot;      
-## [21] &quot;Massachusetts&quot;  &quot;Michigan&quot;       &quot;Minnesota&quot;      &quot;Mississippi&quot;   
-## [25] &quot;Missouri&quot;       &quot;Montana&quot;        &quot;Nebraska&quot;       &quot;Nevada&quot;        
-## [29] &quot;New Hampshire&quot;  &quot;New Jersey&quot;     &quot;New Mexico&quot;     &quot;New York&quot;      
-## [33] &quot;North Carolina&quot; &quot;North Dakota&quot;   &quot;Ohio&quot;           &quot;Oklahoma&quot;      
-## [37] &quot;Oregon&quot;         &quot;Pennsylvania&quot;   &quot;Rhode Island&quot;   &quot;South Carolina&quot;
-## [41] &quot;South Dakota&quot;   &quot;Tennessee&quot;      &quot;Texas&quot;          &quot;Utah&quot;          
-## [45] &quot;Vermont&quot;        &quot;Virginia&quot;       &quot;Washington&quot;     &quot;West Virginia&quot; 
-## [49] &quot;Wisconsin&quot;      &quot;10. Wyoming&quot;</code></pre>
-<pre class="r"><code>#this need to be cleaned a lot
-all_costs = 
-  birth_cost_us %&gt;% 
-  html_nodes(&quot;.clearfix p+ p&quot;) %&gt;% 
-  html_text()
-
-view(state_vec)
-view(all_costs)</code></pre>
-<pre class="r"><code>#clean state names
-state_df = tibble(
-  state = state_vec %&gt;% 
-    str_replace(&quot;.\\. &quot;,&quot;&quot;) %&gt;%
-    str_replace(&quot;[1-9]&quot;,&quot;&quot;),
-  &quot;Vaginal_birth&quot; = 1,
-  &quot;C-section&quot; = 0,
-  &quot;with_ins&quot; = 2,
-  &quot;without_ins&quot; = 3
-) %&gt;% 
-  pivot_longer(
-    &quot;Vaginal_birth&quot;: &quot;C-section&quot;,
-    names_to = &quot;type&quot;,
-    values_to = &quot;dummy&quot;
-  ) %&gt;% 
-  pivot_longer(
-    &quot;with_ins&quot;: &quot;without_ins&quot;,
-    names_to = &quot;insurance&quot;,
-    values_to = &quot;dummy2&quot;
-  ) %&gt;% 
-  select(state, type, insurance, -dummy, -dummy2)
-
-view(state_df)</code></pre>
-<p>Time to clean the cost dataset…this is gonna be fun…</p>
-<pre class="r"><code>#pivot longer so all costs are in one column
-
-
-cost_df = tibble(
-  all_costs
-) %&gt;% 
-  janitor::clean_names()
-
-cost_df_clean = cost_df %&gt;% 
-    separate(all_costs, into = c(&quot;with_ins&quot;, &quot;other&quot;, &quot;cost_w&quot;), sep = &quot;\\:&quot;) %&gt;% 
-    separate(other, into = c(&quot;without_ins&quot;, &quot;cost_wo&quot;), sep = &quot;C-section without insurance&quot; ) %&gt;% 
-    separate(without_ins, into = c(&quot;without_ins&quot;, &quot;cost_wo&quot;), sep = &quot;Vaginal birth without insurance&quot;)%&gt;%
-mutate(
-  type = factor(with_ins), 
-  type = recode(type,
-    &quot;Vaginal birth with insurance&quot; = &quot;Vaginal_birth&quot;,
-    &quot;C-section with insurance&quot; = &quot;C-section&quot;)
-) %&gt;% 
-  select(-with_ins, -cost_wo) %&gt;% 
-  rename(&quot;with_ins&quot; = &quot;cost_w&quot;) %&gt;% 
-  select(type,with_ins,without_ins) %&gt;% 
-  pivot_longer(
-    with_ins: without_ins,
-    names_to = &quot;insurance&quot;,
-    values_to = &quot;cost&quot;
-  )</code></pre>
-<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
-## [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37,
-## 39, ...].</code></pre>
-<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
-## [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
-## 40, ...].</code></pre>
-<pre class="r"><code>view(cost_df_clean)</code></pre>
-<p>Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.</p>
-<pre class="r"><code># merge the state information with the cost information
-# write to csv
-
-US_cost_to_mother_df = 
-  cost_df_clean %&gt;% 
-  mutate(state = state_df$state) %&gt;% 
-  select(state,type, insurance, cost)
-
-view(US_cost_to_mother_df)
-
-write.csv(US_cost_to_mother_df, file = &quot;US_cost_to_mother_df.csv&quot;)</code></pre>
 
 
 

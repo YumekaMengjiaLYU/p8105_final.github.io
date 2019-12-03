@@ -44,7 +44,7 @@ maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_l
     names_to = "year",
     values_to = "maternal_mortality"
   ) %>% 
-  mutate(year = str_remove(year,"x")) %>% view()
+  mutate(year = str_remove(year,"x"))
 ```
 
 The Births attended by skilled health staff are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The same applied for this dataset. Even though it did not have as many missing values, we still dropped all the missing values.
@@ -58,7 +58,7 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
     names_to = "year",
     values_to = "perc_births_attended"
   ) %>% 
-  mutate(year = str_remove(year,"x")) %>% view()
+  mutate(year = str_remove(year,"x"))
 ```
 
 At this stage, both the maternal mortality ratio and births attended by skilled personnel datasets are combined using inner_join.
@@ -84,10 +84,12 @@ mortality_births_attend %>%
       perc_births_attended <= 100 ~ "76-100",
       TRUE                        ~ ""),
     per_range = factor(per_range, levels = c("0-25", "26-50", 
-                                             "51-75", "76-100")))
+                                             "51-75", "76-100")),
+    text_label = str_c("country: ", country))
+
 mortality_births_attend %>% 
   plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
-          colors = "Set2") %>% 
+          colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))
@@ -112,12 +114,13 @@ Top_count =
       perc_births_attended <= 100 ~ "96-100",
       TRUE                        ~ ""),
     per_range = factor(per_range, levels = c("76-81", "82-85", 
-                                             "86-90", "91-95", "96-100"))) %>% 
+                                             "86-90", "91-95", "96-100")),
+    text_label = str_c("country: ", country)) %>% 
   select(-per_range)
 
 Top_count %>%
   plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
-          colors = "Set2") %>% 
+          colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))

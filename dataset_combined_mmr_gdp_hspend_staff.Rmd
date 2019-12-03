@@ -186,7 +186,8 @@ healthcare_spending_2013_developed =
 ```{r}
 ten_developed_countries_health_spending = 
   healthcare_spending_2013_developed %>% 
-  mutate(country = as.factor(country)) %>% 
+  mutate(country = as.factor(country),
+         country = fct_reorder(country, health_spending_percent_gdp)) %>% 
   ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
@@ -236,7 +237,18 @@ maternal_mort_2013_developed =
 ```{r}
 ten_developed_countries_maternal_mort = 
   maternal_mort_2013_developed %>% 
-  mutate(country = as.factor(country)) %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Singapore",
+                               "Australia",
+                               "Spain",
+                               "United Kingdom",
+                               "Canada",
+                               "Japan",
+                               "Germany",
+                               "Switzerland",
+                               "France",
+                               "United States")) %>% 
   ggplot(aes(x = country, y = percent_maternal_mortality, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
@@ -283,7 +295,7 @@ interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost,
 subplot(interactive_healthcare_spending, 
         interactive_maternal_mortality,
         shareX = T, shareY = T) %>% 
-  layout(title = "Top 10 developed countries - \n%GDP that comes from healthcare spending, \nMaternal mortality ratio, \nGDP per capita")
+  layout(title = "Mismatch between %GDP that comes from healthcare spending and maternal mortality ratio")
 
 
 subplot(interactive_child_birth_cost,
