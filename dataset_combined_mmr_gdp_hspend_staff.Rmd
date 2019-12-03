@@ -10,7 +10,7 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
-# Dataset: MMR vs GDP PER CAPITA
+
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(viridis)
@@ -34,7 +34,8 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-## Import dataset
+# Maternal mortality ratio vs. GDP per capita
+## Import and tidy dataset
 ```{r}
 # Maternal Mortality Ratio: number of maternal deaths during a given time period per 100,000 live births during the same time period.
 # MMR measures the obsteric risk a women is facing when she is pregnant. 
@@ -60,9 +61,9 @@ summary(is.na(mmr_gdp_capita$gdp_per_capita)) # 845 NA, 3535 non-NA
 summary(is.na(mmr_gdp_capita$gdp)) # 750 NA, 3630 non-NA
 ```
 
-## log-transformed 'gdp_per_capita'
+
 ```{r}
-# log-transformed
+# log-transformed 'gdp_per_capita'
 mmr_gdp_capita_log = 
   mmr_gdp_capita %>% 
   mutate(
@@ -70,7 +71,7 @@ mmr_gdp_capita_log =
   )
 ```
 
-# Maternal mortality ratio vs. GDP per capita
+## Maternal mortality ratio vs. GDP per capita
 ```{r}
 x1_template = list(
   title = "GDP per capita ($)"
@@ -97,7 +98,7 @@ mmr_gdp_capita_log %>%
   )
 ```
 
-# Maternal mortality ratio vs. ln(GDP per capita)
+## Maternal mortality ratio vs. ln(GDP per capita)
 ```{r}
 mmr_gdp_capita_log %>%  
   filter(year == 2013) %>% 
@@ -112,7 +113,7 @@ mmr_gdp_capita_log %>%
   )
 ```
 
-# Maternal mortality ratio in top 10 developed countries
+## GDP per capita in top 10 developed countries
 ```{r}
 ten_developed_countries_gdp_per_capita = 
 mmr_gdp_capita_log %>%  
@@ -135,13 +136,13 @@ mmr_gdp_capita_log %>%
   theme(legend.position = "none") +
   labs(x = "Developed countries",
        y = "GDP per capita (dollars)",
-       title = "Cost of child birth in 10 developed countries")
+       title = "GDP per capita in top 10 developed countries")
 
 interactive_gdp_per_capita = ggplotly(ten_developed_countries_gdp_per_capita, 
                                           tooltip = c("x", "y"))
 ```
 
-# Healthcare spending (%GDP) vs. Country
+# Healthcare spending (%GDP) across countries
 
 ## Import and clean data
 ```{r}
@@ -291,9 +292,6 @@ subplot(interactive_child_birth_cost,
   layout(title = "Top 10 developed countries")
   
 ```
-
-
-
 
 # Health staff
 ```{r}
