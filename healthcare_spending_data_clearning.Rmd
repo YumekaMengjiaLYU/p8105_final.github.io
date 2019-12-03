@@ -80,7 +80,8 @@ ten_developed_countries_health_spending =
        y = "% GDP that comes from healthcare spending",
        title = "Different amount of healthcare spending across 10 developed countries")
 
-interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spending)
+interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spending,
+                                           tooltip = c("y", "x", "colour"))
 ```
 
 #### trying to relate the different amount of healthcare spending across 10 developed countries graph to a manternal mortality graph for the same countries
@@ -127,7 +128,8 @@ ten_developed_countries_maternal_mort =
        y = "Maternal mortality(%)",
        title = "Mismatching between US healthcare spending and maternal mortality")
 
-interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort)
+interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort, 
+                                          tooltip = c("x", "y"))
 ```
 
 ## Combine two interactive graphs
