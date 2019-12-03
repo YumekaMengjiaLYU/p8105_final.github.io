@@ -11,6 +11,7 @@ editor_options:
 library(tidyverse)
 library(viridis)
 library(readxl)
+library(plotly)
 
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -85,3 +86,42 @@ mmr_gdp_capita_log %>%
 
 ```
 
+```{r}
+x1_template = list(
+  title = "GDP per capita ($)"
+)
+
+x2_template = list(
+  title = "ln(GDP per capita)"
+)
+
+y_template = list(
+  title = "Maternal Mortality Ratio per 100,000 live births"
+)
+
+mmr_gdp_capita_log %>%  
+  filter(year == 2015) %>% 
+  plot_ly(
+    x = ~gdp_per_capita, y = ~mmr, type = "scatter", 
+    mode = "markers", color = ~country
+  ) %>%  
+  layout(
+    xaxis = x1_template,
+    yaxis = y_template,
+    title = "Maternal mortality ratio vs. GDP per capita"
+  )
+```
+
+```{r}
+mmr_gdp_capita_log %>%  
+  filter(year == 2015) %>% 
+  plot_ly(
+    x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", 
+    mode = "markers", color = ~country
+  ) %>%  
+  layout(
+    xaxis = x2_template,
+    yaxis = y_template,
+    title = "Maternal mortality ratio vs. ln(GDP per capita)"
+  )
+```
