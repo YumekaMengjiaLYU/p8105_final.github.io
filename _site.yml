@@ -2,6 +2,15 @@ name: "Final Project"
 output_dir: "."
 navbar:
   title: "Home"
+  left:
+     #- text: "US Interactive Map"
+      #  href: https://mengjia-lyu.shinyapps.io/us_shiny/
+      - text: Report
+        href: Report.html
+      - text: Global Cost
+        href: global_cost.html
+      - text: Other Global Factors
+        href: other_global_factors.html
   right:
       - icon: fa-github fa-lg
         href: https://github.com/YumekaMengjiaLYU/p8105_final.github.io
