@@ -44,7 +44,7 @@ The expected cost to the mother of giving birth was scrapped from the following 
 
 ### Global Data
 
-The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [World Development Indicators](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
+The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [Gap Minder](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
 
 
 ## Methods
@@ -53,7 +53,7 @@ The percent of births attended by a skilled physician was downloaded directly fr
 ### Maternal Mortality
 The World Health Organization defines Maternal Mortality Ratio (MMR) as the number of maternal deaths per 100,000 births. Since the ratio of maternal death to birth is relatively small, this scaling factor helps to make the data more readable for a human viewer. The global data for MMR was downloaded from [Gap Minder](https://www.gapminder.org/data/).
 
-To clean the global MMR data for use, the data was pivoted from wide to long format. It is also worthwhile to note that this dataset contains data dating back to the 1800s and therefore has many missing values. This is nt a problem for our research intentions since we are not fitting regression models for the scope of this problem and therefore we chose to exclude missing values where necessary.
+To clean the global MMR data for use, the data was pivoted from wide to long format. It is also worthwhile to note that this dataset contains data dating back to the 1800s and therefore has many missing values. This is not a problem for our research intentions since we are not fitting regression models for the scope of this problem and therefore we chose to exclude missing values where necessary.
 
 ```{r MMR_global, results=FALSE, message=FALSE}
 #Maternal Mortality ratio from gapminder dataset
@@ -73,6 +73,38 @@ The Maternal Mortality ratios in the US were not directly available. To circumve
 
 
 ****** Kay needs to add this code chunk after she finishes the shiny part *****
+
+### GDP per capita
+```{r mmr_gdp_per_capita, message=FALSE}
+# Maternal Mortality Ratio and GDP per capita
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code),
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 1999, year < 2016)
+```
+
+GDP per capita stands for Gross Domestic Product per person. It is an important indicator of economic performance and a useful unit to make cross-country comparisons of average living standards and economic wellbeing. In our project, GDP per capita is a factor to show its relationship with maternal mortality ratio across countries.
+
+```{r ln_gdp_per_capita, message = FALSE}
+# log-transformed 'gdp_per_capita'
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+```
+
+We specifically include a new variable `ln_gdp_per_capita`, the log-transformed `gdp_per_capita` to show a more linear relationship rather than a skewed distribution with maternal mortality ratio.
+
 
 ### Percent Births Attended By Skilled Health Staff
 
@@ -151,11 +183,6 @@ Since the cesarean rates were not directly available from the CDC, we first down
 
 
 ## Results
-
-
-
-
-
 
 
 ```{r plot_attended, message=FALSE}
