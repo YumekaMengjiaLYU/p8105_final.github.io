@@ -186,7 +186,17 @@ healthcare_spending_2013_developed =
 ten_developed_countries_health_spending = 
   healthcare_spending_2013_developed %>% 
   mutate(country = as.factor(country),
-         country = fct_reorder(country, health_spending_percent_gdp)) %>% 
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
   ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
@@ -237,24 +247,14 @@ maternal_mort_2013_developed =
 ten_developed_countries_maternal_mort = 
   maternal_mort_2013_developed %>% 
   mutate(country = as.factor(country),
-         country = fct_relevel(country, 
-                               "Singapore",
-                               "Australia",
-                               "Spain",
-                               "United Kingdom",
-                               "Canada",
-                               "Japan",
-                               "Germany",
-                               "Switzerland",
-                               "France",
-                               "United States")) %>% 
+         country = fct_reorder(country, percent_maternal_mortality)) %>% 
   ggplot(aes(x = country, y = percent_maternal_mortality, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
        y = "Maternal mortality(%)",
-       title = "Mismatching between US healthcare spending and maternal mortality")
+       title = "Maternal mortality for 10 developed countries")
 
 interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort, 
                                           tooltip = c("x", "y"))
@@ -291,8 +291,8 @@ interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost,
 
 ## Combine three interactive graphs
 ```{r}
-subplot(interactive_healthcare_spending, 
-        interactive_maternal_mortality,
+subplot(interactive_maternal_mortality,
+        interactive_healthcare_spending, 
         shareX = T, shareY = T) %>% 
   layout(title = "Mismatch between %GDP that comes from healthcare spending and maternal mortality ratio")
 
