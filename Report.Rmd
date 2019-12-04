@@ -409,9 +409,10 @@ y_template = list(
 
 mmr_gdp_capita_log %>%  
   filter(year == 2013) %>% 
+  mutate(text_label = str_c("GDP per capita ($): ", gdp_per_capita)) %>% 
   plot_ly(
     x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", 
-    mode = "markers", color = ~country
+    mode = "markers", color = ~country, text = ~text_label
   ) %>%  
   layout(
     xaxis = x2_template,
