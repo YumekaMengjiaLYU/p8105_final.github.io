@@ -40,8 +40,8 @@ state_df = tibble(
     str_replace("[1-9]",""),
   "Vaginal_birth" = 1,
   "C-section" = 0,
-  "with_ins" = 2,
-  "without_ins" = 3
+  "without_ins" = 2,
+  "with_ins" = 3
 ) %>% 
   pivot_longer(
     "Vaginal_birth": "C-section",
@@ -49,7 +49,7 @@ state_df = tibble(
     values_to = "dummy"
   ) %>% 
   pivot_longer(
-    "with_ins": "without_ins",
+    "without_ins": "with_ins",
     names_to = "insurance",
     values_to = "dummy2"
   ) %>% 
@@ -65,13 +65,10 @@ Time to clean the cost dataset...this is gonna be fun...
 ```{r}
 
 #pivot longer so all costs are in one column
-
-
 cost_df = tibble(
   all_costs
 ) %>% 
   janitor::clean_names()
-
 cost_df_clean = cost_df %>% 
     separate(all_costs, into = c("with_ins", "other", "cost_w"), sep = "\\:") %>% 
     separate(other, into = c("without_ins", "cost_wo"), sep = "C-section without insurance" ) %>% 
@@ -89,10 +86,10 @@ mutate(
     with_ins: without_ins,
     names_to = "insurance",
     values_to = "cost"
-  )
-  
-
-
+  ) %>% 
+  mutate(
+    insurance = recode(insurance, "with_ins" = "without_ins",
+                       "without_ins" = "with_ins"))
 view(cost_df_clean)
 
 
