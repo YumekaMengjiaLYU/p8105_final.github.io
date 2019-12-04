@@ -1,9 +1,10 @@
 ---
 title: "Report"
-
 output: 
  html_document:
    theme: lumen
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -244,6 +245,33 @@ child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>%
 
 ## Results
 
+```{r scatterplot_mmr_gdp}
+x1_template = list(
+  title = "GDP per capita ($)"
+)
+
+x2_template = list(
+  title = "ln(GDP per capita)"
+)
+
+y_template = list(
+  title = "Maternal Mortality Ratio per 100,000 live births"
+)
+
+mmr_gdp_capita_log %>%  
+  filter(year == 2013) %>% 
+  plot_ly(
+    x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", 
+    mode = "markers", color = ~country
+  ) %>%  
+  layout(
+    xaxis = x2_template,
+    yaxis = y_template,
+    title = "Maternal mortality ratio vs. ln(GDP per capita)"
+  )
+```
+
+The scatterplot shows that globally, `ln(GDP per capita)` is approximately inversely associated with `Maternal Mortality Ratio per 100,000 live births`. From this overview, we see that GDP per capita can be a strong predictor of maternal mortality ratio at global level.
 
 ```{r plot mortality global, message=FALSE}
 ten_developed_countries_maternal_mort = 
@@ -263,7 +291,49 @@ interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort,
 interactive_maternal_mortality
 ```
 
-As observed, the US has the highest maternal mortality ratio among the ten selected countries. 
+Now, we focus specifically on the top 10 developed countries. As observed, the US has the highest maternal mortality ratio among the ten selected countries. 
+
+```{r}
+ten_developed_countries_gdp_per_capita = 
+mmr_gdp_capita_log %>%  
+  filter(year == 2013,
+         country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        )) %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = gdp_per_capita, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "GDP per capita (dollars)",
+       title = "GDP per capita in top 10 developed countries")
+
+interactive_gdp_per_capita = ggplotly(ten_developed_countries_gdp_per_capita, 
+                                          tooltip = c("x", "y"))
+interactive_gdp_per_capita
+```
+
+Together with the maternal mortality ratio plot, we see a general trend that the higher the GDP per capita, the lower the maternal mortality ratio. However, countries like United States, France and Canada, have both high maternal mortality ratio and high GDP per capita. This indicates that the economic performance and average living standards of an individual or a country may not thoroughly reflect how the maternal health system functions.
 
 ```{r plot healthcare spending, message=FALSE}
 ten_developed_countries_health_spending = 
