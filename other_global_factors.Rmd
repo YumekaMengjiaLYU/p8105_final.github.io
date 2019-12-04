@@ -14,7 +14,7 @@ library(rvest)
 library(plotly)
 ```
 
-Column {data-width=350}
+Column {data-width=700}
 -----------------------------------------------------------------------
 
 ```{r}
@@ -68,7 +68,7 @@ mmr_gdp_capita_log %>%
   )
 ```
 
-Column {data-width=350}
+Column {data-width=300}
 -----------------------------------------------------------------------
 
 

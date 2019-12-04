@@ -14,30 +14,12 @@ url = "https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018
 
 birth_cost_us = read_html(url)
 
+#pull datasets, clean after
 state_vec =
   birth_cost_us %>% 
   html_nodes(".slide-title-text") %>% 
   html_text()
 
-state_vec #THIS NEEDS TO BE CLEANED(GET RID OF NUMBERS)
-```
-
-    ##  [1] "Alabama"        "Alaska"         "Arizona"        "Arkansas"      
-    ##  [5] "California"     "Colorado"       "Connecticut"    "Delaware"      
-    ##  [9] "Florida"        "Georgia"        "Hawaii"         "Idaho"         
-    ## [13] "Illinois"       "Indiana"        "Iowa"           "Kansas"        
-    ## [17] "Kentucky"       "Louisiana"      "Maine"          "Maryland"      
-    ## [21] "Massachusetts"  "Michigan"       "Minnesota"      "Mississippi"   
-    ## [25] "Missouri"       "Montana"        "Nebraska"       "Nevada"        
-    ## [29] "New Hampshire"  "New Jersey"     "New Mexico"     "New York"      
-    ## [33] "North Carolina" "North Dakota"   "Ohio"           "Oklahoma"      
-    ## [37] "Oregon"         "Pennsylvania"   "Rhode Island"   "South Carolina"
-    ## [41] "South Dakota"   "Tennessee"      "Texas"          "Utah"          
-    ## [45] "Vermont"        "Virginia"       "Washington"     "West Virginia" 
-    ## [49] "Wisconsin"      "10. Wyoming"
-
-``` r
-#this need to be cleaned a lot
 all_costs = 
   birth_cost_us %>% 
   html_nodes(".clearfix p+ p") %>% 
@@ -73,7 +55,7 @@ state_df = tibble(
 view(state_df)
 ```
 
-Time to clean the cost dataset…this is gonna be fun…
+Time to clean the cost dataset...this is gonna be fun...
 
 ``` r
 #pivot longer so all costs are in one column
@@ -116,10 +98,7 @@ mutate(
 view(cost_df_clean)
 ```
 
-Unfortunately, web scraping gets a bit messy. We had to assume the order
-of the entries was preserved, which was verified for the first few
-entries. This is the final clean dataset which will be saved as an excel
-file for other team mates to use more easily.
+Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.
 
 ``` r
 # merge the state information with the cost information
