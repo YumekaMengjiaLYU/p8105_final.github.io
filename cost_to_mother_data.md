@@ -55,7 +55,7 @@ state_df = tibble(
 view(state_df)
 ```
 
-Time to clean the cost dataset...this is gonna be fun...
+Time to clean the cost dataset…this is gonna be fun…
 
 ``` r
 #pivot longer so all costs are in one column
@@ -98,7 +98,10 @@ mutate(
 view(cost_df_clean)
 ```
 
-Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.
+Unfortunately, web scraping gets a bit messy. We had to assume the order
+of the entries was preserved, which was verified for the first few
+entries. This is the final clean dataset which will be saved as an excel
+file for other team mates to use more easily.
 
 ``` r
 # merge the state information with the cost information
