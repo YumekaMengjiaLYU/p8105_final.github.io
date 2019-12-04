@@ -45,5 +45,5 @@ Using Bar plots or histograms to show maternal health trend over time.
 
 **Planned timeline:**  
 Clean data/Exploratory data analysis ~ 1 week  
-Formal analysis/visualization ~2 weeks  
+Formal analysis/visualization ~ 2 weeks  
 Interactive web tools/Screencast ~ 1 weeks
