@@ -14,6 +14,9 @@ navbar:
   right:
       - icon: fa-github fa-lg
         href: https://github.com/YumekaMengjiaLYU/p8105_final.github.io
+      - icon: fa-envelope fa-lg
+        href: mailto:<alicia.dagle@columbia.edu>&cc:<ml4420@columbia.edu>
+        #cc: mailto:<ml4420@columbia.edu>
       #- text: "US Interactive Map"
       #  href: https://mengjia-lyu.shinyapps.io/us_shiny/
 output:

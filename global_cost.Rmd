@@ -1,5 +1,5 @@
 ---
-title: "global cost"
+title: "Global cost analysis with respect to maternal mortality rate of top 10 developed countries "
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -14,6 +14,116 @@ library(tidyverse)
 library(viridis)
 library(p8105.datasets)
 library(plotly)
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 8, 
+  fig.height = 6,
+  out.width = "100%"
+)
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+```
+
+```{r}
+# Dataset 1: Maternal Mortality ratio 
+maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x1800:x2013,
+    names_to = "year",
+    values_to = "percent_maternal_mortality"
+  ) %>% 
+  mutate(year = str_remove(year,"x"))
+
+maternal_mort_2013_developed = 
+  maternal_mort %>% 
+  filter(year == 2013) %>% 
+  filter(country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        ))
+
+```
+
+```{r}
+# Dataset 2: GDP per capita
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code)
+  ) %>% 
+  mutate(
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 1999, year < 2016)
+
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+```
+
+```{r}
+# Dataset 3: %GDP that comes from healthcare spending
+health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
+  janitor::clean_names() %>% 
+  select(country_name, country_code, x2000:x2015) %>% 
+  pivot_longer(
+  x2000:x2015,
+  names_to = "year",
+  values_to = "health_spending_percent_GDP") %>% 
+  rename("health_spending_percent_gdp" = "health_spending_percent_GDP") %>% 
+  mutate(year = str_remove(year,"x")) %>% 
+  mutate(health_spending_percent_gdp = round(health_spending_percent_gdp, digits = 2)) %>% 
+  mutate(country_name = as.factor(country_name),
+         country_code = as.factor(country_code),
+         year = as.numeric(year)) %>% 
+  rename(country = country_name,
+         code = country_code)
+
+healthcare_spending_2013_developed = 
+  health_spending_percent_gdp %>% 
+  filter(year == 2013) %>% 
+  filter(country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        ))
+```
+
+```{r}
+# Dataset 4: Cost of giving birth
+child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(average_cost = (child_birth_cost_normal + child_birth_cost_csec)/2)
 ```
 
 
@@ -23,16 +133,64 @@ Row
 ### Figure 1. Maternal Mortality ratio 
 
 ```{r}
+ten_developed_countries_maternal_mort = 
+  maternal_mort_2013_developed %>% 
+  mutate(country = as.factor(country),
+         country = fct_reorder(country, percent_maternal_mortality)) %>% 
+  ggplot(aes(x = country, y = percent_maternal_mortality, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Maternal mortality (%)"
+       )
+
+interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort, 
+                                          tooltip = c("x", "y"))
+interactive_maternal_mortality
 
 ```
 
-Row
------------------------------------------------------------------------
-
 ### Figure 2. GDP per capita 
-
 ```{r warning = FALSE}
+ten_developed_countries_gdp_per_capita = 
+mmr_gdp_capita_log %>%  
+  filter(year == 2013,
+         country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        )) %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = gdp_per_capita, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "GDP per capita ($)"
+       )
 
+interactive_gdp_per_capita = ggplotly(ten_developed_countries_gdp_per_capita, 
+                                          tooltip = c("x", "y"))
+
+interactive_gdp_per_capita
 ```
 
 Row
@@ -40,9 +198,59 @@ Row
 ### Figure 3. %GDP that comes from healthcare spending 
 
 ```{r warning = FALSE}
+ten_developed_countries_health_spending = 
+  healthcare_spending_2013_developed %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Percent GDP that comes from healthcare spending (%)"
+       )
 
+interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spending,
+                                           tooltip = c("y", "x", "colour"))
+interactive_healthcare_spending
 ```
 
-Row
------------------------------------------------------------------------
-### Figure 4. Cost to mother 
+### Figure 4. Average cost of giving birth
+```{r}
+ten_developed_countries_childbirth_cost = 
+  child_birth_cost %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = average_cost, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Average cost of giving birth ($)"
+       )
+
+interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost, 
+                                          tooltip = c("x", "y"))
+interactive_child_birth_cost
+```
+
