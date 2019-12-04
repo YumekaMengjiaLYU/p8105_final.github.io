@@ -3,9 +3,9 @@ title: "Global cost analysis with respect to maternal mortality rate of top 10 d
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
-  editor_options: 
-    chunk_output_type: console
+    vertical_layout: fill
 ---
+
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
