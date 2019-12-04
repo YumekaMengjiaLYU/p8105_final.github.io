@@ -42,7 +42,7 @@ The expected cost to the mother of giving birth was scrapped from the following 
 
 ### Global Data
 
-The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [Gap Minder](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
+The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [World Development Indicators](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
 
 
 ## Methods
@@ -80,60 +80,11 @@ maternal_mort_2013_developed =
 ```
 
 
-The Maternal Mortality ratios in the US were not directly available. To circumvent this, we used the number of maternal deaths per state and divided this by the number of births per state to get a ratio of maternal deaths per birth. Then, we scaled this number by multiplying by 100,000 which gives the number of maternal death per 100,000 births for consistency with the statistics reported by the World Health Organization.
-
-
-
-****** Kay needs to add this code chunk after she finishes the shiny part *****
-
-### GDP per capita
-```{r mmr_gdp_per_capita, message = FALSE}
-# Maternal Mortality ratio vs. GDP per capita
-mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
-  janitor::clean_names() %>% 
-  rename(
-    country = entity,
-    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
-    gdp_per_capita = gdp_per_capita_international,
-    gdp = x6) %>% 
-  mutate(
-    country = as.factor(country),
-    code = as.factor(code)
-  ) %>% 
-  mutate(
-    gdp_per_capita = round(gdp_per_capita, digits = 2)
-  ) %>% 
-  filter(year > 1999, year < 2016)
-```
-
-GDP per capita stands for Gross Domestic Product per person. It is an important indicator of economic performance and a useful unit to make cross-country comparisons of avereage living standards and economic wellbeing. In our project, we focus on its relationship with Maternal Mortality Ratio (MMR) across countries.
-
-```{r ln_gdp_per_capita, message = FALSE}
-# log-transformed 'gdp_per_capita'
-mmr_gdp_capita_log = 
-  mmr_gdp_capita %>% 
-  mutate(
-    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
-  )
-```
-
-Particularly, we created a new variable `ln_gdp_per_capita`, the log-transformed `gdp_per_capita`, because GDP per capita has weakness in not taking into account income distribution of a country, and cross-country comparisons based on US dollars can be distorted by exchange rate fluctuations. Therefore, `gdp_per_capita` may not be the best measure of purchasing power, and `ln_gdp_per_capita` was used to reduce the effect of variations. 
 
 ### Percent Births Attended By Skilled Health Staff
 
 The percent of births attended by skilled health staff is more explicitly defined as the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The percent births attended by skilled health staff was taken directly from the aforementioned [Gap Minder](https://www.gapminder.org/data/) dataset. Noteably, this dataset has fewer missing vallues than the MMR dataset, but once again missing values were excluded when necessary.  No complex data manipulation was needed and the following code was used to read in and clean the data:
 
-```{r, message=FALSE}
-#Maternal Mortality ratio from gapminder dataset
-maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
-  janitor::clean_names() %>% 
-  pivot_longer(
-    x1800:x2013,
-    names_to = "year",
-    values_to = "maternal_mortality"
-  ) %>% 
-  mutate(year = str_remove(year,"x"))
-```
 
 ```{r Births_Attended_SkilledHealthStaff, message=FALSE}
 #births attended by skilled health staff (percent of total)
@@ -147,6 +98,7 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
   mutate(year = str_remove(year,"x"))
 ```
 
+
 Both the maternal mortality ratio and births attended by skilled personnel datasets were combined using inner_join.
 
 ```{r combine_MMR_attended, message=FALSE}
@@ -154,6 +106,7 @@ mortality_births_attend = inner_join(maternal_mort, staff, by = c("country","yea
 ```
 
 Since percent births attended by a skilled personnel is a continuous variable, we built a factor `per_range` variable that takes values from 0-100 percent and divide them into four discrete bins. 0-25, 26-50, 51-75, and 76-100 respectively. This new factor variable is then used to plot an interactive boxplot of maternal mortality ratio versus the bins of percent births attended by skilled personnel. To examine whether there was a cutoff past which the percent of births attended by a skilled health physician was no longer a significant factor, we also took a closer look at the countries in this high 76-100% attendance bin.
+
 
 ```{r bin_0to100percent, message=FALSE}
 mortality_births_attend = 
@@ -171,7 +124,9 @@ mortality_births_attend %>%
     text_label = str_c("country: ", country))
 ```
 
+
 To do this, we took the `76-100` range and divided it into five smaller ranges and built the same interactive box plot.
+
 
 ```{r bin_top25percent, message=FALSE}
 Top_count =
@@ -191,9 +146,169 @@ Top_count =
   select(-per_range)
 ```
 
+### US Cost of Giving Birth
 
-### Cesarean Rates
+The cost accrued to the mother for giving birth was not readily available in a downloadable dataset. Therefore, we found an article and performed webscraping to extract the data into separate datasets for state and cost for vaginal and cesarean births, with and without insurance:
+
+```{r webscrape_cost_data}
+url = "https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018-4#35-maine-16"
+
+birth_cost_us = read_html(url)
+
+#pull datasets, clean after
+state_vec =
+  birth_cost_us %>% 
+  html_nodes(".slide-title-text") %>% 
+  html_text()
+
+all_costs = 
+  birth_cost_us %>% 
+  html_nodes(".clearfix p+ p") %>% 
+  html_text()
+```
+
+First, we cleaned the cost data by creating a `cost_df` dataframe using `tibble()` and `janitor::clean_names()`. Next, we further cleaned this dataset as we renamed it `cost_df_clean` by separating the columns using simple expressions and string patterns. After all columns were separated, we recoded the variables and selected variables so that we had a `type` variable containing factors "Vaginal_birth" and "C-section", a `with_ins` variable containing cost with insurance, and a `without_ins` variable containing cost without insurance. Then, we pivoted to long format to create a variable `insurance` with factors `with_ins` or "with insurance" and `without_ins` or "without insurance" and `cost` which details the cost in US dollars. At this point, it is understood that there are 4 unique entries per state, although state name is not yet included in the dataset.
+
+```{r clean_US_cost_data}
+#pivot longer so all costs are in one column
+
+cost_df = tibble(
+  all_costs
+) %>% 
+  janitor::clean_names()
+
+cost_df_clean = cost_df %>% 
+    separate(all_costs, into = c("with_ins", "other", "cost_w"), sep = "\\:") %>% 
+    separate(other, into = c("without_ins", "cost_wo"), sep = "C-section without insurance" ) %>% 
+    separate(without_ins, into = c("without_ins", "cost_wo"), sep = "Vaginal birth without insurance")%>%
+mutate(
+  type = factor(with_ins), 
+  type = recode(type,
+    "Vaginal birth with insurance" = "Vaginal_birth",
+    "C-section with insurance" = "C-section")
+) %>% 
+  select(-with_ins, -cost_wo) %>% 
+  rename("with_ins" = "cost_w") %>% 
+  select(type,with_ins,without_ins) %>% 
+  pivot_longer(
+    with_ins: without_ins,
+    names_to = "insurance",
+    values_to = "cost"
+  )
+  
+```
+
+
+Next, we used `tibble()` to create a dataframe, in which we cleaned the vector state names, preserving their import order. We got rid of the string which numbered the states. Then, we created variables for `Vaginal_birth`, `C-section`, `with_ins` and `without_ins`. Next, we used pivoted to long format with `Vaginal` and `C-section` as factors of the variable `type` and `with_ins` and `without_ins` as factors of the variable `insurance`. This created a dataset with each state having 4 entries for vaginal and cesarean births, both with and without insurance. Then, we deselect the two dummy variables created, which were filled with placeholder numbers. This decision was made to create a dataset with the same format as the `cost_df`. 
+
+```{r clean_state_names}
+#clean state names
+state_df = tibble(
+  state = state_vec %>% 
+    str_replace(".\\. ","") %>%
+    str_replace("[1-9]",""),
+  "Vaginal_birth" = 1,
+  "C-section" = 0,
+  "with_ins" = 2,
+  "without_ins" = 3
+) %>% 
+  pivot_longer(
+    "Vaginal_birth": "C-section",
+    names_to = "type",
+    values_to = "dummy"
+  ) %>% 
+  pivot_longer(
+    "with_ins": "without_ins",
+    names_to = "insurance",
+    values_to = "dummy2"
+  ) %>% 
+  select(state, type, insurance, -dummy, -dummy2)
+```
+
+Finally, we merged these two datasets. Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. Therefore, we simply mutated to create a new variable and pasted the state variable from the state dataset into the first column of the cost dataset to complete our `US_cost_to_mother_df` dataframe. This is the final clean dataset which was saved as an excel file to more easily access results for the rest of this project.
+
+```{r merge_country_cost_savecsv}
+# merge the state information with the cost information
+# write to csv
+
+US_cost_to_mother_df = 
+  cost_df_clean %>% 
+  mutate(state = state_df$state) %>% 
+  select(state,type, insurance, cost)
+
+write.csv(US_cost_to_mother_df, file = "US_cost_to_mother_df.csv")
+
+```
+
+
+
+### US Cesarean Rates
 Since the cesarean rates were not directly available from the CDC, we first downloaded the number of births and filtered vaginal and cesearean deliveries in each state. By taking the number of cesarean deliveries and dividing by the total number of births per state, we extrapolated the cesaraean rate for each state. 
+
+
+First, we read in the data and performed basic cleaning using `janitor::clean_names()`. Then we filtered by birth delivery method (`delivery_method`), omitting those which were unknown. The `births` were automatically imported as factors so the `births` had many errors when they were converted directly to numeric. To solve this, we converted the factors to characters and then to numeric variable types.
+
+```{r births_per_delivery_method_per_state}
+#load number of births per delivery method per state
+birth_type =
+  read.delim("./dataset_births_us/birth_delivery_by_state.txt") %>% 
+  janitor::clean_names() %>% 
+  filter(delivery_method != "Unknown or Not Stated") %>% 
+  na.omit() %>% 
+  mutate(births = as.numeric(as.character(births))) %>% 
+  select(state_of_residence, delivery_method, births) 
+```
+
+
+Then, we calculated the total number of births per state by using group and summarize.
+
+```{r total_births_per_state}
+#calculate total number births per state
+birth_sum_by_state =
+  birth_type %>%
+  group_by(state_of_residence) %>% 
+  summarize(
+    total_births = sum(births)
+    ) %>% 
+  ungroup()
+```
+
+
+Finally, we joined these two datasets using a `left_join` by state of residence. Then, we used the number of cesarean births divided by the total number of births per state to produce a cesarean rate per state.
+
+```{r Cesarean_rates_per_state}
+#calculate percent of c-sections per state by 1st merging and then creating a new variable
+birth_df =
+  left_join(birth_type, birth_sum_by_state, by = "state_of_residence") %>% 
+  filter(delivery_method == "Cesarean") %>%
+  select(-delivery_method) %>% 
+  mutate(c_rate  = births/total_births) %>% 
+  select(state_of_residence, total_births, c_rate)
+```
+
+
+### US State Maternal Mortality Ratio
+
+The Maternal Mortality ratios in the US were not directly available. To circumvent this, we used the number of maternal deaths per state and divided this by the number of births per state to get a ratio of maternal deaths per birth. Then, we scaled this number by multiplying by 100,000 which gives the number of maternal death per 100,000 births for consistency with the statistics reported by the World Health Organization.
+
+To arrive at this number, we first cleaned the underlying cause of death dataset:
+
+
+****** Kay needs to add this code chunk after she finishes the shiny part *****
+
+
+Next, we cleaned the total number of births per state from the natality dataset:
+
+```{r}
+births_by_state =
+  read.delim("./dataset_births_us/Natality_2016-2018_expanded.txt") %>% 
+  janitor::clean_names() %>% 
+  select(state_of_residence,births,total_population)
+```
+
+These numbers are off ever so slightly from the data used to calculate cesarean rates. For example the births in alabama differ by `r pull(filter(births_by_state,state_of_residence=="Alabama"),births) - pull(filter(birth_df,state_of_residence=="Alabama"),total_births)` people. This difference may be attributed to the data which was supressed because the delivery method of the birth was not known. This is expected to be because we excluded the "unknown" delivery method in the natality dataset to more accurately calculate the percent of births delivered via cesarean section to the best of our knowledge with the dataset provided. To calculate maternal mortality ratio, we chose to use the total number of births including those with an unknown delivery method, since it makes sense to include this metric when calculating a mortality ratio where we are not specifically considering delivery method.
+
+It is also important to note that the number of births was only calculated from 2018 whereas the underlying cause of death dataset extends from 1999-2017. Given the time constraints of this project, the number of births per state for 2018 was used to normalize the deaths for every year from 1999-2017. However, we acknowledge that it would be better practice to calculate the number of births in each year from 1999-2017 and use this year-specific number when calculating the maternal mortality ratio (per 100,000 deaths) in each of these years.
 
 
 ### Percent GDP that comes from healthcare spending
@@ -244,7 +359,7 @@ child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>%
 
 ## Results
 
-
+### Maternal Mortality in 10 Developed Countries
 ```{r plot mortality global, message=FALSE}
 ten_developed_countries_maternal_mort = 
   maternal_mort_2013_developed %>% 
@@ -255,7 +370,7 @@ ten_developed_countries_maternal_mort =
   coord_flip() +
   theme(legend.position = "none") +
   labs(x = "Developed countries",
-       y = "Maternal mortality (%)"
+       y = "Maternal Mortality Ratio (deaths per 100,000 births)"
        )
 
 interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort, 
@@ -329,31 +444,35 @@ Based on the plot, there is not an obvious relationship between cost of giving b
 
 ### Birth Attended by skilled Staff
 
-```{r}
+
+
+```{r plot_attended, message=FALSE}
 mortality_births_attend %>% 
-  plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
+  plot_ly(y = ~percent_maternal_mortality, color = ~per_range, type = "box",
           colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))
 ```
 
-As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births.
 
+As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
 
-```{r}
+```{r, plot_attended_top25percent, message=FALSE}
 Top_count %>%
-  plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
+  plot_ly(y = ~percent_maternal_mortality, color = ~top_range, type = "box",
           colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))
 ```
 
-It seems there is not any significant trend being followed but there is an overall decrease in maternal mortality ratio as the births attendance increases.
-
-
+There does not appear to be a significant trend but there is an overall decrease in maternal mortality ratio as the births attendance increases.
 
 
 
 ## Discussion
+
+
+
+In the future, it might be interesting to look at differing maternal mortality ratios between populations, those who have cesarean sections and those who do not. However, the population specific data to perform these studies is not available at this time.

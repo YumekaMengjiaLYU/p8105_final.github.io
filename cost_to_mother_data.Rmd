@@ -16,15 +16,12 @@ url = "https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018
 
 birth_cost_us = read_html(url)
 
+#pull datasets, clean after
 state_vec =
   birth_cost_us %>% 
   html_nodes(".slide-title-text") %>% 
   html_text()
 
-state_vec #THIS NEEDS TO BE CLEANED(GET RID OF NUMBERS)
-
-
-#this need to be cleaned a lot
 all_costs = 
   birth_cost_us %>% 
   html_nodes(".clearfix p+ p") %>% 
@@ -59,8 +56,6 @@ state_df = tibble(
   select(state, type, insurance, -dummy, -dummy2)
 
 view(state_df)
-
-
   
 ```
 
