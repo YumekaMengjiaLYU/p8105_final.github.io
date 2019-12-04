@@ -55,7 +55,7 @@ state_df = tibble(
 view(state_df)
 ```
 
-Time to clean the cost dataset…this is gonna be fun…
+Time to clean the cost dataset...this is gonna be fun...
 
 ``` r
 #pivot longer so all costs are in one column
@@ -67,17 +67,19 @@ cost_df = tibble(
   janitor::clean_names()
 
 cost_df_clean = cost_df %>% 
-    separate(all_costs, into = c("with_ins", "other", "cost_w"), sep = "\\:") %>% 
-    separate(other, into = c("without_ins", "cost_wo"), sep = "C-section without insurance" ) %>% 
-    separate(without_ins, into = c("without_ins", "cost_wo"), sep = "Vaginal birth without insurance")%>%
-mutate(
-  type = factor(with_ins), 
-  type = recode(type,
+    separate(all_costs, into = c("delivery_method", "other", "cost_wo"), sep = "\\:") %>% 
+    separate(other, into = c("cost", "empty"), sep = "C-section without insurance" ) %>% 
+    separate(cost, into = c("cost_w", "empty"), sep = "Vaginal birth without insurance")%>%
+  select(-empty) %>% 
+  mutate(
+    type = factor(delivery_method), 
+    type = recode(type,
     "Vaginal birth with insurance" = "Vaginal_birth",
     "C-section with insurance" = "C-section")
-) %>% 
-  select(-with_ins, -cost_wo) %>% 
-  rename("with_ins" = "cost_w") %>% 
+  ) %>% 
+  select(-delivery_method) %>% 
+  rename("with_ins" = "cost_w", #fix mislabeled data
+             "without_ins" = "cost_wo") %>% 
   select(type,with_ins,without_ins) %>% 
   pivot_longer(
     with_ins: without_ins,
@@ -98,10 +100,7 @@ mutate(
 view(cost_df_clean)
 ```
 
-Unfortunately, web scraping gets a bit messy. We had to assume the order
-of the entries was preserved, which was verified for the first few
-entries. This is the final clean dataset which will be saved as an excel
-file for other team mates to use more easily.
+Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.
 
 ``` r
 # merge the state information with the cost information
