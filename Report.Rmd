@@ -582,6 +582,10 @@ There does not appear to be a significant trend but there is an overall decrease
 
 ## Discussion
 
+Maternal mortality is a complex health issue impacting societies around the world. In this research study, we analyzed some of many factors determining pregnancy outcomes in different countries. Factors such as health care spending, GDP per capita, the percentage of births attended by a nurse or physician, and how much it costs a mother to give birth.
 
+Overall, we found that maternal mortality ratio decreases as births attended by skilled staff or GDP per capita increases. But interestingly enough, we found that for the wealthiest nations, maternal mortality was not determined by a country's GDP per capita. For instance, France was found to have a lower GDP per capita compared to the US but also had a far lower maternal mortality ratio (12 deaths per 100,000 live births) compared to the US (28 deaths per 100,000 live births). This was an unexpected observation considering the global relationship seen between GDP per capita and maternal mortality.
+
+Another observation worth highlighting was that despite the US investing massive amount of money in its healthcare system, it still has the highest maternal mortality ratio when commpared to the rest of the developed nations.
 
 In the future, it might be interesting to look at differing maternal mortality ratios between populations, those who have cesarean sections and those who do not. However, the population specific data to perform these studies is not available at this time.
