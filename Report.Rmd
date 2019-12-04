@@ -2,7 +2,7 @@
 title: "Report"
 output: 
  html_document:
-   theme: lumen
+   theme: flatly
 editor_options: 
   chunk_output_type: console
 ---
