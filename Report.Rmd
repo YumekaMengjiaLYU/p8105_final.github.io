@@ -42,7 +42,7 @@ The expected cost to the mother of giving birth was scrapped from the following 
 
 ### Global Data
 
-The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [World Development Indicators](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
+The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [Gap Minder](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
 
 
 ## Methods
@@ -85,6 +85,39 @@ The Maternal Mortality ratios in the US were not directly available. To circumve
 
 
 ****** Kay needs to add this code chunk after she finishes the shiny part *****
+
+### GDP per capita
+```{r mmr_gdp_per_capita, message = FALSE}
+# Maternal Mortality ratio vs. GDP per capita
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code)
+  ) %>% 
+  mutate(
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 1999, year < 2016)
+```
+
+GDP per capita stands for Gross Domestic Product per person. It is an important indicator of economic performance and a useful unit to make cross-country comparisons of avereage living standards and economic wellbeing. In our project, we focus on its relationship with Maternal Mortality Ratio (MMR) across countries.
+
+```{r ln_gdp_per_capita, message = FALSE}
+# log-transformed 'gdp_per_capita'
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+```
+
+Particularly, we created a new variable `ln_gdp_per_capita`, the log-transformed `gdp_per_capita`, because GDP per capita has weakness in not taking into account income distribution of a country, and cross-country comparisons based on US dollars can be distorted by exchange rate fluctuations. Therefore, `gdp_per_capita` may not be the best measure of purchasing power, and `ln_gdp_per_capita` was used to reduce the effect of variations. 
 
 ### Percent Births Attended By Skilled Health Staff
 
