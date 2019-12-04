@@ -1,17 +1,15 @@
----
-title: "cost_to_mother_data"
-author: "Alicia Dagle"
-date: "November 23, 2019"
-output: github_document
----
+cost\_to\_mother\_data
+================
+Alicia Dagle
+November 23, 2019
 
-```{r}
+``` r
 library(tidyverse)
 library(rvest)
 library(httr)
 ```
 
-```{r}
+``` r
 url = "https://www.businessinsider.com/how-much-does-it-cost-to-have-a-baby-2018-4#35-maine-16"
 
 birth_cost_us = read_html(url)
@@ -31,8 +29,7 @@ view(state_vec)
 view(all_costs)
 ```
 
-
-```{r}
+``` r
 #clean state names
 state_df = tibble(
   state = state_vec %>% 
@@ -56,14 +53,11 @@ state_df = tibble(
   select(state, type, insurance, -dummy, -dummy2)
 
 view(state_df)
-  
 ```
-
 
 Time to clean the cost dataset...this is gonna be fun...
 
-```{r}
-
+``` r
 #pivot longer so all costs are in one column
 
 
@@ -92,18 +86,23 @@ cost_df_clean = cost_df %>%
     names_to = "insurance",
     values_to = "cost"
   )
-
-
-view(cost_df_clean)
-
-
-  
 ```
 
+    ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
+    ## [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37,
+    ## 39, ...].
+
+    ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
+    ## [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
+    ## 40, ...].
+
+``` r
+view(cost_df_clean)
+```
 
 Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.
 
-```{r}
+``` r
 # merge the state information with the cost information
 # write to csv
 
@@ -115,6 +114,4 @@ US_cost_to_mother_df =
 view(US_cost_to_mother_df)
 
 write.csv(US_cost_to_mother_df, file = "US_cost_to_mother_df.csv")
-
 ```
-

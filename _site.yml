@@ -2,14 +2,24 @@ name: "Final Project"
 output_dir: "."
 navbar:
   title: "Home"
+  left:
   right:
-      - icon: fa-github fa-lg
-        href: https://github.com/YumekaMengjiaLYU/p8105_final.github.io
+      - text: Report
+        href: Report.html
       - text: "US Interactive Map"
         href: https://mengjia-lyu.shinyapps.io/us_shiny/
+      - text: Global Cost
+        href: global_cost.html
+      - text: Other Global Factors
+        href: other_global_factors.html
+      - icon: fa-github fa-lg
+        href: https://github.com/YumekaMengjiaLYU/p8105_final.github.io
+      - icon: fa-envelope fa-lg
+        href: mailto:<alicia.dagle@columbia.edu>&cc:<ml4420@columbia.edu>
+        #cc: mailto:<ml4420@columbia.edu>
 output:
     html_document:
       toc: true
       toc_float: true
       toc_depth: 2
-      
+      theme: flatly

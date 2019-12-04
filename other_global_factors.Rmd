@@ -1,0 +1,160 @@
+---
+title: "other_global_factors"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(readxl)
+library(rvest)
+library(plotly)
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+```{r}
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code)
+  ) %>% 
+  mutate(
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 2000, year < 2016)
+
+# log-transformed 'gdp_per_capita'
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+
+x2_template = list(
+  title = "ln(GDP per capita)"
+)
+
+y_template = list(
+  title = "Maternal Mortality Ratio per 100,000 live births"
+)
+```
+
+### Maternal Mortality Vs ln(GDP per Capita)
+
+
+```{r}
+mmr_gdp_capita_log %>%  
+  filter(year == 2013) %>% 
+  mutate(text_label = str_c("GDP per capita ($): ", gdp_per_capita)) %>% 
+  plot_ly(
+    x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", 
+    mode = "markers", color = ~country, text = ~text_label
+  ) %>%  
+  layout(
+    xaxis = x2_template,
+    yaxis = y_template,
+    title = "Maternal mortality ratio vs. ln(GDP per capita)",
+    showlegend = FALSE
+  )
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+
+
+```{r}
+#Maternal Mortality ratio from gapminder dataset
+maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x1800:x2013,
+    names_to = "year",
+    values_to = "maternal_mortality"
+  ) %>% 
+  mutate(year = str_remove(year,"x"))
+
+#births attended by skilled health staff (percent of total)
+staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_percent_of_total.csv")  %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x1984:x2017,
+    names_to = "year",
+    values_to = "perc_births_attended"
+  ) %>% 
+  mutate(year = str_remove(year,"x"))
+
+mortality_births_attend = inner_join(maternal_mort, staff, 
+                                     by = c("country","year"))
+```
+
+
+
+
+
+
+
+
+### Birth Attended by skilled Staff - A broader Look
+
+```{r}
+mortality_births_attend = 
+mortality_births_attend %>% 
+  drop_na() %>% 
+  mutate(
+    per_range = case_when(
+      perc_births_attended <= 25 ~ "0-25",
+      perc_births_attended <= 50 ~ "26-50",
+      perc_births_attended <= 75 ~ "51-75",
+      perc_births_attended <= 100 ~ "76-100",
+      TRUE                        ~ ""),
+    per_range = factor(per_range, levels = c("0-25", "26-50", 
+                                             "51-75", "76-100")),
+    text_label = str_c("country: ", country))
+
+mortality_births_attend %>% 
+  plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
+          colors = "Set2", text = ~text_label) %>% 
+  layout(
+    xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
+    yaxis = list(title = "Maternal Mortality per 100k Live Births"))
+```
+
+### Countries with High Attendance - A closer Look
+
+```{r}
+Top_count =
+  mortality_births_attend %>% 
+  filter(per_range == "76-100") %>%
+  mutate(
+    top_range = case_when(
+      perc_births_attended <= 81 ~ "76-81",
+      perc_births_attended <= 85 ~ "82-85",
+      perc_births_attended <= 90 ~ "86-90",
+      perc_births_attended <= 95 ~ "91-95",
+      perc_births_attended <= 100 ~ "96-100",
+      TRUE                        ~ ""),
+    per_range = factor(per_range, levels = c("76-81", "82-85", 
+                                             "86-90", "91-95", "96-100")),
+    text_label = str_c("country: ", country)) %>% 
+  select(-per_range)
+
+Top_count %>%
+  plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
+          colors = "Set2", text = ~text_label) %>% 
+  layout(
+    xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
+    yaxis = list(title = "Maternal Mortality per 100k Live Births"))
+```
+
