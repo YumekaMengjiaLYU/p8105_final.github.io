@@ -14,7 +14,7 @@ library(rvest)
 library(plotly)
 ```
 
-Column {data-width=700}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 ```{r}
@@ -64,11 +64,12 @@ mmr_gdp_capita_log %>%
   layout(
     xaxis = x2_template,
     yaxis = y_template,
-    title = "Maternal mortality ratio vs. ln(GDP per capita)"
+    title = "Maternal mortality ratio vs. ln(GDP per capita)",
+    showlegend = FALSE
   )
 ```
 
-Column {data-width=300}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 
