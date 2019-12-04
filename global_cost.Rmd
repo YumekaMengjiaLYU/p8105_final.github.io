@@ -39,7 +39,7 @@ maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_l
   pivot_longer(
     x1800:x2013,
     names_to = "year",
-    values_to = "percent_maternal_mortality"
+    values_to = "maternal_mortality_ratio"
   ) %>% 
   mutate(year = str_remove(year,"x"))
 
@@ -135,8 +135,8 @@ Row
 ten_developed_countries_maternal_mort = 
   maternal_mort_2013_developed %>% 
   mutate(country = as.factor(country),
-         country = fct_reorder(country, percent_maternal_mortality)) %>% 
-  ggplot(aes(x = country, y = percent_maternal_mortality, fill = country)) +
+         country = fct_reorder(country, maternal_mortality_ratio)) %>% 
+  ggplot(aes(x = country, y = maternal_mortality_ratio, fill = country)) +
   geom_col(position = "dodge") +
   coord_flip() +
   theme(legend.position = "none") +
