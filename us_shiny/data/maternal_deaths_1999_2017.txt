@@ -1,0 +1,499 @@
+"Notes"	"Year"	"Year Code"	"State"	"State Code"	Deaths	Population	Crude Rate
+	"1999"	"1999"	"Alabama"	"01"	10	4430141	Unreliable
+	"1999"	"1999"	"California"	"06"	43	33499204	0.1
+	"1999"	"1999"	"Florida"	"12"	35	15759421	0.2
+	"1999"	"1999"	"Georgia"	"13"	26	8045965	0.3
+	"1999"	"1999"	"Illinois"	"17"	18	12359020	Unreliable
+	"1999"	"1999"	"Michigan"	"26"	11	9897116	Unreliable
+	"1999"	"1999"	"New York"	"36"	37	18882725	0.2
+	"1999"	"1999"	"North Carolina"	"37"	15	7949361	Unreliable
+	"1999"	"1999"	"Ohio"	"39"	17	11335454	Unreliable
+	"1999"	"1999"	"Pennsylvania"	"42"	13	12263805	Unreliable
+	"1999"	"1999"	"South Carolina"	"45"	10	3974682	Unreliable
+	"1999"	"1999"	"Tennessee"	"47"	12	5638706	Unreliable
+	"1999"	"1999"	"Texas"	"48"	34	20558220	0.2
+	"1999"	"1999"	"Virginia"	"51"	12	7000174	Unreliable
+"Total"	"1999"	"1999"			406	279040168	0.1
+	"2000"	"2000"	"California"	"06"	56	33871648	0.2
+	"2000"	"2000"	"Florida"	"12"	29	15982378	0.2
+	"2000"	"2000"	"Georgia"	"13"	21	8186453	0.3
+	"2000"	"2000"	"Illinois"	"17"	19	12419293	Unreliable
+	"2000"	"2000"	"Maryland"	"24"	15	5296486	Unreliable
+	"2000"	"2000"	"New Jersey"	"34"	12	8414350	Unreliable
+	"2000"	"2000"	"New York"	"36"	23	18976457	0.1
+	"2000"	"2000"	"North Carolina"	"37"	14	8049313	Unreliable
+	"2000"	"2000"	"Ohio"	"39"	19	11353140	Unreliable
+	"2000"	"2000"	"Texas"	"48"	30	20851820	0.1
+	"2000"	"2000"	"Virginia"	"51"	10	7078515	Unreliable
+"Total"	"2000"	"2000"			404	281421906	0.1
+	"2001"	"2001"	"California"	"06"	46	34479458	0.1
+	"2001"	"2001"	"Florida"	"12"	21	16356966	0.1
+	"2001"	"2001"	"Georgia"	"13"	40	8377038	0.5
+	"2001"	"2001"	"Illinois"	"17"	21	12488445	0.2
+	"2001"	"2001"	"Louisiana"	"22"	10	4477875	Unreliable
+	"2001"	"2001"	"Maryland"	"24"	12	5374691	Unreliable
+	"2001"	"2001"	"Mississippi"	"28"	12	2852994	Unreliable
+	"2001"	"2001"	"Missouri"	"29"	10	5641142	Unreliable
+	"2001"	"2001"	"New Jersey"	"34"	10	8492671	Unreliable
+	"2001"	"2001"	"New York"	"36"	41	19082838	0.2
+	"2001"	"2001"	"Pennsylvania"	"42"	12	12298970	Unreliable
+	"2001"	"2001"	"Tennessee"	"47"	11	5750789	Unreliable
+	"2001"	"2001"	"Texas"	"48"	41	21319622	0.2
+"Total"	"2001"	"2001"			416	284968955	0.1
+	"2002"	"2002"	"California"	"06"	56	34871843	0.2
+	"2002"	"2002"	"Florida"	"12"	23	16689370	0.1
+	"2002"	"2002"	"Georgia"	"13"	25	8508256	0.3
+	"2002"	"2002"	"Illinois"	"17"	12	12525556	Unreliable
+	"2002"	"2002"	"Maryland"	"24"	11	5440389	Unreliable
+	"2002"	"2002"	"Michigan"	"26"	12	10015710	Unreliable
+	"2002"	"2002"	"New York"	"36"	26	19137800	0.1
+	"2002"	"2002"	"North Carolina"	"37"	18	8326201	Unreliable
+	"2002"	"2002"	"Ohio"	"39"	12	11407889	Unreliable
+	"2002"	"2002"	"Pennsylvania"	"42"	11	12331031	Unreliable
+	"2002"	"2002"	"Tennessee"	"47"	10	5795918	Unreliable
+	"2002"	"2002"	"Texas"	"48"	35	21690325	0.2
+"Total"	"2002"	"2002"			379	287625193	0.1
+	"2003"	"2003"	"California"	"06"	94	35253159	0.3
+	"2003"	"2003"	"Colorado"	"08"	10	4528732	Unreliable
+	"2003"	"2003"	"Florida"	"12"	25	17004085	0.1
+	"2003"	"2003"	"Georgia"	"13"	39	8622793	0.5
+	"2003"	"2003"	"Illinois"	"17"	13	12556006	Unreliable
+	"2003"	"2003"	"Louisiana"	"22"	12	4521042	Unreliable
+	"2003"	"2003"	"Maryland"	"24"	20	5496269	0.4
+	"2003"	"2003"	"Michigan"	"26"	16	10041152	Unreliable
+	"2003"	"2003"	"New Jersey"	"34"	10	8601402	Unreliable
+	"2003"	"2003"	"New York"	"36"	56	19175939	0.3
+	"2003"	"2003"	"North Carolina"	"37"	16	8422501	Unreliable
+	"2003"	"2003"	"Ohio"	"39"	14	11434788	Unreliable
+	"2003"	"2003"	"Pennsylvania"	"42"	21	12374658	0.2
+	"2003"	"2003"	"Texas"	"48"	60	22030931	0.3
+	"2003"	"2003"	"Wisconsin"	"55"	11	5479203	Unreliable
+"Total"	"2003"	"2003"			545	290107933	0.2
+	"2004"	"2004"	"California"	"06"	150	35574576	0.4
+	"2004"	"2004"	"Florida"	"12"	36	17415318	0.2
+	"2004"	"2004"	"Georgia"	"13"	17	8769252	Unreliable
+	"2004"	"2004"	"Illinois"	"17"	17	12589773	Unreliable
+	"2004"	"2004"	"Louisiana"	"22"	26	4552238	0.6
+	"2004"	"2004"	"Maryland"	"24"	17	5546935	Unreliable
+	"2004"	"2004"	"Michigan"	"26"	57	10055315	0.6
+	"2004"	"2004"	"Mississippi"	"28"	11	2889010	Unreliable
+	"2004"	"2004"	"Montana"	"30"	10	930009	Unreliable
+	"2004"	"2004"	"New Jersey"	"34"	40	8634561	0.5
+	"2004"	"2004"	"New York"	"36"	78	19171567	0.4
+	"2004"	"2004"	"Oklahoma"	"40"	15	3525233	Unreliable
+	"2004"	"2004"	"Pennsylvania"	"42"	14	12410722	Unreliable
+	"2004"	"2004"	"Texas"	"48"	48	22394023	0.2
+	"2004"	"2004"	"Washington"	"53"	16	6178645	Unreliable
+"Total"	"2004"	"2004"			697	292805298	0.2
+	"2005"	"2005"	"Alabama"	"01"	12	4569805	Unreliable
+	"2005"	"2005"	"California"	"06"	119	35827943	0.3
+	"2005"	"2005"	"Florida"	"12"	59	17842038	0.3
+	"2005"	"2005"	"Georgia"	"13"	32	8925922	0.4
+	"2005"	"2005"	"Illinois"	"17"	15	12609903	Unreliable
+	"2005"	"2005"	"Kentucky"	"21"	11	4182742	Unreliable
+	"2005"	"2005"	"Louisiana"	"22"	15	4576628	Unreliable
+	"2005"	"2005"	"Maryland"	"24"	19	5592379	Unreliable
+	"2005"	"2005"	"Michigan"	"26"	52	10051137	0.5
+	"2005"	"2005"	"Mississippi"	"28"	13	2905943	Unreliable
+	"2005"	"2005"	"Missouri"	"29"	15	5790300	Unreliable
+	"2005"	"2005"	"New Jersey"	"34"	23	8651974	0.3
+	"2005"	"2005"	"New York"	"36"	55	19132610	0.3
+	"2005"	"2005"	"North Carolina"	"37"	18	8705407	Unreliable
+	"2005"	"2005"	"Ohio"	"39"	13	11463320	Unreliable
+	"2005"	"2005"	"Oklahoma"	"40"	22	3548597	0.6
+	"2005"	"2005"	"Pennsylvania"	"42"	16	12449990	Unreliable
+	"2005"	"2005"	"South Carolina"	"45"	16	4270150	Unreliable
+	"2005"	"2005"	"Texas"	"48"	70	22778123	0.3
+	"2005"	"2005"	"Virginia"	"51"	14	7577105	Unreliable
+	"2005"	"2005"	"Washington"	"53"	14	6257305	Unreliable
+	"2005"	"2005"	"Wisconsin"	"55"	17	5546166	Unreliable
+"Total"	"2005"	"2005"			760	295516599	0.3
+	"2006"	"2006"	"Alabama"	"01"	10	4628981	Unreliable
+	"2006"	"2006"	"California"	"06"	122	36021202	0.3
+	"2006"	"2006"	"Florida"	"12"	45	18166990	0.2
+	"2006"	"2006"	"Georgia"	"13"	27	9155813	0.3
+	"2006"	"2006"	"Hawaii"	"15"	12	1309731	Unreliable
+	"2006"	"2006"	"Illinois"	"17"	33	12643955	0.3
+	"2006"	"2006"	"Maryland"	"24"	18	5627367	Unreliable
+	"2006"	"2006"	"Michigan"	"26"	30	10036081	0.3
+	"2006"	"2006"	"Mississippi"	"28"	15	2904978	Unreliable
+	"2006"	"2006"	"Missouri"	"29"	14	5842704	Unreliable
+	"2006"	"2006"	"New Jersey"	"34"	32	8661679	0.4
+	"2006"	"2006"	"New York"	"36"	68	19104631	0.4
+	"2006"	"2006"	"Ohio"	"39"	13	11481213	Unreliable
+	"2006"	"2006"	"Oklahoma"	"40"	14	3594090	Unreliable
+	"2006"	"2006"	"Pennsylvania"	"42"	28	12510809	0.2
+	"2006"	"2006"	"Texas"	"48"	90	23359580	0.4
+	"2006"	"2006"	"Utah"	"49"	10	2525507	Unreliable
+	"2006"	"2006"	"Washington"	"53"	10	6370753	Unreliable
+	"2006"	"2006"	"Wisconsin"	"55"	14	5577655	Unreliable
+"Total"	"2006"	"2006"			760	298379912	0.3
+	"2007"	"2007"	"California"	"06"	97	36250311	0.3
+	"2007"	"2007"	"Florida"	"12"	52	18367842	0.3
+	"2007"	"2007"	"Georgia"	"13"	22	9349988	0.2
+	"2007"	"2007"	"Illinois"	"17"	34	12695866	0.3
+	"2007"	"2007"	"Kentucky"	"21"	13	4256672	Unreliable
+	"2007"	"2007"	"Louisiana"	"22"	12	4375581	Unreliable
+	"2007"	"2007"	"Maryland"	"24"	20	5653408	0.4
+	"2007"	"2007"	"Michigan"	"26"	32	10001284	0.3
+	"2007"	"2007"	"Mississippi"	"28"	11	2928350	Unreliable
+	"2007"	"2007"	"Missouri"	"29"	11	5887612	Unreliable
+	"2007"	"2007"	"New Jersey"	"34"	36	8677885	0.4
+	"2007"	"2007"	"New Mexico"	"35"	10	1990070	Unreliable
+	"2007"	"2007"	"New York"	"36"	51	19132335	0.3
+	"2007"	"2007"	"North Carolina"	"37"	17	9118037	Unreliable
+	"2007"	"2007"	"Ohio"	"39"	31	11500468	0.3
+	"2007"	"2007"	"Oklahoma"	"40"	13	3634349	Unreliable
+	"2007"	"2007"	"Oregon"	"41"	10	3722417	Unreliable
+	"2007"	"2007"	"Pennsylvania"	"42"	40	12563937	0.3
+	"2007"	"2007"	"South Carolina"	"45"	20	4444110	0.5
+	"2007"	"2007"	"Texas"	"48"	80	23831983	0.3
+	"2007"	"2007"	"Utah"	"49"	11	2597746	Unreliable
+	"2007"	"2007"	"Virginia"	"51"	15	7751000	Unreliable
+	"2007"	"2007"	"Washington"	"53"	13	6461587	Unreliable
+	"2007"	"2007"	"Wisconsin"	"55"	15	5610775	Unreliable
+"Total"	"2007"	"2007"			769	301231207	0.3
+	"2008"	"2008"	"Arizona"	"04"	11	6280362	Unreliable
+	"2008"	"2008"	"Arkansas"	"05"	24	2874554	0.8
+	"2008"	"2008"	"California"	"06"	102	36604337	0.3
+	"2008"	"2008"	"Florida"	"12"	36	18527305	0.2
+	"2008"	"2008"	"Georgia"	"13"	23	9504843	0.2
+	"2008"	"2008"	"Illinois"	"17"	31	12747038	0.2
+	"2008"	"2008"	"Indiana"	"18"	14	6424806	Unreliable
+	"2008"	"2008"	"Kansas"	"20"	13	2808076	Unreliable
+	"2008"	"2008"	"Kentucky"	"21"	12	4289878	Unreliable
+	"2008"	"2008"	"Maryland"	"24"	19	5684965	Unreliable
+	"2008"	"2008"	"Michigan"	"26"	30	9946889	0.3
+	"2008"	"2008"	"Mississippi"	"28"	14	2947806	Unreliable
+	"2008"	"2008"	"Missouri"	"29"	16	5923916	Unreliable
+	"2008"	"2008"	"New Jersey"	"34"	28	8711090	0.3
+	"2008"	"2008"	"New Mexico"	"35"	13	2010662	Unreliable
+	"2008"	"2008"	"New York"	"36"	73	19212436	0.4
+	"2008"	"2008"	"North Carolina"	"37"	13	9309449	Unreliable
+	"2008"	"2008"	"Ohio"	"39"	27	11515391	0.2
+	"2008"	"2008"	"Oklahoma"	"40"	15	3668976	Unreliable
+	"2008"	"2008"	"Pennsylvania"	"42"	28	12612285	0.2
+	"2008"	"2008"	"South Carolina"	"45"	26	4528996	0.6
+	"2008"	"2008"	"Tennessee"	"47"	11	6247411	Unreliable
+	"2008"	"2008"	"Texas"	"48"	96	24309039	0.4
+	"2008"	"2008"	"Washington"	"53"	12	6562231	Unreliable
+"Total"	"2008"	"2008"			795	304093966	0.3
+	"2009"	"2009"	"Arkansas"	"05"	20	2896843	0.7
+	"2009"	"2009"	"California"	"06"	107	36961229	0.3
+	"2009"	"2009"	"Florida"	"12"	71	18652644	0.4
+	"2009"	"2009"	"Georgia"	"13"	36	9620846	0.4
+	"2009"	"2009"	"Illinois"	"17"	35	12796778	0.3
+	"2009"	"2009"	"Indiana"	"18"	16	6459325	Unreliable
+	"2009"	"2009"	"Kansas"	"20"	13	2832704	Unreliable
+	"2009"	"2009"	"Maryland"	"24"	18	5730388	Unreliable
+	"2009"	"2009"	"Michigan"	"26"	34	9901591	0.3
+	"2009"	"2009"	"Minnesota"	"27"	11	5281203	Unreliable
+	"2009"	"2009"	"Mississippi"	"28"	14	2958774	Unreliable
+	"2009"	"2009"	"Missouri"	"29"	18	5961088	Unreliable
+	"2009"	"2009"	"New Jersey"	"34"	37	8755602	0.4
+	"2009"	"2009"	"New York"	"36"	70	19307066	0.4
+	"2009"	"2009"	"North Carolina"	"37"	21	9449566	0.2
+	"2009"	"2009"	"Ohio"	"39"	57	11528896	0.5
+	"2009"	"2009"	"Oklahoma"	"40"	28	3717572	0.8
+	"2009"	"2009"	"Pennsylvania"	"42"	39	12666858	0.3
+	"2009"	"2009"	"South Carolina"	"45"	23	4589872	0.5
+	"2009"	"2009"	"Tennessee"	"47"	10	6306019	Unreliable
+	"2009"	"2009"	"Texas"	"48"	127	24801761	0.5
+	"2009"	"2009"	"Virginia"	"51"	11	7925937	Unreliable
+	"2009"	"2009"	"Washington"	"53"	12	6667426	Unreliable
+	"2009"	"2009"	"Wisconsin"	"55"	13	5669264	Unreliable
+"Total"	"2009"	"2009"			960	306771529	0.3
+	"2010"	"2010"	"Arizona"	"04"	17	6392017	Unreliable
+	"2010"	"2010"	"Arkansas"	"05"	13	2915918	Unreliable
+	"2010"	"2010"	"California"	"06"	82	37253956	0.2
+	"2010"	"2010"	"Florida"	"12"	47	18801310	0.2
+	"2010"	"2010"	"Georgia"	"13"	38	9687653	0.4
+	"2010"	"2010"	"Idaho"	"16"	10	1567582	Unreliable
+	"2010"	"2010"	"Illinois"	"17"	29	12830632	0.2
+	"2010"	"2010"	"Indiana"	"18"	14	6483802	Unreliable
+	"2010"	"2010"	"Kansas"	"20"	11	2853118	Unreliable
+	"2010"	"2010"	"Kentucky"	"21"	17	4339367	Unreliable
+	"2010"	"2010"	"Maryland"	"24"	26	5773552	0.5
+	"2010"	"2010"	"Michigan"	"26"	47	9883640	0.5
+	"2010"	"2010"	"Mississippi"	"28"	12	2967297	Unreliable
+	"2010"	"2010"	"Missouri"	"29"	12	5988927	Unreliable
+	"2010"	"2010"	"New Jersey"	"34"	30	8791894	0.3
+	"2010"	"2010"	"New York"	"36"	67	19378102	0.3
+	"2010"	"2010"	"North Carolina"	"37"	10	9535483	Unreliable
+	"2010"	"2010"	"Ohio"	"39"	40	11536504	0.3
+	"2010"	"2010"	"Oklahoma"	"40"	20	3751351	0.5
+	"2010"	"2010"	"Pennsylvania"	"42"	34	12702379	0.3
+	"2010"	"2010"	"South Carolina"	"45"	18	4625364	Unreliable
+	"2010"	"2010"	"Texas"	"48"	101	25145561	0.4
+	"2010"	"2010"	"Washington"	"53"	11	6724540	Unreliable
+	"2010"	"2010"	"Wisconsin"	"55"	12	5686986	Unreliable
+"Total"	"2010"	"2010"			825	308745538	0.3
+	"2011"	"2011"	"Arizona"	"04"	15	6482505	Unreliable
+	"2011"	"2011"	"Arkansas"	"05"	10	2937979	Unreliable
+	"2011"	"2011"	"California"	"06"	71	37691912	0.2
+	"2011"	"2011"	"Connecticut"	"09"	14	3580709	Unreliable
+	"2011"	"2011"	"Florida"	"12"	50	19057542	0.3
+	"2011"	"2011"	"Georgia"	"13"	48	9815210	0.5
+	"2011"	"2011"	"Illinois"	"17"	45	12869257	0.3
+	"2011"	"2011"	"Indiana"	"18"	43	6516922	0.7
+	"2011"	"2011"	"Kentucky"	"21"	11	4369356	Unreliable
+	"2011"	"2011"	"Maryland"	"24"	24	5828289	0.4
+	"2011"	"2011"	"Michigan"	"26"	33	9876187	0.3
+	"2011"	"2011"	"Minnesota"	"27"	13	5344861	Unreliable
+	"2011"	"2011"	"Mississippi"	"28"	18	2978512	Unreliable
+	"2011"	"2011"	"Missouri"	"29"	17	6010688	Unreliable
+	"2011"	"2011"	"New Jersey"	"34"	48	8821155	0.5
+	"2011"	"2011"	"New Mexico"	"35"	12	2082224	Unreliable
+	"2011"	"2011"	"New York"	"36"	64	19465197	0.3
+	"2011"	"2011"	"North Carolina"	"37"	11	9656401	Unreliable
+	"2011"	"2011"	"Ohio"	"39"	35	11544951	0.3
+	"2011"	"2011"	"Oklahoma"	"40"	20	3791508	0.5
+	"2011"	"2011"	"Oregon"	"41"	10	3871859	Unreliable
+	"2011"	"2011"	"Pennsylvania"	"42"	23	12742886	0.2
+	"2011"	"2011"	"South Carolina"	"45"	19	4679230	Unreliable
+	"2011"	"2011"	"Texas"	"48"	131	25674681	0.5
+	"2011"	"2011"	"Virginia"	"51"	18	8096604	Unreliable
+	"2011"	"2011"	"Washington"	"53"	14	6830038	Unreliable
+	"2011"	"2011"	"Wisconsin"	"55"	15	5711767	Unreliable
+"Total"	"2011"	"2011"			931	311591917	0.3
+	"2012"	"2012"	"Arizona"	"04"	25	6553255	0.4
+	"2012"	"2012"	"Arkansas"	"05"	18	2949131	Unreliable
+	"2012"	"2012"	"California"	"06"	81	38041430	0.2
+	"2012"	"2012"	"Florida"	"12"	64	19317568	0.3
+	"2012"	"2012"	"Georgia"	"13"	40	9919945	0.4
+	"2012"	"2012"	"Illinois"	"17"	35	12875255	0.3
+	"2012"	"2012"	"Indiana"	"18"	36	6537334	0.6
+	"2012"	"2012"	"Louisiana"	"22"	28	4601893	0.6
+	"2012"	"2012"	"Maryland"	"24"	20	5884563	0.3
+	"2012"	"2012"	"Michigan"	"26"	29	9883360	0.3
+	"2012"	"2012"	"Minnesota"	"27"	15	5379139	Unreliable
+	"2012"	"2012"	"Mississippi"	"28"	15	2984926	Unreliable
+	"2012"	"2012"	"Missouri"	"29"	34	6021988	0.6
+	"2012"	"2012"	"New Jersey"	"34"	36	8864590	0.4
+	"2012"	"2012"	"New York"	"36"	58	19570261	0.3
+	"2012"	"2012"	"North Carolina"	"37"	10	9752073	Unreliable
+	"2012"	"2012"	"Ohio"	"39"	39	11544225	0.3
+	"2012"	"2012"	"Oklahoma"	"40"	15	3814820	Unreliable
+	"2012"	"2012"	"Pennsylvania"	"42"	30	12763536	0.2
+	"2012"	"2012"	"South Carolina"	"45"	16	4723723	Unreliable
+	"2012"	"2012"	"Tennessee"	"47"	40	6456243	0.6
+	"2012"	"2012"	"Texas"	"48"	159	26059203	0.6
+	"2012"	"2012"	"Virginia"	"51"	14	8185867	Unreliable
+	"2012"	"2012"	"Washington"	"53"	17	6897012	Unreliable
+"Total"	"2012"	"2012"			990	313914040	0.3
+	"2013"	"2013"	"Arizona"	"04"	23	6626624	0.3
+	"2013"	"2013"	"Arkansas"	"05"	15	2959373	Unreliable
+	"2013"	"2013"	"California"	"06"	77	38332521	0.2
+	"2013"	"2013"	"Colorado"	"08"	12	5268367	Unreliable
+	"2013"	"2013"	"Florida"	"12"	83	19552860	0.4
+	"2013"	"2013"	"Georgia"	"13"	82	9992167	0.8
+	"2013"	"2013"	"Illinois"	"17"	27	12882135	0.2
+	"2013"	"2013"	"Indiana"	"18"	35	6570902	0.5
+	"2013"	"2013"	"Kansas"	"20"	15	2893957	Unreliable
+	"2013"	"2013"	"Kentucky"	"21"	19	4395295	Unreliable
+	"2013"	"2013"	"Louisiana"	"22"	47	4625470	1.0
+	"2013"	"2013"	"Maryland"	"24"	15	5928814	Unreliable
+	"2013"	"2013"	"Michigan"	"26"	36	9895622	0.4
+	"2013"	"2013"	"Minnesota"	"27"	11	5420380	Unreliable
+	"2013"	"2013"	"Mississippi"	"28"	13	2991207	Unreliable
+	"2013"	"2013"	"Missouri"	"29"	30	6044171	0.5
+	"2013"	"2013"	"New Jersey"	"34"	57	8899339	0.6
+	"2013"	"2013"	"New York"	"36"	63	19651127	0.3
+	"2013"	"2013"	"North Carolina"	"37"	15	9848060	Unreliable
+	"2013"	"2013"	"Ohio"	"39"	30	11570808	0.3
+	"2013"	"2013"	"Oklahoma"	"40"	20	3850568	0.5
+	"2013"	"2013"	"Oregon"	"41"	12	3930065	Unreliable
+	"2013"	"2013"	"Pennsylvania"	"42"	35	12773801	0.3
+	"2013"	"2013"	"South Carolina"	"45"	17	4774839	Unreliable
+	"2013"	"2013"	"Tennessee"	"47"	28	6495978	0.4
+	"2013"	"2013"	"Texas"	"48"	168	26448193	0.6
+	"2013"	"2013"	"Utah"	"49"	16	2900872	Unreliable
+	"2013"	"2013"	"Virginia"	"51"	15	8260405	Unreliable
+	"2013"	"2013"	"Washington"	"53"	20	6971406	0.3
+	"2013"	"2013"	"Wisconsin"	"55"	12	5742713	Unreliable
+"Total"	"2013"	"2013"			1138	316128839	0.4
+	"2014"	"2014"	"Arizona"	"04"	24	6731484	0.4
+	"2014"	"2014"	"Arkansas"	"05"	23	2966369	0.8
+	"2014"	"2014"	"California"	"06"	88	38802500	0.2
+	"2014"	"2014"	"Colorado"	"08"	16	5355866	Unreliable
+	"2014"	"2014"	"Florida"	"12"	62	19893297	0.3
+	"2014"	"2014"	"Georgia"	"13"	104	10097343	1.0
+	"2014"	"2014"	"Illinois"	"17"	32	12880580	0.2
+	"2014"	"2014"	"Indiana"	"18"	38	6596855	0.6
+	"2014"	"2014"	"Iowa"	"19"	11	3107126	Unreliable
+	"2014"	"2014"	"Louisiana"	"22"	40	4649676	0.9
+	"2014"	"2014"	"Maryland"	"24"	22	5976407	0.4
+	"2014"	"2014"	"Michigan"	"26"	29	9909877	0.3
+	"2014"	"2014"	"Minnesota"	"27"	10	5457173	Unreliable
+	"2014"	"2014"	"Missouri"	"29"	34	6063589	0.6
+	"2014"	"2014"	"New Jersey"	"34"	55	8938175	0.6
+	"2014"	"2014"	"New York"	"36"	61	19746227	0.3
+	"2014"	"2014"	"North Carolina"	"37"	34	9943964	0.3
+	"2014"	"2014"	"Ohio"	"39"	22	11594163	0.2
+	"2014"	"2014"	"Oklahoma"	"40"	13	3878051	Unreliable
+	"2014"	"2014"	"Pennsylvania"	"42"	35	12787209	0.3
+	"2014"	"2014"	"South Carolina"	"45"	24	4832482	0.5
+	"2014"	"2014"	"Tennessee"	"47"	24	6549352	0.4
+	"2014"	"2014"	"Texas"	"48"	147	26956958	0.5
+	"2014"	"2014"	"Utah"	"49"	12	2942902	Unreliable
+	"2014"	"2014"	"Virginia"	"51"	18	8326289	Unreliable
+	"2014"	"2014"	"Washington"	"53"	20	7061530	0.3
+	"2014"	"2014"	"Wisconsin"	"55"	16	5757564	Unreliable
+"Total"	"2014"	"2014"			1123	318857056	0.4
+	"2015"	"2015"	"Alabama"	"01"	12	4858979	Unreliable
+	"2015"	"2015"	"Arizona"	"04"	20	6828065	0.3
+	"2015"	"2015"	"Arkansas"	"05"	16	2978204	Unreliable
+	"2015"	"2015"	"California"	"06"	84	39144818	0.2
+	"2015"	"2015"	"Colorado"	"08"	10	5456574	Unreliable
+	"2015"	"2015"	"Florida"	"12"	68	20271272	0.3
+	"2015"	"2015"	"Georgia"	"13"	98	10214860	1.0
+	"2015"	"2015"	"Illinois"	"17"	40	12859995	0.3
+	"2015"	"2015"	"Indiana"	"18"	46	6619680	0.7
+	"2015"	"2015"	"Kentucky"	"21"	17	4425092	Unreliable
+	"2015"	"2015"	"Louisiana"	"22"	44	4670724	0.9
+	"2015"	"2015"	"Maryland"	"24"	16	6006401	Unreliable
+	"2015"	"2015"	"Michigan"	"26"	27	9922576	0.3
+	"2015"	"2015"	"Missouri"	"29"	33	6083672	0.5
+	"2015"	"2015"	"New Jersey"	"34"	39	8958013	0.4
+	"2015"	"2015"	"New York"	"36"	64	19795791	0.3
+	"2015"	"2015"	"North Carolina"	"37"	44	10042802	0.4
+	"2015"	"2015"	"Ohio"	"39"	41	11613423	0.4
+	"2015"	"2015"	"Oklahoma"	"40"	14	3911338	Unreliable
+	"2015"	"2015"	"Pennsylvania"	"42"	32	12802503	0.2
+	"2015"	"2015"	"South Carolina"	"45"	20	4896146	0.4
+	"2015"	"2015"	"Tennessee"	"47"	29	6600299	0.4
+	"2015"	"2015"	"Texas"	"48"	157	27469114	0.6
+	"2015"	"2015"	"Utah"	"49"	13	2995919	Unreliable
+	"2015"	"2015"	"Virginia"	"51"	31	8382993	0.4
+	"2015"	"2015"	"Washington"	"53"	11	7170351	Unreliable
+	"2015"	"2015"	"Wisconsin"	"55"	11	5771337	Unreliable
+"Total"	"2015"	"2015"			1140	321418820	0.4
+	"2016"	"2016"	"Alabama"	"01"	35	4863300	0.7
+	"2016"	"2016"	"Arizona"	"04"	25	6931071	0.4
+	"2016"	"2016"	"Arkansas"	"05"	17	2988248	Unreliable
+	"2016"	"2016"	"California"	"06"	91	39250017	0.2
+	"2016"	"2016"	"Colorado"	"08"	16	5540545	Unreliable
+	"2016"	"2016"	"Florida"	"12"	50	20612439	0.2
+	"2016"	"2016"	"Georgia"	"13"	73	10310371	0.7
+	"2016"	"2016"	"Illinois"	"17"	28	12801539	0.2
+	"2016"	"2016"	"Indiana"	"18"	50	6633053	0.8
+	"2016"	"2016"	"Iowa"	"19"	12	3134693	Unreliable
+	"2016"	"2016"	"Kansas"	"20"	11	2907289	Unreliable
+	"2016"	"2016"	"Kentucky"	"21"	29	4436974	0.7
+	"2016"	"2016"	"Louisiana"	"22"	56	4681666	1.2
+	"2016"	"2016"	"Maryland"	"24"	13	6016447	Unreliable
+	"2016"	"2016"	"Massachusetts"	"25"	18	6811779	Unreliable
+	"2016"	"2016"	"Michigan"	"26"	40	9928300	0.4
+	"2016"	"2016"	"Minnesota"	"27"	14	5519952	Unreliable
+	"2016"	"2016"	"Mississippi"	"28"	14	2988726	Unreliable
+	"2016"	"2016"	"Missouri"	"29"	27	6093000	0.4
+	"2016"	"2016"	"New Jersey"	"34"	43	8944469	0.5
+	"2016"	"2016"	"New York"	"36"	65	19745289	0.3
+	"2016"	"2016"	"North Carolina"	"37"	38	10146788	0.4
+	"2016"	"2016"	"Ohio"	"39"	36	11614373	0.3
+	"2016"	"2016"	"Oklahoma"	"40"	20	3923561	0.5
+	"2016"	"2016"	"Pennsylvania"	"42"	41	12784227	0.3
+	"2016"	"2016"	"South Carolina"	"45"	28	4961119	0.6
+	"2016"	"2016"	"Tennessee"	"47"	25	6651194	0.4
+	"2016"	"2016"	"Texas"	"48"	153	27862596	0.5
+	"2016"	"2016"	"Virginia"	"51"	47	8411808	0.6
+	"2016"	"2016"	"Washington"	"53"	12	7288000	Unreliable
+	"2016"	"2016"	"Wisconsin"	"55"	15	5778708	Unreliable
+"Total"	"2016"	"2016"			1231	323127513	0.4
+	"2017"	"2017"	"Alabama"	"01"	41	4874747	0.8
+	"2017"	"2017"	"Arizona"	"04"	24	7016270	0.3
+	"2017"	"2017"	"Arkansas"	"05"	14	3004279	Unreliable
+	"2017"	"2017"	"California"	"06"	90	39536653	0.2
+	"2017"	"2017"	"Colorado"	"08"	18	5607154	Unreliable
+	"2017"	"2017"	"Connecticut"	"09"	11	3588184	Unreliable
+	"2017"	"2017"	"Florida"	"12"	48	20984400	0.2
+	"2017"	"2017"	"Georgia"	"13"	74	10429379	0.7
+	"2017"	"2017"	"Illinois"	"17"	39	12802023	0.3
+	"2017"	"2017"	"Indiana"	"18"	40	6666818	0.6
+	"2017"	"2017"	"Iowa"	"19"	12	3145711	Unreliable
+	"2017"	"2017"	"Kansas"	"20"	10	2913123	Unreliable
+	"2017"	"2017"	"Kentucky"	"21"	18	4454189	Unreliable
+	"2017"	"2017"	"Louisiana"	"22"	41	4684333	0.9
+	"2017"	"2017"	"Maryland"	"24"	25	6052177	0.4
+	"2017"	"2017"	"Massachusetts"	"25"	14	6859819	Unreliable
+	"2017"	"2017"	"Michigan"	"26"	24	9962311	0.2
+	"2017"	"2017"	"Minnesota"	"27"	18	5576606	Unreliable
+	"2017"	"2017"	"Mississippi"	"28"	12	2984100	Unreliable
+	"2017"	"2017"	"Missouri"	"29"	28	6113532	0.5
+	"2017"	"2017"	"Nevada"	"32"	11	2998039	Unreliable
+	"2017"	"2017"	"New Jersey"	"34"	44	9005644	0.5
+	"2017"	"2017"	"New Mexico"	"35"	10	2088070	Unreliable
+	"2017"	"2017"	"New York"	"36"	47	19849399	0.2
+	"2017"	"2017"	"North Carolina"	"37"	35	10273419	0.3
+	"2017"	"2017"	"Ohio"	"39"	42	11658609	0.4
+	"2017"	"2017"	"Oklahoma"	"40"	22	3930864	0.6
+	"2017"	"2017"	"Oregon"	"41"	12	4142776	Unreliable
+	"2017"	"2017"	"Pennsylvania"	"42"	40	12805537	0.3
+	"2017"	"2017"	"South Carolina"	"45"	24	5024369	0.5
+	"2017"	"2017"	"Tennessee"	"47"	39	6715984	0.6
+	"2017"	"2017"	"Texas"	"48"	147	28304596	0.5
+	"2017"	"2017"	"Utah"	"49"	10	3101833	Unreliable
+	"2017"	"2017"	"Virginia"	"51"	40	8470020	0.5
+	"2017"	"2017"	"Washington"	"53"	24	7405743	0.3
+	"2017"	"2017"	"Wisconsin"	"55"	12	5795483	Unreliable
+"Total"	"2017"	"2017"			1208	325719178	0.4
+"Total"					15477	5761465567	0.3
+"---"
+"Dataset: Underlying Cause of Death, 1999-2017"
+"Query Parameters:"
+"ICD-10 Codes: O00-O99 (Pregnancy, childbirth and the puerperium)"
+"Group By: Year; State"
+"Show Totals: True"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/ucd.html for more information."
+"---"
+"Query Date: Dec 3, 2019 12:07:36 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Underlying Cause of Death"
+"1999-2017 on CDC WONDER Online Database, released December, 2018. Data are from the Multiple Cause of Death Files, 1999-2017, as"
+"compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
+"at http://wonder.cdc.gov/ucd-icd10.html on Dec 3, 2019 12:07:36 PM"
+"---"
+Messages:
+"1. Rows with suppressed Deaths are hidden, but the Deaths and Population values in those rows are included in the totals. Use"
+"Quick Options above to show suppressed rows."
+"---"
+Caveats:
+"1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#2014-Revision."
+"2. Circumstances in Georgia for the years 2008 and 2009 have resulted in unusually high death counts for the ICD-10 cause of"
+"death code R99, ""Other ill-defined and unspecified causes of mortality."" Caution should be used in interpreting these data."
+"More information: http://wonder.cdc.gov/wonder/help/ucd.html#Georgia-Reporting-Anomalies."
+"3. Circumstances in New Jersey for the year 2009 have resulted in unusually high death counts for the ICD-10 cause of death code"
+"R99, ""Other ill-defined and unspecified causes of mortality"" and therefore unusually low death counts in other ICD-10 codes,"
+"most notably R95, ""Sudden Infant Death Syndrome"" and X40-X49, ""Unintentional poisoning."" Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/ucd.html#New-Jersey-Reporting-Anomalies."
+"4. Circumstances in California resulted in unusually high death counts for the ICD-10 cause of death code R99, ""Other"
+"ill-defined and unspecified causes of mortality"" for deaths occurring in years 2000 and 2001. Caution should be used in"
+"interpreting these data. More information: http://wonder.cdc.gov/wonder/help/ucd.html#California-Reporting-Anomalies."
+"5. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Assurance of Confidentiality."
+"6. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/ucd.html#Unreliable."
+"7. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the Vintage 2017"
+"postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The population figures for"
+"year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal series released by NCHS"
+"on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26, 2014. The"
+"population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012 postcensal"
+"series released by NCHS on June 13, 2013. The population figures for year 2011 are bridged-race estimates of the July 1 resident"
+"population, from the Vintage 2011 postcensal series released by NCHS on July 18, 2012. Population figures for 2010 are April 1"
+"Census counts. The population figures for years 2001 - 2009 are bridged-race estimates of the July 1 resident population, from"
+"the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population figures for 2000 are"
+"April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of July 1 estimates. Population"
+"figures for the infant age groups are the number of live births. <br/><b>Note:</b> Rates and population figures for years 2001 -"
+"2009 differ slightly from previously published reports, due to use of the population estimates which were available at the time"
+"of release."
+"8. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/ucd.html#Age Group."
