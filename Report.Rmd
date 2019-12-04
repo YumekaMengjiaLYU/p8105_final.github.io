@@ -42,7 +42,7 @@ The expected cost to the mother of giving birth was scrapped from the following 
 
 ### Global Data
 
-The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [Gap Minder](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
+The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [World Development Indicators](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
 
 
 ## Methods
@@ -50,11 +50,7 @@ The percent of births attended by a skilled physician was downloaded directly fr
 ### Maternal Mortality
 The World Health Organization defines Maternal Mortality Ratio (MMR) as the number of maternal deaths per 100,000 births. Since the ratio of maternal death to birth is relatively small, this scaling factor helps to make the data more readable for a human viewer. The global data for MMR was downloaded from [Gap Minder](https://www.gapminder.org/data/).
 
-<<<<<<< HEAD
 To clean the global MMR data for use, the data was pivoted from wide to long format. It is also worthwhile to note that this dataset contains data dating back to the 1800s and therefore has many missing values. This is not a problem for our research intentions since we are not fitting regression models for the scope of this problem and therefore we chose to exclude missing values where necessary. Here we are focusing on the maternal moretality in 2013 for 10 randomly selected countries.
-=======
-To clean the global MMR data for use, the data was pivoted from wide to long format. It is also worthwhile to note that this dataset contains data dating back to the 1800s and therefore has many missing values. This is not a problem for our research intentions since we are not fitting regression models for the scope of this problem and therefore we chose to exclude missing values where necessary.
->>>>>>> b0df01967a207e665c2af854f046613741ac9da0
 
 ```{r MMR_global, results=FALSE, message=FALSE}
 #Maternal Mortality ratio from gapminder dataset
@@ -89,38 +85,6 @@ The Maternal Mortality ratios in the US were not directly available. To circumve
 
 
 ****** Kay needs to add this code chunk after she finishes the shiny part *****
-
-### GDP per capita
-```{r mmr_gdp_per_capita, message=FALSE}
-# Maternal Mortality Ratio and GDP per capita
-mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
-  janitor::clean_names() %>% 
-  rename(
-    country = entity,
-    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
-    gdp_per_capita = gdp_per_capita_international,
-    gdp = x6) %>% 
-  mutate(
-    country = as.factor(country),
-    code = as.factor(code),
-    gdp_per_capita = round(gdp_per_capita, digits = 2)
-  ) %>% 
-  filter(year > 1999, year < 2016)
-```
-
-GDP per capita stands for Gross Domestic Product per person. It is an important indicator of economic performance and a useful unit to make cross-country comparisons of average living standards and economic wellbeing. In our project, GDP per capita is a factor to show its relationship with maternal mortality ratio across countries.
-
-```{r ln_gdp_per_capita, message = FALSE}
-# log-transformed 'gdp_per_capita'
-mmr_gdp_capita_log = 
-  mmr_gdp_capita %>% 
-  mutate(
-    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
-  )
-```
-
-We specifically include a new variable `ln_gdp_per_capita`, the log-transformed `gdp_per_capita` to show a more linear relationship rather than a skewed distribution with maternal mortality ratio.
-
 
 ### Percent Births Attended By Skilled Health Staff
 
@@ -188,7 +152,7 @@ Since the cesarean rates were not directly available from the CDC, we first down
 
 
 ### Percent GDP that comes from healthcare spending
-Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). The dataset is relatively clean. What we did was renaming variables, filtering out the 10 selected countries in 2013 and pivoting from wide to long format.
+Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). The dataset is relatively clean. What we did was renaming variables, filtering out the 10 selected countries in 2013 and pivoting from wide to long format. In our project, we are trying to see if percent GDP that comes from healthcare spending is an indicator for maternal mortality.
 
 ```{r healthcare spending percent GDP, message=FALSE}
 health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
@@ -221,6 +185,15 @@ healthcare_spending_2013_developed =
                         "France", 
                         "Australia"
                         ))
+```
+
+### Cost of giving birth in 10 developed countries
+Cost of giving birth was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/). What we are trying to see here is whether higher spending on a family scale leads to lower maternal mortality. 
+
+```{r cost of giving birth, message=FALSE}
+child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(average_cost = (child_birth_cost_normal + child_birth_cost_csec)/2)
 ```
 
 
@@ -273,12 +246,39 @@ interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spendi
 interactive_healthcare_spending
 ```
 
-<<<<<<< HEAD
 Based on the percent GDP plot and the previous maternal mortality plot, despite spending the most amount of money, the US has the highest maternal mortality ratio. There is an obvious mismatch between the amount of money spending on healthcare and the maternal mortality which indicates that there are problems waiting to besolved in the healthcare system.
 
+```{r cost of giving birth in 10 developed countries, message=FALSE}
+ten_developed_countries_childbirth_cost = 
+  child_birth_cost %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = average_cost, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Average cost of giving birth ($)"
+       )
 
-=======
->>>>>>> b0df01967a207e665c2af854f046613741ac9da0
+interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost, 
+                                          tooltip = c("x", "y"))
+interactive_child_birth_cost
+```
+
+Based on the plot, there is not an obvious relationship between cost of giving birth and maternal mortality.
+
+
 ```{r plot_attended, message=FALSE}
 mortality_births_attend %>% 
   plot_ly(y = ~percent_maternal_mortality, color = ~per_range, type = "box",
