@@ -123,6 +123,18 @@ Particularly, we created a new variable `ln_gdp_per_capita`, the log-transformed
 
 The percent of births attended by skilled health staff is more explicitly defined as the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The percent births attended by skilled health staff was taken directly from the aforementioned [Gap Minder](https://www.gapminder.org/data/) dataset. Noteably, this dataset has fewer missing vallues than the MMR dataset, but once again missing values were excluded when necessary.  No complex data manipulation was needed and the following code was used to read in and clean the data:
 
+```{r, message=FALSE}
+#Maternal Mortality ratio from gapminder dataset
+maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_live_births.csv") %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    x1800:x2013,
+    names_to = "year",
+    values_to = "maternal_mortality"
+  ) %>% 
+  mutate(year = str_remove(year,"x"))
+```
+
 ```{r Births_Attended_SkilledHealthStaff, message=FALSE}
 #births attended by skilled health staff (percent of total)
 staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_percent_of_total.csv")  %>% 
@@ -231,6 +243,8 @@ child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>%
 
 
 ## Results
+
+
 ```{r plot mortality global, message=FALSE}
 ten_developed_countries_maternal_mort = 
   maternal_mort_2013_developed %>% 
@@ -312,28 +326,31 @@ interactive_child_birth_cost
 Based on the plot, there is not an obvious relationship between cost of giving birth and maternal mortality.
 
 
-```{r plot_attended, message=FALSE}
+
+### Birth Attended by skilled Staff
+
+```{r}
 mortality_births_attend %>% 
-  plot_ly(y = ~percent_maternal_mortality, color = ~per_range, type = "box",
+  plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
           colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))
 ```
 
+As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births.
 
-As expected, the maternal mortality decreases as births attended by skilled staff increases. Now we will direct our attention to countries with higher percentage of skilled staff attending births. 
 
-```{r, plot_attended_top25percent, message=FALSE}
+```{r}
 Top_count %>%
-  plot_ly(y = ~percent_maternal_mortality, color = ~top_range, type = "box",
+  plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
           colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
     yaxis = list(title = "Maternal Mortality per 100k Live Births"))
 ```
 
-There does not appear to be a significant trend but there is an overall decrease in maternal mortality ratio as the births attendance increases.
+It seems there is not any significant trend being followed but there is an overall decrease in maternal mortality ratio as the births attendance increases.
 
 
 

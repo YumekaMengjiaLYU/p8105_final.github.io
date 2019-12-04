@@ -18,18 +18,54 @@ Column {data-width=350}
 -----------------------------------------------------------------------
 
 ```{r}
+mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
+  janitor::clean_names() %>% 
+  rename(
+    country = entity,
+    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
+    gdp_per_capita = gdp_per_capita_international,
+    gdp = x6) %>% 
+  mutate(
+    country = as.factor(country),
+    code = as.factor(code)
+  ) %>% 
+  mutate(
+    gdp_per_capita = round(gdp_per_capita, digits = 2)
+  ) %>% 
+  filter(year > 2000, year < 2016)
 
+# log-transformed 'gdp_per_capita'
+# log-transformed
+mmr_gdp_capita_log = 
+  mmr_gdp_capita %>% 
+  mutate(
+    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
+  )
+
+x2_template = list(
+  title = "ln(GDP per capita)"
+)
+
+y_template = list(
+  title = "Maternal Mortality Ratio per 100,000 live births"
+)
 ```
 
-
-
-
-
-### Maternal Mortality and GDP per Capita
+### Maternal Mortality Vs ln(GDP per Capita)
 
 
 ```{r}
-
+mmr_gdp_capita_log %>%  
+  filter(year == 2013) %>% 
+  plot_ly(
+    x = ~ln_gdp_per_capita, y = ~mmr, type = "scatter", 
+    mode = "markers", color = ~country
+  ) %>%  
+  layout(
+    xaxis = x2_template,
+    yaxis = y_template,
+    title = "Maternal mortality ratio vs. ln(GDP per capita)"
+  )
 ```
 
 Column {data-width=350}
