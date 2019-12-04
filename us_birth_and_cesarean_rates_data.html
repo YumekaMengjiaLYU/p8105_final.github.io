@@ -602,7 +602,11 @@ body {
 
 <h1 id="us_birth_and_cesarean_rates_data">us_birth_and_cesarean_rates_data</h1>
 <p>Alicia Dagle December 1, 2019</p>
+<<<<<<< HEAD
+<h2 id="data-source">Data Source:</h2>
+=======
 <h2 id="data-source:">Data Source:</h2>
+>>>>>>> fe6a21816f3ab278930aed0fc4c2bace871eb511
 <p>All data for the birth rates and cesearan rates in the US was pulled from the CDC. By default, the data from 2018 is pulled but we can change this manually if we want to look at a different year or multiple years. This natality data was provided by the Center for Disease Control and Prevention and can be found at <a href="https://wonder.cdc.gov/natality.html">CDC WONDER</a>.</p>
 <p>#Delivery method per state</p>
 <p>The births were stored as factors for some reason so the numbering had many errors when they were converted directly to numeric. To solve this, I first had to convert the factors to characters and then to numeric variable types. Then, I calculated the total number of births per state by using group and summarize. Finally, I joined these two datasets using a left_join by state of residence. Then, I was used the number of cesarean births divided by the total number of births per state to produce a cesarean rate per state.</p>

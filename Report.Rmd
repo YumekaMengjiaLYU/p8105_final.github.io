@@ -26,8 +26,6 @@ scale_fill_discrete = scale_fill_viridis_d
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
-
-
 ## Introduction
 
 The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. What are the underlying reasons for this? According to the CDC, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to understand why the US lags behind other developed nations on this front.
@@ -44,16 +42,15 @@ The expected cost to the mother of giving birth was scrapped from the following 
 
 ### Global Data
 
-The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [Gap Minder](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
+The percent of births attended by a skilled physician was downloaded directly from [Gap Minder](https://www.gapminder.org/data/) which is a collection of datasets from several sources including the World Health Organization. GDP per capita was collected from [World Development Indicators](https://www.gapminder.org/data/documentation/). Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). Cost to the mother was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/).
 
 
 ## Methods
 
-
 ### Maternal Mortality
 The World Health Organization defines Maternal Mortality Ratio (MMR) as the number of maternal deaths per 100,000 births. Since the ratio of maternal death to birth is relatively small, this scaling factor helps to make the data more readable for a human viewer. The global data for MMR was downloaded from [Gap Minder](https://www.gapminder.org/data/).
 
-To clean the global MMR data for use, the data was pivoted from wide to long format. It is also worthwhile to note that this dataset contains data dating back to the 1800s and therefore has many missing values. This is not a problem for our research intentions since we are not fitting regression models for the scope of this problem and therefore we chose to exclude missing values where necessary.
+To clean the global MMR data for use, the data was pivoted from wide to long format. It is also worthwhile to note that this dataset contains data dating back to the 1800s and therefore has many missing values. This is not a problem for our research intentions since we are not fitting regression models for the scope of this problem and therefore we chose to exclude missing values where necessary. Here we are focusing on the maternal moretality in 2013 for 10 randomly selected countries.
 
 ```{r MMR_global, results=FALSE, message=FALSE}
 #Maternal Mortality ratio from gapminder dataset
@@ -62,9 +59,24 @@ maternal_mort = read_csv("./data/Gapminder/maternal_mortality_ratio_per_100000_l
   pivot_longer(
     x1800:x2013,
     names_to = "year",
-    values_to = "maternal_mortality"
+    values_to = "percent_maternal_mortality"
   ) %>% 
   mutate(year = str_remove(year,"x"))
+
+maternal_mort_2013_developed = 
+  maternal_mort %>% 
+  filter(year == 2013) %>% 
+  filter(country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        ))
 ```
 
 
@@ -74,42 +86,9 @@ The Maternal Mortality ratios in the US were not directly available. To circumve
 
 ****** Kay needs to add this code chunk after she finishes the shiny part *****
 
-### GDP per capita
-```{r mmr_gdp_per_capita, message=FALSE}
-# Maternal Mortality Ratio and GDP per capita
-mmr_gdp_capita = read_csv("./data/maternal-mortality-ratio-vs-gdp-per-capita.csv") %>%
-  janitor::clean_names() %>% 
-  rename(
-    country = entity,
-    mmr = maternal_mortality_ratio_deaths_per_100_000_live_births,
-    gdp_per_capita = gdp_per_capita_international,
-    gdp = x6) %>% 
-  mutate(
-    country = as.factor(country),
-    code = as.factor(code),
-    gdp_per_capita = round(gdp_per_capita, digits = 2)
-  ) %>% 
-  filter(year > 1999, year < 2016)
-```
-
-GDP per capita stands for Gross Domestic Product per person. It is an important indicator of economic performance and a useful unit to make cross-country comparisons of average living standards and economic wellbeing. In our project, GDP per capita is a factor to show its relationship with maternal mortality ratio across countries.
-
-```{r ln_gdp_per_capita, message = FALSE}
-# log-transformed 'gdp_per_capita'
-mmr_gdp_capita_log = 
-  mmr_gdp_capita %>% 
-  mutate(
-    ln_gdp_per_capita = round(log(gdp_per_capita), digits = 2)
-  )
-```
-
-We specifically include a new variable `ln_gdp_per_capita`, the log-transformed `gdp_per_capita` to show a more linear relationship rather than a skewed distribution with maternal mortality ratio.
-
-
 ### Percent Births Attended By Skilled Health Staff
 
 The percent of births attended by skilled health staff is more explicitly defined as the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and treatment to women during pregnancy, labor, and the postpatrum period. The percent births attended by skilled health staff was taken directly from the aforementioned [Gap Minder](https://www.gapminder.org/data/) dataset. Noteably, this dataset has fewer missing vallues than the MMR dataset, but once again missing values were excluded when necessary.  No complex data manipulation was needed and the following code was used to read in and clean the data:
-
 
 ```{r Births_Attended_SkilledHealthStaff, message=FALSE}
 #births attended by skilled health staff (percent of total)
@@ -123,7 +102,6 @@ staff = read_csv("./data/Gapminder/births_attended_by_skilled_health_staff_perce
   mutate(year = str_remove(year,"x"))
 ```
 
-
 Both the maternal mortality ratio and births attended by skilled personnel datasets were combined using inner_join.
 
 ```{r combine_MMR_attended, message=FALSE}
@@ -131,7 +109,6 @@ mortality_births_attend = inner_join(maternal_mort, staff, by = c("country","yea
 ```
 
 Since percent births attended by a skilled personnel is a continuous variable, we built a factor `per_range` variable that takes values from 0-100 percent and divide them into four discrete bins. 0-25, 26-50, 51-75, and 76-100 respectively. This new factor variable is then used to plot an interactive boxplot of maternal mortality ratio versus the bins of percent births attended by skilled personnel. To examine whether there was a cutoff past which the percent of births attended by a skilled health physician was no longer a significant factor, we also took a closer look at the countries in this high 76-100% attendance bin.
-
 
 ```{r bin_0to100percent, message=FALSE}
 mortality_births_attend = 
@@ -149,9 +126,7 @@ mortality_births_attend %>%
     text_label = str_c("country: ", country))
 ```
 
-
 To do this, we took the `76-100` range and divided it into five smaller ranges and built the same interactive box plot.
-
 
 ```{r bin_top25percent, message=FALSE}
 Top_count =
@@ -172,22 +147,141 @@ Top_count =
 ```
 
 
-
 ### Cesarean Rates
 Since the cesarean rates were not directly available from the CDC, we first downloaded the number of births and filtered vaginal and cesearean deliveries in each state. By taking the number of cesarean deliveries and dividing by the total number of births per state, we extrapolated the cesaraean rate for each state. 
 
 
+### Percent GDP that comes from healthcare spending
+Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). The dataset is relatively clean. What we did was renaming variables, filtering out the 10 selected countries in 2013 and pivoting from wide to long format. In our project, we are trying to see if percent GDP that comes from healthcare spending is an indicator for maternal mortality.
 
+```{r healthcare spending percent GDP, message=FALSE}
+health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
+  janitor::clean_names() %>% 
+  select(country_name, country_code, x2000:x2015) %>% 
+  pivot_longer(
+  x2000:x2015,
+  names_to = "year",
+  values_to = "health_spending_percent_GDP") %>% 
+  rename("health_spending_percent_gdp" = "health_spending_percent_GDP") %>% 
+  mutate(year = str_remove(year,"x")) %>% 
+  mutate(health_spending_percent_gdp = round(health_spending_percent_gdp, digits = 2)) %>% 
+  mutate(country_name = as.factor(country_name),
+         country_code = as.factor(country_code),
+         year = as.numeric(year)) %>% 
+  rename(country = country_name,
+         code = country_code)
 
+healthcare_spending_2013_developed = 
+  health_spending_percent_gdp %>% 
+  filter(year == 2013) %>% 
+  filter(country %in% c("United States", 
+                        "Switzerland", 
+                        "Germany",
+                        "Singapore",
+                        "Japan",
+                        "Canada",
+                        "United Kingdom",
+                        "Spain",
+                        "France", 
+                        "Australia"
+                        ))
+```
 
+### Cost of giving birth in 10 developed countries
+Cost of giving birth was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/). What we are trying to see here is whether higher spending on a family scale leads to lower maternal mortality. 
+
+```{r cost of giving birth, message=FALSE}
+child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(average_cost = (child_birth_cost_normal + child_birth_cost_csec)/2)
+```
 
 
 ## Results
+```{r plot mortality global, message=FALSE}
+ten_developed_countries_maternal_mort = 
+  maternal_mort_2013_developed %>% 
+  mutate(country = as.factor(country),
+         country = fct_reorder(country, percent_maternal_mortality)) %>% 
+  ggplot(aes(x = country, y = percent_maternal_mortality, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Maternal mortality (%)"
+       )
+
+interactive_maternal_mortality = ggplotly(ten_developed_countries_maternal_mort, 
+                                          tooltip = c("x", "y"))
+interactive_maternal_mortality
+```
+
+As observed, the US has the highest maternal mortality ratio among the ten selected countries. 
+
+```{r plot healthcare spending, message=FALSE}
+ten_developed_countries_health_spending = 
+  healthcare_spending_2013_developed %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = health_spending_percent_gdp, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Percent GDP that comes from healthcare spending (%)"
+       )
+
+interactive_healthcare_spending = ggplotly(ten_developed_countries_health_spending,
+                                           tooltip = c("y", "x", "colour"))
+interactive_healthcare_spending
+```
+
+Based on the percent GDP plot and the previous maternal mortality plot, despite spending the most amount of money, the US has the highest maternal mortality ratio. There is an obvious mismatch between the amount of money spending on healthcare and the maternal mortality which indicates that there are problems waiting to besolved in the healthcare system.
+
+```{r cost of giving birth in 10 developed countries, message=FALSE}
+ten_developed_countries_childbirth_cost = 
+  child_birth_cost %>% 
+  mutate(country = as.factor(country),
+         country = fct_relevel(country, 
+                               "Spain",
+                               "Australia",
+                               "Japan",
+                               "Singapore",
+                               "Switzerland",
+                               "Germany",
+                               "United Kingdom",
+                               "Canada",
+                               "France",
+                               "United States")) %>% 
+  ggplot(aes(x = country, y = average_cost, fill = country)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Developed countries",
+       y = "Average cost of giving birth ($)"
+       )
+
+interactive_child_birth_cost = ggplotly(ten_developed_countries_childbirth_cost, 
+                                          tooltip = c("x", "y"))
+interactive_child_birth_cost
+```
+
+Based on the plot, there is not an obvious relationship between cost of giving birth and maternal mortality.
 
 
 ```{r plot_attended, message=FALSE}
 mortality_births_attend %>% 
-  plot_ly(y = ~maternal_mortality, color = ~per_range, type = "box",
+  plot_ly(y = ~percent_maternal_mortality, color = ~per_range, type = "box",
           colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (% Range)"),
@@ -199,7 +293,7 @@ As expected, the maternal mortality decreases as births attended by skilled staf
 
 ```{r, plot_attended_top25percent, message=FALSE}
 Top_count %>%
-  plot_ly(y = ~maternal_mortality, color = ~top_range, type = "box",
+  plot_ly(y = ~percent_maternal_mortality, color = ~top_range, type = "box",
           colors = "Set2", text = ~text_label) %>% 
   layout(
     xaxis = list(title = "Birth Attended by Skilled Staff (%)"),
