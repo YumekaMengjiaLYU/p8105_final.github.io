@@ -3,7 +3,6 @@ title: "Global cost analysis with respect to maternal mortality rate of top 10 d
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
-    vertical_layout: fill
 editor_options: 
   chunk_output_type: console
 ---
@@ -125,7 +124,6 @@ child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>%
   janitor::clean_names() %>% 
   mutate(average_cost = (child_birth_cost_normal + child_birth_cost_csec)/2)
 ```
-
 
 Row
 -----------------------------------------------------------------------
