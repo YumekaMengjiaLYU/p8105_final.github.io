@@ -329,15 +329,15 @@ The Maternal Mortality ratios in the US were not directly available. To circumve
 
 To arrive at this number, we first cleaned the underlying cause of death dataset:
 
+
+
 ```{r}
 cdc_maternal_death_data = read.delim("./us_shiny/data/maternal_deaths_1999_2017.txt") %>%
   janitor::clean_names() %>%
   na.omit() %>%
   subset(notes != "Total") %>%
   select(year, state, deaths)
-
 ```
-
 
 
 Next, we cleaned the total number of births per state from the natality dataset:

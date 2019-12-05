@@ -169,39 +169,8 @@ subplot(interactive_healthcare_spending,
         interactive_maternal_mortality, 
         shareX = T, shareY = T)
 
-<<<<<<< HEAD
-# Output map
-   = states %>% 
-    leaflet() %>% 
-    addTiles() %>% 
-    addPolygons(
-      
-      fillColor = ~pal(year_df$mortality_per_100000_births),
-      weight = 2,
-      opacity = 1,
-      color = "white",
-      dashArray = "3",
-      fillOpacity = 0.8,
-      highlight = highlightOptions(
-        weight = 5,
-        color = "#666",
-        dashArray = "",
-        fillOpacity = 0.8,
-        bringToFront = TRUE),
-      popup = ~popup_state,
-      labelOptions = labelOptions(
-        style = list("font-weight" = "normal", padding = "3px 8px"),
-        textsize = "15px",
-        direction = "auto")) %>%
-    addLegend(pal = pal, 
-              values = year_df$mortality_per_100000_births, 
-              position = "bottomright", 
-              title = "Maternal Mortality")
-  titlePanel("Maternal Mortality Over Time"),
-=======
-
 interactive_child_birth_cost
->>>>>>> ec3f7be31a80fa5ca85cf45462082ff127125a54
+
 ```
 
 

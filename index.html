@@ -16,7 +16,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -108,33 +108,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 54px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h2 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h3 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h4 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h5 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h6 {
-  padding-top: 59px;
-  margin-top: -59px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .dropdown-submenu {
   position: relative;
@@ -343,8 +343,14 @@ div.tocify {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="Report.html">Report</a>
+</li>
+<li>
+  <a href="https://mengjia-lyu.shinyapps.io/us_shiny/">US Interactive Map</a>
 </li>
 <li>
   <a href="global_cost.html">Global Cost</a>
@@ -352,16 +358,14 @@ div.tocify {
 <li>
   <a href="other_global_factors.html">Other Global Factors</a>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
+<li>
   <a href="https://github.com/YumekaMengjiaLYU/p8105_final.github.io">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="mailto:&lt;alicia.dagle@columbia.edu&gt;&amp;cc:&lt;ml4420@columbia.edu&gt;">
+  <a href="mailto:&lt;ml4420@columbia.edu&gt;">
     <span class="fa fa-envelope fa-lg"></span>
      
   </a>
@@ -384,12 +388,32 @@ div.tocify {
 <img src="Pictures/mothers.jpg" />
 
 </div>
-<div id="overview---update-introduction" class="section level2">
-<h2>Overview - update Introduction</h2>
-<p>The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. What are the underlying reasons for this? According to the CDC, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to understand why the US lags behind other developed nations on this front.</p>
+<p>(photo: texasimpact.org)</p>
+<div id="how-can-we-better-understanding-maternal-mortality" class="section level2">
+<h2>How can we better understanding maternal mortality?</h2>
+<p>The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. Our team wants to begin answering the question: what are the underlying reasons for this?</p>
+<p>According to the WHO, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to understand why the US lags behind other developed nations on this front.</p>
+</div>
+<div id="what-exactly-is-maternal-mortality" class="section level2">
+<h2>What exactly is maternal mortality?</h2>
+<p>The World Health Organization (WHO) defines maternal death as the death of a woman while pregnant, giving birth, or within 42 days of termination of pregnancy. This could be a result of pregnancy or delivery complictions. However, it is common that problems arise before the live birth of the child.</p>
+</div>
+<div id="what-factors-might-be-involved" class="section level2">
+<h2>What factors might be involved?</h2>
+<p>Understanding maternal mortality remains an open question to be solved by scientists and public policy makers alike. Data offers a unique opportunity to explore the factors influencing current and past maternal outcomes. In decades prior, data comparisons allowed health care professionals to understand the importance of hygene in preventing the spread of contagious disease. For context, feel free to watch the youtube video below and learn about 2 populations: midwifes who only delivered babies and doctors who both delivered babies and perfomed autopsies on diseased patients, without hygenic practices.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=6Ju8yP_ZHR0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>The underlying factors affecting maternal outcomes are not yet fully understood. On this website, we investigate the effect of cost on maternal outcomes. We do so using 3 categories: GDp per capita, healthcare spending, and cost accrued to the individual family. We also look at the rate of cesarean sections, as many policy are concerned with the high rates, especially within the US. Finally, we investigate how often a skilled healthcare professional is present during birth.</p>
+<p>It is important to note that many negative maternal outcomes happen before of after birth and these factors are not comprehensive. It would also be valuable to evaluate the influence of policy such as maternal leave in the future. We hope that this website serves as a starting point and increases the conversation surrounding maternal mortality and the actions the US can take in improving maternal outcomes.</p>
 </div>
 <div id="webcast" class="section level2">
 <h2>Webcast</h2>
+<p>Please enjoy our webcast below, detailing how to navigate this website:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=YHZdqtQh6uw&amp;feature=youtu.be" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<h3>
+Contributors: Alicia Dagle | Mengjia Lyu | Michael Yan | Duzhi Zhao | Clement Mugenzi
+</h3>
 </div>
 
 

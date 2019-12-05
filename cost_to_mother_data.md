@@ -55,7 +55,7 @@ state_df = tibble(
 view(state_df)
 ```
 
-Time to clean the cost dataset…this is gonna be fun…
+Time to clean the cost dataset...this is gonna be fun...
 
 ``` r
 #pivot longer so all costs are in one column
@@ -88,20 +88,19 @@ cost_df_clean = cost_df %>%
   )
 ```
 
-    ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows [1, 3, 5,
-    ## 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, ...].
+    ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
+    ## [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37,
+    ## 39, ...].
 
-    ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows [2, 4, 6,
-    ## 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, ...].
+    ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 50 rows
+    ## [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
+    ## 40, ...].
 
 ``` r
 view(cost_df_clean)
 ```
 
-Unfortunately, web scraping gets a bit messy. We had to assume the order
-of the entries was preserved, which was verified for the first few
-entries. This is the final clean dataset which will be saved as an excel
-file for other team mates to use more easily.
+Unfortunately, web scraping gets a bit messy. We had to assume the order of the entries was preserved, which was verified for the first few entries. This is the final clean dataset which will be saved as an excel file for other team mates to use more easily.
 
 ``` r
 # merge the state information with the cost information

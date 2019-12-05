@@ -5,6 +5,6 @@ account: mengjia-lyu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1554901
-bundleId: 2643893
+bundleId: 2643713
 url: https://mengjia-lyu.shinyapps.io/us_shiny/
-when: 1575558550.67815
+when: 1575555464.0613
