@@ -14,7 +14,7 @@ cesarean_rate_df = read.csv("./data/US_cesarean_rates.csv") %>%
   select(-total_births) %>%
   rename("state" = "state_of_residence") 
 
-mother_cost_df = read.csv("./data/US_cost_to_mother.csv", fileEncoding = "latin1") %>%
+mother_cost_df = read.csv("./data/US_cost_to_mother_df.csv", fileEncoding = "latin1") %>%
   janitor::clean_names()
 
 csr_cost_df = merge(x = cesarean_rate_df, 
