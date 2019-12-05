@@ -249,12 +249,12 @@ state_df = tibble(
   "without_ins" = 3
 ) %>% 
   pivot_longer(
-    "Vaginal_birth": "C-section",
+    "Vaginal_birth" : "C-section",
     names_to = "type",
     values_to = "dummy"
   ) %>% 
   pivot_longer(
-    "with_ins": "without_ins",
+    "with_ins" : "without_ins",
     names_to = "insurance",
     values_to = "dummy2"
   ) %>% 
@@ -355,7 +355,7 @@ It is also important to note that the number of births was only calculated from 
 
 
 ### Percent GDP that comes from healthcare spending
-Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). The dataset is relatively clean. What we did was renaming variables, filtering out the 10 selected countries in 2013 and pivoting from wide to long format. In our project, we are trying to see if percent GDP that comes from healthcare spending is an indicator for maternal mortality.
+Global healthcare spending or expenditures were collected from [The World Bank](https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS?end=2016&start=2000&view=chart). This shows the healthcare spending's contribution to the total GDP. The dataset is relatively clean. What we did was renaming variables, filtering out the 10 selected countries in 2013 and pivoting from wide to long format. In our project, we are trying to see if percent GDP that comes from healthcare spending is an indicator for maternal mortality. We chose 2013 because it is the most recent year that we have both the percent GDP that comes from healthcare spending data and the maternal mortality data.
 
 ```{r healthcare spending percent GDP, message=FALSE}
 health_spending_percent_gdp = read_csv("./data/WorldBank/health_spending_percent_GDP.csv") %>%
@@ -391,7 +391,7 @@ healthcare_spending_2013_developed =
 ```
 
 ### Cost of giving birth in 10 developed countries
-Cost of giving birth was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/). What we are trying to see here is whether higher spending on a family scale leads to lower maternal mortality. 
+Cost of giving birth was extrapolated from the [International Federation of Health Plans](http://www.ifhp.com/). The dataset is clean and we didn't do much of cleaning. We did create a new variable showing the average cost of getting a normal delivery and getting a C-section since the costs are different. What we are trying to see here is whether higher spending on a family scale leads to lower maternal mortality. 
 
 ```{r cost of giving birth, message=FALSE}
 child_birth_cost = read_csv("./data/cost_of_child_birth_global.csv") %>% 
@@ -593,6 +593,12 @@ Maternal mortality is a complex health issue impacting societies around the worl
 
 Overall, we found that maternal mortality ratio decreases as births attended by skilled staff or GDP per capita increases. But interestingly enough, we found that for the wealthiest nations, maternal mortality was not determined by a country's GDP per capita. For instance, France was found to have a lower GDP per capita compared to the US but also had a far lower maternal mortality ratio (12 deaths per 100,000 live births) compared to the US (28 deaths per 100,000 live births). This was an unexpected observation considering the global relationship seen between GDP per capita and maternal mortality.
 
-Another observation worth highlighting was that despite the US investing massive amount of money in its healthcare system, it still has the highest maternal mortality ratio when compared to other developed nations.
+Another observation worth highlighting is that even though healthcare makes up a large portion of the GDP in the US, this country still has the highest maternal mortality ratio when compared to other developed nations. In the future, it may be more meaningful to investigate the amount of government spending the US invests in its healtchare system rather than GDP.
 
-In the future, it might be interesting to look at differing maternal mortality ratios between populations, those who have cesarean sections and those who do not. However, the population specific data to perform these studies is not available at this time.
+When considering the cost to the family, it may be a more reasonable metric to normalize the cost of giving birth by the average salary in each location. This would give a more fair representation of the cost burden around the world.
+
+It would also be interesting to look at differing maternal mortality ratios between populations, those who have cesarean sections and those who do not. However, the population specific data to perform these studies is not available at this time.
+
+Given that many complications arise before and after birth, prenatal care and family leave at the time of childbirth may also play a significant role in maternal outcomes. 
+
+While this project serves as a basis of understanding, more work is urgently needed to complete our understanding of the factors driving maternal mortality. This is needed to better understand why the US lags behind other first world countries and explain deviations in maternal mortality outcomes worldwide.
