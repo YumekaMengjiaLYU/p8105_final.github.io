@@ -1,5 +1,5 @@
 ---
-title: "other_global_factors"
+title: "Other global factors"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
