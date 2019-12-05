@@ -85,7 +85,7 @@ ui = fluidPage(
                   step = 1,
                   sep = "",
                   value = 1999),
-      p("Year selection only works for the 'Maternal Mortality Rate' Measure of Interest."),      
+          
       selectInput("stateInput", "State",
                   choices = c("Alabama", "Arizona", "Arkansas", "California", "Colorado",
                               "Connecticut", "Florida", "Georgia", "Hawaii", "Idaho",
@@ -100,17 +100,22 @@ ui = fluidPage(
                               "C-Section")),
       selectInput("insuranceInput", "Insurance Coverage",
                   choices = c("With Insurance",
-                              "Without Insurace")),
-      p("Type of Delivery and Insurance Coverage selections only work for the 'Cost to Mother' Measure of Interest.")
+                              "Without Insurace"))
      
     ),
     
-    # Show the map and table
+    # Show the map and plotly
     mainPanel(
-      
-      highchartOutput("map"),
-      p("Unfortunately CDC does not have complete information for every state and every year. 
+      h3("How to use this tool:"),
+      p("Maternal Mortality Rate allows you to select a state of interest and view a histogram of the rates over available years."),
+      p("Cesarean Rate is only available for 2018. Although the time bar will allow you to scroll, the map reflects only 2018 data."),
+      p("Cost to the Mother of Giving Birth is again only available for 2018. 
+        Using the sidebar tool, you can specific type of delivery and insurance coverage. 
+        The corresponding price will be displayed on the map.
+         Unfortunately CDC does not have complete information for every state and every year. 
          However, we can still see that overall the maternal mortality rate declines from 1999 to 2017."),
+      highchartOutput("map"),
+      
       plotlyOutput("plot")
       
       
@@ -151,6 +156,7 @@ server = function(input, output, session) {
     hc_subtitle(text = "Data Source: CDC Wonder",
                   align = "left") 
     } else if(input$typeInput == "Cesarean Rate") {
+      
       highchart() %>%
         hc_add_series_map(usgeojson, final_merged_data, name = "cesarean rate",
                           value = "c_rate", joinBy =  c("woename", "state"),
@@ -159,7 +165,7 @@ server = function(input, output, session) {
         hc_colorAxis(stops = colstops) %>%
         hc_legend(valueDecimals = 0, valueSuffix = "%") %>%
         hc_mapNavigation(enabled = TRUE) %>%
-        hc_title(text = "Cesarean Rate Across States",
+        hc_title(text = "Cesarean Rate Across States In 2018",
                  margin = 20, align = "center",
                  style = list(color = "#013220",  fontWeight = "bold")) %>%
         hc_subtitle(text = "Data Source: CDC Wonder",
@@ -181,7 +187,7 @@ server = function(input, output, session) {
         hc_colorAxis(stops = colstops) %>%
         
         hc_mapNavigation(enabled = TRUE) %>%
-        hc_title(text = "Cost to Mothers of Giving Birth Across States",
+        hc_title(text = "Cost to Mothers of Giving Birth Across States In 2018",
                  margin = 20, align = "center",
                  style = list(color = "#013220",  fontWeight = "bold")) %>%
         hc_subtitle(text = "Data Source: CDC Wonder",
@@ -198,7 +204,11 @@ server = function(input, output, session) {
     
    plot_ly(filtered, x = ~year, y = ~mortality_per_100000_births,
            color = ~mortality_per_100000_births, type = "bar",
-           text = ~paste("Clarity: ", mortality_per_100000_births))
+           text = ~paste("Mortality Per 100000 Births: ", mortality_per_100000_births)) %>%
+     layout(
+       title = 'Maternal Mortality Rate In a Given State'
+     )
+   
     
    
     } else if(input$typeInput == "Cesarean Rate") {
@@ -208,9 +218,30 @@ server = function(input, output, session) {
         distinct() %>%
         mutate(state = fct_reorder(state, c_rate)) %>%
       plot_ly(
-              x = ~state, y= ~c_rate, color = ~state, type = "bar")
+              x = ~state, y= ~c_rate, color = ~state, type = "bar",
+              text = ~paste("Cesarean Rate: ", c_rate)) %>%
+        layout(
+          title = 'Cesarean Rates Across States In 2018'
+        
+        )
     } else{
-      NULL
+      deliveryType = ifelse(input$deliveryInput == "Vaginal Birth", "Vaginal_birth", "C-section")
+      insuranceType = ifelse(input$insuranceInput == "With Insurance", "with_ins", "without_ins")
+      
+      final_merged_data %>%
+        filter(type == deliveryType) %>%
+        filter(insurance == insuranceType) %>%
+        select(state, cost) %>%
+        distinct() %>%
+        mutate(state = fct_reorder(state, cost)) %>%
+        plot_ly(
+          x = ~state, y= ~cost, color = ~state, type = "bar",
+          text = ~paste("Cost to Mother: ", cost)) %>%
+        layout(
+          title = 'Cost to Mother Across States In 2018 Under Given Circumstances '
+          
+        )      
+      
     }
  
   })
