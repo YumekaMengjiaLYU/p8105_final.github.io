@@ -9,8 +9,38 @@ output:
 ![](Pictures/mothers.jpg)
 
 
-## Overview - update Introduction
+(photo: texasimpact.org)
 
-The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. What are the underlying reasons for this? According to the CDC, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to understand why the US lags behind other developed nations on this front.
+
+## How can we better understanding maternal mortality?
+
+The United States has one of the highest maternal mortality rate out of developed countries despite high levels of spending. Our team wants to begin answering the question: what are the underlying reasons for this? 
+
+According to the WHO, Maternal Mortality Ratio is defined as the number of pregnancy-related deaths per 100,000 live births in a certain period of time. The CDC reports that in 2016 alone, the US had 16.8 deaths per 100,000 live births compared to 8.6 in the UK. The UK seems to have achieved these results while spending half than what the US spends in healthcare. As a team, we are interested in assessing the maternal mortality ratio against different determining factors to try to understand why the US lags behind other developed nations on this front.
+
+
+## What exactly is maternal mortality?
+
+The World Health Organization (WHO) defines maternal death as the death of a woman while pregnant, giving birth, or within 42 days of termination of pregnancy. This could be a result of pregnancy or delivery complictions. However, it is common that problems arise before the live birth of the child.
+
+
+
+## What factors might be involved?
+
+Understanding maternal mortality remains an open question to be solved by scientists and public policy makers alike. Data offers a unique opportunity to explore the factors influencing current and past maternal outcomes. In decades prior, data comparisons allowed health care professionals to understand the importance of hygene in preventing the spread of contagious disease. For context, feel free to watch the youtube video below and learn about 2 populations: midwifes who only delivered babies and doctors who both delivered babies and perfomed autopsies on diseased patients, without hygenic practices.
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=6Ju8yP_ZHR0" frameborder="0" allowfullscreen></iframe>
+
+
+The underlying factors affecting maternal outcomes are not yet fully understood. On this website, we investigate the effect of cost on maternal outcomes. We do so using 3 categories: GDp per capita, healthcare spending, and cost accrued to the individual family. We also look at the rate of cesarean sections, as many policy are concerned with the high rates, especially within the US. Finally, we investigate how often a skilled healthcare professional is present during birth.
+
+It is important to note that many negative maternal outcomes happen before of after birth and these factors are not comprehensive. It would also be valuable to evaluate the influence of policy such as maternal leave in the future. We hope that this website serves as a starting point and increases the conversation surrounding maternal mortality and the actions the US can take in improving maternal outcomes.
+
+
 
 ## Webcast
+
+Please enjoy our webcast below, detailing how to navigate this website:
+
+
