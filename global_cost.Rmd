@@ -1,5 +1,5 @@
 ---
-title: "Global cost analysis with respect to maternal mortality rate of top 10 developed countries "
+title: "Global cost analysis with respect to maternal mortality ratio of top 10 developed countries "
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
