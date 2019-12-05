@@ -12,7 +12,7 @@ output:
 (photo: texasimpact.org)
 
 
-## How can we better understanding maternal mortality?
+## How can we better understand maternal mortality?
 
 The United States has one of the highest maternal mortality rates out of developed countries despite high levels of spending. Our team wants to begin answering the question: what are the underlying reasons for this? 
 
@@ -41,10 +41,10 @@ It is important to note that many negative maternal outcomes happen before or af
 
 ## Webcast
 
-Please enjoy our [screencast](https://www.youtube.com/watch?v=YHZdqtQh6uw&feature=youtu.be) below, detailing how to navigate this website:
+Please enjoy our screencast below, detailing how to navigate this website:
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YHZdqtQh6uw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZDiyntH5kEc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 <h3>Contributors: Alicia Dagle | Mengjia Lyu | Michael Yan | Duzhi Zhao | Clement Mugenzi  </h3>
