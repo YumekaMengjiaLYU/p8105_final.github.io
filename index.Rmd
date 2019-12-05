@@ -3,7 +3,7 @@ title: "Factors Influencing Maternal Mortality Globally"
 
 output: 
  html_document:
-   theme: lumen
+   theme: flatly
 ---
 
 ![](Pictures/mothers.jpg)
