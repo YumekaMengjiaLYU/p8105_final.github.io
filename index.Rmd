@@ -27,7 +27,7 @@ The World Health Organization (WHO) defines maternal death as the death of a wom
 
 ## What factors might be involved?
 
-Understanding maternal mortality remains an open question to be solved by scientists and public policy makers alike. Data offers a unique opportunity to explore the factors influencing current and past maternal outcomes. In decades prior, data comparisons allowed health care professionals to understand the importance of hygiene in preventing the spread of contagious disease. For context, feel free to watch the youtube video below and learn about 2 populations: midwifes who only delivered babies and doctors who both delivered babies and perfomed autopsies on diseased patients, without hygienic practices.
+Understanding maternal mortality remains an open question to be solved by scientists and public policy makers alike. Data offers a unique opportunity to explore the factors influencing current and past maternal outcomes. In centuries prior, data comparisons allowed health care professionals to understand the importance of hygiene in preventing the spread of contagious disease. For context, feel free to watch the youtube video published by the Gates Foundation below and learn about 2 populations: midwifes who only delivered babies and doctors who both delivered babies and perfomed autopsies on diseased patients, without hygienic practices.
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6Ju8yP_ZHR0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
